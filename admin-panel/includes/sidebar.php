@@ -135,7 +135,7 @@
                         <div class="collapse" id="forms">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="forms/forms.php">
+                                    <a href="forms.php">
                                         <span class="sub-item">Basic Form</span>
                                     </a>
                                 </li>
@@ -193,12 +193,12 @@
                         <div class="collapse" id="charts">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="charts/charts.php">
+                                    <a href="charts.php">
                                         <span class="sub-item">Chart Js</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="charts/sparkline.php">
+                                    <a href="sparkline.php">
                                         <span class="sub-item">Sparkline</span>
                                     </a>
                                 </li>
