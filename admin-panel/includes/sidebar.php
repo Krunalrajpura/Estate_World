@@ -36,7 +36,7 @@
                         <div class="collapse" id="dashboard">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="../demo1/index.php">
+                                    <a href="index.php">
                                         <span class="sub-item">Dashboard 1</span>
                                     </a>
                                 </li>
@@ -58,7 +58,7 @@
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="/avatars.php">
+                                    <a href="avatars.php">
                                         <span class="sub-item">Avatars</span>
                                     </a>
                                 </li>
@@ -172,12 +172,12 @@
                         <div class="collapse" id="maps">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="maps/googlemaps.php">
+                                    <a href="googlemaps.php">
                                         <span class="sub-item">Google Maps</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="maps/jsvectormap.php">
+                                    <a href="jsvectormap.php">
                                         <span class="sub-item">Jsvectormap</span>
                                     </a>
                                 </li>
