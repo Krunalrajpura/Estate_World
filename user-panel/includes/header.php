@@ -25,6 +25,12 @@
     <link rel="stylesheet" href="../css/aos.css" />
     <link rel="stylesheet" href="../css/style.css" />
 
+    <!-- my font awesome kit link  -->
+    <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script>
+
+    <!-- my local css file  -->
+     <link rel="stylesheet" href="../css/myCss.css">
+
     <title>
       Property &mdash; Free Bootstrap 5 Website Template by Untree.co
     </title>
