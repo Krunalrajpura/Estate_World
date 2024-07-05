@@ -3,7 +3,7 @@
 // Database credentials
 
 $host = 'localhost';
-$dbname = 'estate_world';
+$dbname = 'estate-world';
 $username = 'root';
 $password = ''; 
 

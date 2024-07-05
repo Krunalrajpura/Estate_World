@@ -58,7 +58,6 @@
             border-radius: 10px;
             border: 3px solid white;
         }
-
         .myLink{
             font-size: 18px;
             font-weight: 600;
@@ -75,14 +74,6 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 myCard mt-5">
                     <form>
 
-                        <!-- Name input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <label class="form-label text-white" for="form3Example1">Your Name</label>
-                            <input type="text" id="form3Example1" class="form-control form-control-lg border-2 border-dark"
-                                placeholder="Enter your name" />
-                        </div>
-
-
                         <!-- Email input -->
                         <div data-mdb-input-init class="form-outline mb-4 ">
                             <label class="form-label  text-white" for="form3Example3">Email address</label>
@@ -97,25 +88,31 @@
                                 placeholder="Enter password" />
                         </div>
 
-                        <!-- Confirm Password input -->
-                        <div data-mdb-input-init class="form-outline mb-3">
-                            <label class="form-label  text-white" for="Confirm_password">Confirm Password</label>
-                            <input type="password" id="Confirm_password" class="form-control form-control-lg border-2 border-dark"
-                                placeholder="Confirm password" />
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <!-- <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div> -->
+                            <a href="#!" class="text-white">Forgot password?</a>
                         </div>
-
-                        
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="button" data-mdb-button-init data-mdb-ripple-init
                                 class="btn btn-primary btn-lg"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0 text-white">Already have an account? <a href="index.php"
-                                    class="link-danger"><span class="myLink">Login</span></a></p>
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0  text-white">Already have an account? <a href="register.php"
+                            class="link-danger"><span class="myLink">Register</span></a></p>
                         </div>
 
                     </form>
                 </div>
+                <!-- <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                        class="img-fluid" alt="Sample image">
+                </div> -->
 
             </div>
         </div>
