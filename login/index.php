@@ -15,7 +15,7 @@
         body {
             position: relative;
             /* Ensure body is positioned relative for overlay */
-            background-image: url("./img/bg1.png");
+            background-image: url("./img/bg2.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

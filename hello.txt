@@ -1,0 +1,47 @@
+sell/rent your property :
+
+Sell
+    Rent/Lease
+PG
+
+
+Residential :- flate/apartment , house/villa , plot,land , farmhouse 
+
+Commercial :- Office , Retail , storage , industry , Hotel
+
+Customer
+
+
+For buyers :
+
+Sell
+    Rent/Lease
+PG/Co-leaving
+
+
+Residential :- flate/apartment , house/villa , plot,land , farmhouse 
+
+Commercial :- Office , Retail , storage , industry , Hotel
+
+
+Property :- residential , commercial
+
+DB tables : user , sell , rent , pg , customer , 
+
+E-R Diagram :
+
+Customer :
+	c_id , u_name , f_name , m_name , l_name ,  email , number , pass , address , created_at , updated_at
+	
+Property :
+	p_id , o_id , p_type , p_status , p_price , p_address ,created_at , updated_at
+Rent :
+	r_id , p_id , c_id , o_id , rent_amt , created_at , updated_at
+sell :
+	s_id , p_id , c_id , o_id , sell_amt , created_at , updated_at
+Owner : 
+	o_id , number , email , pass , created_at , updated_at
+Feedback :
+	f_id , c_id , email , concern
+Transaction :
+	
