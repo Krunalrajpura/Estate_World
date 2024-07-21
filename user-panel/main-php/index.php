@@ -5,6 +5,9 @@ hello there
 * Template URI: https://untree.co/
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
+
+<?php include '../../connection/config.php'; ?>
+<?php include '../../function/function.php'; ?>
 <?php include '../includes/header.php'; ?>
 
 <?php include '../includes/navbar.php'; ?>
