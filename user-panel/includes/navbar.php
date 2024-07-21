@@ -6,10 +6,11 @@ $current_file = basename($_SERVER['PHP_SELF']);
 
 <!-- php code for the inserting data in the database  -->
 
+
 <?php
 
+// for the registration 
 if (isset($_POST["go"])) {
-
 
   $name = $_POST["name"];
   $email = $_POST["email"];
@@ -41,7 +42,13 @@ if (isset($_POST["go"])) {
       $types = 'ssss';
       $successMessage = "Registered Successfully !!!";
 
-      insertData($conn, $tableName, $data, $types, $successMessage);
+      $login_result = insertData($conn, $tableName, $data, $types, $successMessage);
+
+      if ($login_result) {
+        $_SESSION['email'] = $email;
+      } else {
+        echo '<script>alert("Session is not seting")</script>';
+      }
     } else {
       $warningMessage = "Password Doesn\'t Match !!!";
       echo "<script>showWarningAlert('$warningMessage');</script>";
@@ -49,6 +56,13 @@ if (isset($_POST["go"])) {
   }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// for the logout 
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header("Location: " . $_SERVER['REQUEST_URI']);
+  exit();
+}
 ?>
 
 <div class="site-mobile-menu site-navbar-target">
@@ -86,11 +100,20 @@ if (isset($_POST["go"])) {
           <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a href="services.php">Services</a></li>
           <li class="<?php echo ($current_file == 'about.php') ? 'active' : ''; ?>"><a href="about.php">About</a></li>
           <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact Us</a></li>
-          <!-- <li><i class="fa-solid fa-right-to-bracket text-white bg-outline-white"></i></li> -->
           <li>
-            <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#login">
-              login <i class="fa-solid fa-right-to-bracket text-white bg-outline-white ml-2"></i>
-            </button>
+            <?php
+            if (isset($_SESSION['email'])) {
+            ?>
+              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#logout">
+                logout <i class="fa-solid fa-right-from-bracket text-white bg-outline-white ml-3"></i>
+              </button>
+            <?php
+            } else {
+            ?>
+              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#login">
+                login <i class="fa-solid fa-right-to-bracket text-white bg-outline-white ml-2"></i>
+              </button>
+            <?php } ?>
           </li>
         </ul>
 
@@ -200,6 +223,33 @@ if (isset($_POST["go"])) {
           <button type="button" class="myBtn myBtn-dark" data-bs-dismiss="modal">Close</button>
         </p>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- below modal is for the logout  -->
+
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Logout ??</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex">
+        <img src="../images/alert.jpg" alt="Logout" width="100" height="100">
+        <h4 class="text-center d-flex align-items-center">
+          Do You Want To Logout ???
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <form action="<?php $_PHP_SELF ?>" method="POST">
+          <button type="submit" name="logout" class="myBtn myBtn-danger">Logout</button>
+        </form>
+        <button type="button" class="myBtn myBtn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

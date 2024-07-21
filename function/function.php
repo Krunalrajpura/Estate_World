@@ -21,6 +21,7 @@ function insertData($conn, $tableName, $data, $types, $successMessage, $errorMes
     if ($stmt->execute()) {
         // $successMessage = "Registered Successfully !!!";
         echo "<script>showSuccessAlert('$successMessage');</script>";
+        return true;
     } else {
         if ($errorMessage = '') {
             $errorMessage = "Error: " . $stmt->error;
