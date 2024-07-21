@@ -30,12 +30,12 @@
   <link rel="stylesheet" href="../css/myCss.css">
 
   <!-- SweetAlert CSS -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
   <!-- SweetAlert JS -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- <script src="../../sweet_alert/sweet_alert.js"></script> -->
+  <script src="../../sweet_alert/sweet_alert.js"></script>
 
   <title>
     Property &mdash; Free Bootstrap 5 Website Template by Untree.co

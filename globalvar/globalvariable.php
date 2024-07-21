@@ -1,7 +1,8 @@
 <?php  
 
+$connToPan = "../../connection/";
 $panToUploads = "../../uploads/";
-$funToUserPannel = "../../function/";
-$mphpToinc = "../inc/";
+$funToPan = "../../function/";
+$mphpToInc = "../includes/";
 
 ?>

@@ -4,9 +4,13 @@
 * Template URI: https://untree.co/
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
-<?php include '../includes/header.php'; ?>
+<?php include '../../globalvar/globalvariable.php'; ?>
+<?php include  $connToPan . 'config.php'; ?>
+<?php include  $mphpToInc . 'header.php'; ?>
+<?php include  $funToPan . 'function.php'; ?>
+<?php include  $mphpToInc . 'navbar.php'; ?>
 
-<?php include '../includes/navbar.php';  ?>
+
 
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_3.jpg')">
   <div class="container">

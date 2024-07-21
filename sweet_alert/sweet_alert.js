@@ -24,9 +24,9 @@
             confirmButtonText: 'OK'
         });
         // Redirect after 2 seconds
-        setTimeout(function() {
-            window.location.href = window.location.href;
-        }, 2000);
+        // setTimeout(function() {
+        //     window.location.href = window.location.href;
+        // }, 2000);
     }
 
     // Define warning alert function
@@ -51,9 +51,9 @@
             confirmButtonText: 'OK'
         });
         // Redirect after 2 seconds
-        setTimeout(function() {
-            window.location.href = window.location.href;
-        }, 2000);
+        // setTimeout(function() {
+        //     window.location.href = window.location.href;
+        // }, 2000);
     }
 
 

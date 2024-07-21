@@ -1,5 +1,9 @@
 <!-- include at fourth -->
 
+<?php
+$current_file = basename($_SERVER['PHP_SELF']);
+?>
+
 <!-- php code for the inserting data in the database  -->
 
 <?php
@@ -15,21 +19,33 @@ if (isset($_POST["go"])) {
 
   $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
-  if ($cpass === $pass) {
-    $tableName = 'login';
-    $data = [
-      'c_name' => $name,
-      'c_email' => $email,
-      'c_number' => $number,
-      'c_pass' => $hashedPass
-    ];
-    $types = 'ssss';
+  // Define table and column names
+  $tableName = 'login';
+  $emailColumn = 'c_email';
 
-    insertData($conn, $tableName, $data, $types);
+  // Check if the email already exists
+  if (checkIfDataExists($conn, $tableName, $emailColumn, $email)) {
+    // Email already exists
+    $warningMessage = "Email already registered!";
+    echo "<script>showWarningAlert('$warningMessage');</script>";
   } else {
-    echo "<script>alert('Password Doesn't Match !!')</script>";
-    // $warningMessage = "Password Doesn't Match !!!";
-    // echo "<script>showWarningAlert('$warningMessage');</script>";
+
+    if ($cpass === $pass) {
+      // $tableName = 'login';
+      $data = [
+        'c_name' => $name,
+        'c_email' => $email,
+        'c_number' => $number,
+        'c_pass' => $hashedPass
+      ];
+      $types = 'ssss';
+      $successMessage = "Registered Successfully !!!";
+
+      insertData($conn, $tableName, $data, $types, $successMessage);
+    } else {
+      $warningMessage = "Password Doesn\'t Match !!!";
+      echo "<script>showWarningAlert('$warningMessage');</script>";
+    }
   }
 }
 
@@ -51,8 +67,8 @@ if (isset($_POST["go"])) {
         <a href="index.php" class="logo m-0 float-start">Property</a>
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-          <li class="active"><a href="index.php">Home</a></li>
-          <li class="has-children">
+          <li class="<?php echo ($current_file == 'index.php') ? 'active' : ''; ?>"><a href="index.php">Home</a></li>
+          <li class="has-children <?php echo ($current_file == 'properties.php') ? 'active' : ''; ?>">
             <a href="properties.php">Properties</a>
             <ul class="dropdown">
               <li><a href="#">Buy Property</a></li>
@@ -67,9 +83,9 @@ if (isset($_POST["go"])) {
               </li>
             </ul>
           </li>
-          <li><a href="services.php">Services</a></li>
-          <li><a href="about.php">About</a></li>
-          <li><a href="contact.php">Contact Us</a></li>
+          <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a href="services.php">Services</a></li>
+          <li class="<?php echo ($current_file == 'about.php') ? 'active' : ''; ?>"><a href="about.php">About</a></li>
+          <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact Us</a></li>
           <!-- <li><i class="fa-solid fa-right-to-bracket text-white bg-outline-white"></i></li> -->
           <li>
             <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#login">
@@ -104,13 +120,13 @@ if (isset($_POST["go"])) {
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form5Example5">Email address</label>
-              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" />
+              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" required />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form4Example4">Password</label>
-              <input type="password" id="form6Example6" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" />
+              <input type="password" id="form6Example6" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" required />
             </div>
 
             <button type="button" class="myBtn myBtn-primary">Login</button>
@@ -145,31 +161,31 @@ if (isset($_POST["go"])) {
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="form3Example1">Your Name</label>
-              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" name="name" />
+              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" name="name" required />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form5Example5">Email address</label>
-              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" name="email" />
+              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" name="email" required />
             </div>
 
             <!-- phone number -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="formPhoneNumber">Phone number</label>
-              <input type="tel" id="formPhoneNumber" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid phone number" name="number" />
+              <input type="tel" id="formPhoneNumber" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid phone number" name="number" required />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form6Example6">Password</label>
-              <input type="password" id="form8Example8" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" name="password" />
+              <input type="password" id="form8Example8" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" name="password" required />
             </div>
 
             <!-- confirm-password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="formConfirmPassword">Confirm Password</label>
-              <input type="password" id="formConfirmPassword" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Confirm password" name="cpassword" />
+              <input type="password" id="formConfirmPassword" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Confirm password" name="cpassword" required />
             </div>
 
             <button type="submit" name="go" class="myBtn myBtn-primary">Register</button>

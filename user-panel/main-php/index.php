@@ -6,11 +6,11 @@ hello there
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
 
-<?php include '../../connection/config.php'; ?>
-<?php include '../../function/function.php'; ?>
-<?php include '../includes/header.php'; ?>
-
-<?php include '../includes/navbar.php'; ?>
+<?php include '../../globalvar/globalvariable.php'; ?>
+<?php include  $connToPan . 'config.php'; ?>
+<?php include  $mphpToInc . 'header.php'; ?>
+<?php include  $funToPan . 'function.php'; ?>
+<?php include  $mphpToInc . 'navbar.php'; ?>
 
 <div class="hero">
   <div class="hero-slide">
@@ -25,8 +25,7 @@ hello there
         <h1 class="heading" data-aos="fade-up">
           Easiest way to find your dream home
         </h1>
-        <form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
-          data-aos-delay="200">
+        <form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
           <input type="text" class="form-control px-4" placeholder="Your ZIP code or City. e.g. New York" />
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
