@@ -17,6 +17,17 @@ Commercial
 - Industry
 - Hotel
 
+Navbar :
+-Home 
+-Properties
+-about us
+-contact us
+-login
+-login required :
+	-Services
+		-buy
+		-sell
+		-rent : pg
 
 DB tables : admin, customer, owner , sell , rent , pg , feedback, property
 

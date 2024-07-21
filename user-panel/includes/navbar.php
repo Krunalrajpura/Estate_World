@@ -37,13 +37,15 @@
           <li><a href="contact.php">Contact Us</a></li>
           <!-- <li><i class="fa-solid fa-right-to-bracket text-white bg-outline-white"></i></li> -->
           <li>
-            <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#login">
+            <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal"
+              data-bs-target="#login">
               login <i class="fa-solid fa-right-to-bracket text-white bg-outline-white ml-2"></i>
             </button>
           </li>
         </ul>
 
-        <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+        <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+          data-toggle="collapse" data-target="#main-navbar">
           <span></span>
         </a>
       </div>
@@ -69,17 +71,15 @@
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form3Example3">Email address</label>
-              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" />
+              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter a valid email address" />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form3Example4">Password</label>
-              <input type="password" id="form3Example4" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" />
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <a href="#!" class="text-dark">Forgot password?</a>
+              <input type="password" id="form3Example4" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter password" />
             </div>
 
             <button type="button" class="myBtn myBtn-primary">Login</button>
@@ -114,23 +114,36 @@
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="form3Example1">Your Name</label>
-              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" />
+              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter your name" />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form3Example3">Email address</label>
-              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" />
+              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter a valid email address" />
+            </div>
+
+            <!-- phone number -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <label class="form-label text-dark" for="formPhoneNumber">Phone number</label>
+              <input type="tel" id="formPhoneNumber" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter a valid phone number" />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form3Example4">Password</label>
-              <input type="password" id="form3Example4" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" />
+              <input type="password" id="form3Example4" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter password" />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <a href="#!" class="text-dark">Forgot password?</a>
+             <!-- confirm-password input -->
+            <div data-mdb-input-init class="form-outline mb-3">
+              <label class="form-label text-dark" for="formConfirmPassword">Confirm Password</label>
+              <input type="password" id="formConfirmPassword"
+                class="form-control form-control-lg border-2 myBorder-primary" placeholder="Confirm password" />
             </div>
 
             <button type="button" class="myBtn myBtn-primary">Register</button>
