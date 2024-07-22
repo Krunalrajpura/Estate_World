@@ -14,7 +14,7 @@
 
     <div
       class="hero page-inner overlay"
-      style="background-image: url('../imagess/hero_bg_1.jpg')"
+      style="background-image: url('../images/hero_bg_1.jpg')"
     >
       <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -56,7 +56,7 @@
               <div class="property-slider">
                 <div class="property-item">
                   <a href="property-single.html" class="img">
-                    <img src="../imagess/img_1.jpg" alt="Image" class="img-fluid" />
+                    <img src="../images/img_1.jpg" alt="Image" class="img-fluid" />
                   </a>
 
                   <div class="property-content">

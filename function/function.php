@@ -124,29 +124,47 @@ function fetchData($conn, $tableName, $columns = '*', $where = '', $values = [])
 
 <?php
 
-function checkIfDataExists($conn, $tableName, $column, $value)
+function checkIfDataExists($conn, $tableName, $conditions)
 {
-    // Build the WHERE clause for the query
-    $where = "$column = ?";
+    // Initialize an array to hold the WHERE clause parts
+    $whereClauses = [];
+    // Initialize an array to hold the values
+    $values = [];
+
+    // Loop through the conditions array to build the WHERE clause and values array
+    foreach ($conditions as $column => $value) {
+        $whereClauses[] = "$column = ?";
+        $values[] = $value;
+    }
+
+    // Join the WHERE clauses with 'AND'
+    $where = implode(' AND ', $whereClauses);
 
     // Fetch data from the table using fetchData
-    $result = fetchData($conn, $tableName, '*', $where, [$value]);
+    $result = fetchData($conn, $tableName, '*', $where, $values);
 
     // Check if any row exists
-    return count($result) > 0;
+    if (count($result) > 0) {
+        return true;
+    }
 }
+
 
 
 // Example usage
 
-// $tableName = 'users';
-// $column = 'email';
-// $value = 'example@example.com';
 
-// if (checkIfDataExists($conn, $tableName, $column, $value)) {
-//     echo "Data exists.";
+// $tableName = 'users';
+// $conditions = [
+//     'username' => 'john_doe',
+//     'email' => 'john@example.com'
+// ];
+
+// $result = checkIfDataExists($conn, $tableName, $conditions);
+// if ($result) {
+//     echo 'Data exists';
 // } else {
-//     echo "Data does not exist.";
+//     echo 'Data does not exist';
 // }
 
 

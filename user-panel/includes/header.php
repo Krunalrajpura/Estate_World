@@ -38,6 +38,12 @@ session_start();
   <!-- my local css file  -->
   <link rel="stylesheet" href="../css/myCss.css">
 
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
   <!-- SweetAlert CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -45,6 +51,17 @@ session_start();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="../../sweet_alert/sweet_alert.js"></script>
+
+  <style>
+    /* Prevent modal close button functionality */
+    .modal.prevent-close .btn-close,
+    .modal.prevent-close .close {
+      pointer-events: none;
+      /* Disable clicks */
+      opacity: 0.5;
+      /* Dim close button */
+    }
+  </style>
 
   <title>
     Property &mdash; Free Bootstrap 5 Website Template by Untree.co

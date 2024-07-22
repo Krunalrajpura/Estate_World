@@ -22,10 +22,14 @@ if (isset($_POST["go"])) {
 
   // Define table and column names
   $tableName = 'login';
-  $emailColumn = 'c_email';
+  $conditions = [
+    'email' => $email
+  ];
 
+
+  $result_registration = checkIfDataExists($conn, $tableName, $conditions);
   // Check if the email already exists
-  if (checkIfDataExists($conn, $tableName, $emailColumn, $email)) {
+  if ($result_registration) {
     // Email already exists
     $warningMessage = "Email already registered!";
     echo "<script>showWarningAlert('$warningMessage');</script>";
@@ -42,12 +46,16 @@ if (isset($_POST["go"])) {
       $types = 'ssss';
       $successMessage = "Registered Successfully !!!";
 
-      $login_result = insertData($conn, $tableName, $data, $types, $successMessage);
+      $registration_insert = insertData($conn, $tableName, $data, $types, $successMessage);
 
-      if ($login_result) {
+      if ($registration_insert) {
         $_SESSION['email'] = $email;
+
+        $successMessage = "Registered Successfully !!!";
+        echo "<script>showSuccessAlert('$successMessage');</script>";
       } else {
-        echo '<script>alert("Session is not seting")</script>';
+        $warningMessage = "Session is not SET, Something went Wrong !!!";
+        echo "<script>showWarningAlert('$warningMessage');</script>";
       }
     } else {
       $warningMessage = "Password Doesn\'t Match !!!";
@@ -63,6 +71,41 @@ if (isset($_POST['logout'])) {
   header("Location: " . $_SERVER['REQUEST_URI']);
   exit();
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//for the login
+if (isset($_POST['login'])) {
+  $email = $_POST['email'];
+  $pass = $_POST['password'];
+
+  $tableName = 'login';
+  $conditions = [
+    'c_email' => $email
+  ];
+
+  // Fetch the user record based on the email
+  $user = fetchData($conn, $tableName, '*', 'c_email = ?', [$email]);
+
+  if (count($user) > 0) {
+    // User found, now verify the password
+    $storedHash = $user[0]['c_pass'];
+
+    if (password_verify($pass, $storedHash)) {
+      $_SESSION['email'] = $email;
+
+      $successMessage = "Login Successful! Welcome back!";
+      echo "<script>showSuccessAlert('$successMessage');</script>";
+    } else {
+      $errorMessage = "Invalid Credentials";
+      echo "<script>showErrorAlert('$errorMessage');</script>";
+    }
+  } else {
+    $errorMessage = "Invalid Credentials";
+    echo "<script>showErrorAlert('$errorMessage');</script>";
+  }
+}
+
+
 ?>
 
 <div class="site-mobile-menu site-navbar-target">
@@ -138,21 +181,21 @@ if (isset($_POST['logout'])) {
       </div>
       <div class="modal-body">
         <div class="m-3">
-          <form>
+          <form method="POST" action="<?php $_PHP_SELF ?>">
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
-              <label class="form-label text-dark" for="form5Example5">Email address</label>
-              <input type="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" required />
+              <label class="form-label text-dark" for="form3Example3">Email address</label>
+              <input type="email" name="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" autocomplete="email" required />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
-              <label class="form-label text-dark" for="form4Example4">Password</label>
-              <input type="password" id="form6Example6" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" required />
+              <label class="form-label text-dark" for="form6Example6">Password</label>
+              <input type="password" name="password" id="form6Example6" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" required />
             </div>
 
-            <button type="button" class="myBtn myBtn-primary">Login</button>
+            <button type="submit" name="login" class="myBtn myBtn-primary">Login</button>
 
         </div>
       </div>
@@ -184,13 +227,13 @@ if (isset($_POST['logout'])) {
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="form3Example1">Your Name</label>
-              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" name="name" required />
+              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" name="name" autocomplete="name" required />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
-              <label class="form-label text-dark" for="form5Example5">Email address</label>
-              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" name="email" required />
+              <label class="form-label text-dark" for="form7Example7">Email address</label>
+              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" name="email" autocomplete="email" required />
             </div>
 
             <!-- phone number -->
@@ -201,7 +244,7 @@ if (isset($_POST['logout'])) {
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
-              <label class="form-label text-dark" for="form6Example6">Password</label>
+              <label class="form-label text-dark" for="form8Example8">Password</label>
               <input type="password" id="form8Example8" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" name="password" required />
             </div>
 
