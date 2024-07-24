@@ -128,18 +128,19 @@ if (isset($_POST['login'])) {
           <li class="has-children <?php echo ($current_file == 'properties.php') ? 'active' : ''; ?>">
             <a href="properties.php">Properties</a>
             <ul class="dropdown">
-              <li><a href="#">Buy Property</a></li>
-              <li><a href="#">Sell Property</a></li>
+              <li><a href="properties.php">All Property</a></li>
+              <li><a href="list_property.php">List Property</a></li>
               <li class="has-children">
-                <a href="#">Dropdown</a>
+                <a href="#">See Property</a>
                 <ul class="dropdown">
-                  <li><a href="#">Sub Menu One</a></li>
-                  <li><a href="#">Sub Menu Two</a></li>
-                  <li><a href="#">Sub Menu Three</a></li>
+                  <li><a href="#">Residential Property</a></li>
+                  <li><a href="#">Comertial Property</a></li>
+                  <li><a href="#">PG / Co-Leaving</a></li>
                 </ul>
               </li>
             </ul>
           </li>
+          <li class="<?php echo ($current_file == 'plans.php') ? 'active' : ''; ?>"><a href="plans.php">Plans</a></li>
           <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a href="services.php">Services</a></li>
           <li class="<?php echo ($current_file == 'about.php') ? 'active' : ''; ?>"><a href="about.php">About</a></li>
           <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact Us</a></li>
