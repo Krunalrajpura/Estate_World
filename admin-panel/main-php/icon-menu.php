@@ -1,8 +1,10 @@
-<?php include '../includes/header.php'; ?>
+<?php include '../../globalvar/globalvariable.php'; ?>
+<?php include  $connToPan . 'config.php'; ?>
+<?php include  $mphpToInc . 'header.php'; ?>
+<?php include  $mphpToInc . 'sidebar.php'; ?>
+<?php include  $funToPan . 'function.php'; ?>
+<?php include  $mphpToInc . 'navbar.php'; ?>
 
-<?php include '../includes/sidebar.php'; ?>
-
-<?php include '../includes/navbar.php'; ?>
 
 
 <div class="container">
@@ -29,8 +31,7 @@
               <h4 class="text-info fw-bold">$170</h4>
             </div>
             <div class="progress progress-sm">
-              <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                aria-valuemax="100"></div>
+              <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               <p class="text-muted mb-0">Change</p>
@@ -50,8 +51,7 @@
               <h4 class="text-success fw-bold">$120</h4>
             </div>
             <div class="progress progress-sm">
-              <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100"></div>
+              <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               <p class="text-muted mb-0">Change</p>
@@ -71,8 +71,7 @@
               <h4 class="text-danger fw-bold">15</h4>
             </div>
             <div class="progress progress-sm">
-              <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                aria-valuemax="100"></div>
+              <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               <p class="text-muted mb-0">Change</p>
@@ -92,8 +91,7 @@
               <h4 class="text-secondary fw-bold">12</h4>
             </div>
             <div class="progress progress-sm">
-              <div class="progress-bar bg-secondary w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100"></div>
+              <div class="progress-bar bg-secondary w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               <p class="text-muted mb-0">Change</p>
@@ -140,8 +138,7 @@
               <div class="card-title">Daily Sales</div>
               <div class="card-tools">
                 <div class="dropdown">
-                  <button class="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Export
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -612,8 +609,7 @@
               <div class="card-title">Recent Activity</div>
               <div class="card-tools">
                 <div class="dropdown">
-                  <button class="btn btn-icon btn-clean" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-icon btn-clean" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-h"></i>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -669,16 +665,13 @@
               <div class="card-tools">
                 <ul class="nav nav-pills nav-secondary nav-pills-no-bd nav-sm" id="pills-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link" id="pills-today" data-bs-toggle="pill" href="#pills-today" role="tab"
-                      aria-selected="true">Today</a>
+                    <a class="nav-link" id="pills-today" data-bs-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Today</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" id="pills-week" data-bs-toggle="pill" href="#pills-week" role="tab"
-                      aria-selected="false">Week</a>
+                    <a class="nav-link active" id="pills-week" data-bs-toggle="pill" href="#pills-week" role="tab" aria-selected="false">Week</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="pills-month" data-bs-toggle="pill" href="#pills-month" role="tab"
-                      aria-selected="false">Month</a>
+                    <a class="nav-link" id="pills-month" data-bs-toggle="pill" href="#pills-month" role="tab" aria-selected="false">Month</a>
                   </li>
                 </ul>
               </div>
@@ -773,6 +766,5 @@
   </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
-
-<?php include '../includes/endlinks.php'; ?>
+<?php include  $mphpToInc . 'footer.php'; ?>
+<?php include  $mphpToInc . 'endlinks.php'; ?>

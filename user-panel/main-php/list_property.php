@@ -449,7 +449,6 @@
 
 
 
-
-<?php include '../includes/footer.php';  ?>
-<?php include '../includes/loader.php';  ?>
-<?php include '../includes/endlinks.php';  ?>
+<?php include  $mphpToInc . 'footer.php'; ?>
+<?php include  $mphpToInc . 'loader.php'; ?>
+<?php include  $mphpToInc . 'endlinks.php'; ?>

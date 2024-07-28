@@ -48,6 +48,30 @@
                             </ul>
                         </div>
                     </li> -->
+
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Manage Website</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Request</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="prop_request.php">
+                                        <span class="sub-item">Property Request</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>

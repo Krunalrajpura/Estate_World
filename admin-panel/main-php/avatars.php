@@ -1,8 +1,9 @@
-<?php include '../includes/header.php'; ?>
-
-<?php include '../includes/sidebar.php'; ?>
-
-<?php include '../includes/navbar.php'; ?>
+<?php include '../../globalvar/globalvariable.php'; ?>
+<?php include  $connToPan . 'config.php'; ?>
+<?php include  $mphpToInc . 'header.php'; ?>
+<?php include  $mphpToInc . 'sidebar.php';?>
+<?php include  $funToPan . 'function.php'; ?>
+<?php include  $mphpToInc . 'navbar.php'; ?>
 
 <div class="container">
 	<div class="page-inner">
@@ -136,6 +137,5 @@
 	</div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
-
-<?php include '../includes/endlinks.php'; ?>
+<?php include  $mphpToInc . 'footer.php';?>
+<?php include  $mphpToInc . 'endlinks.php';?>
