@@ -167,5 +167,30 @@ function checkIfDataExists($conn, $tableName, $conditions)
 //     echo 'Data does not exist';
 // }
 
+?>
+
+
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+
+<?php
+
+
+function isLoggedIn() {
+    // Check if the 'aemail' session variable is set and not empty
+    if (isset($_SESSION['aemail']) && !empty($_SESSION['aemail'])) {
+        return true; // User is logged in
+    } else {
+        // User is not logged in, redirect to login page using JavaScript
+        echo '<script type="text/javascript">';
+        echo 'window.location.href = "../index.php";';
+        echo '</script>';
+        exit(); // Stop further execution
+    }
+}
+
 
 ?>

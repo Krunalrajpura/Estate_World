@@ -56,16 +56,43 @@
                         <h4 class="text-section">Manage Website</h4>
                     </li>
                     <li class="nav-item">
-                        <a data-bs-toggle="collapse" href="#base">
-                            <i class="fas fa-layer-group"></i>
+                        <a data-bs-toggle="collapse" href="#request">
+                            <!-- <i class="fas fa-layer-group"></i> -->
+                            <i class="fa-solid fa-paper-plane"></i>
                             <p>Request</p>
                             <span class="caret"></span>
                         </a>
-                        <div class="collapse" id="base">
+                        <div class="collapse" id="request">
                             <ul class="nav nav-collapse">
                                 <li>
                                     <a href="prop_request.php">
                                         <span class="sub-item">Property Request</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Manage Admins</h4>
+                    </li>
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#admin">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <p>Admin</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="admin">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="add_admin.php">
+                                        <span class="sub-item">Add Admin</span>
+                                    </a>
+                                    <a href="view_admin.php">
+                                        <span class="sub-item">View Admin</span>
                                     </a>
                                 </li>
                             </ul>
@@ -180,12 +207,12 @@
                         <div class="collapse" id="tables">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="tables/tables.php">
+                                    <a href="tables.php">
                                         <span class="sub-item">Basic Table</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tables/datatables.php">
+                                    <a href="datatables.php">
                                         <span class="sub-item">Datatables</span>
                                     </a>
                                 </li>

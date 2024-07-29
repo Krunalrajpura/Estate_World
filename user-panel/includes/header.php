@@ -5,8 +5,6 @@ error_reporting(E_ALL); // Report all PHP errors
 ini_set('display_errors', 1); // Display errors in the browser
 ini_set('display_startup_errors', 1); // Display errors that occur during PHP's startup sequence
 
-// Start the session
-session_start();
 ?>
 
 <!DOCTYPE html>

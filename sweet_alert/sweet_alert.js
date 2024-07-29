@@ -1,17 +1,37 @@
 
 // Function to show SweetAlert and prevent modal from closing
-function showSuccessAlert(message) {
+// Function to show SweetAlert and handle redirection or refresh
+function showSuccessAlert(message, redirectUrl = '') {
   Swal.fire({
-    title: "Success!",
-    text: message,
-    icon: "success",
-    confirmButtonText: "OK",
+      title: "Success!",
+      text: message,
+      icon: "success",
+      confirmButtonText: "OK",
   }).then((result) => {
-    if (result.isConfirmed) {
-      window.location.href = window.location.href; // Refresh the page if needed
-    }
+      if (result.isConfirmed) {
+          if (redirectUrl) {
+              window.location.href = redirectUrl; // Redirect to the specified URL
+          } else {
+              window.location.href = window.location.href; // Refresh the current page
+          }
+      }
   });
 }
+
+
+// function showSuccessAlert2(message, redirectUrl) {
+//   Swal.fire({
+//       title: "Success!",
+//       text: message,
+//       icon: "success",
+//       confirmButtonText: "OK",
+//   }).then((result) => {
+//       if (result.isConfirmed) {
+//           window.location.href = redirectUrl; // Redirect to the specified URL
+//       }
+//   });
+// }
+
 
 // Similar functions for other alert types
 function showErrorAlert(message) {

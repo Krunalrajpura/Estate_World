@@ -153,7 +153,7 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="../assets/img/check.jpg" alt="CHECK" class="h-25 w-25">
+                    <img src="<?php echo $aMphpToImg; ?>check.jpg" alt="CHECK" class="h-25 w-25">
                     <h4 class="mt-3">Do You Really Want to Accept the Request !!!</h4>
                 </div>
             </div>
@@ -181,7 +181,7 @@
             <div class="modal-body">
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        <img src="../assets/img/reject.jpg" alt="CHECK" class="h-25 w-25">
+                        <img src="<?php echo $aMphpToImg; ?>reject.jpg" alt="CHECK" class="h-25 w-25">
                         <h4 class="mt-3">Do You Really Want to Reject the Request !!!</h4>
                     </div>
                 </div>
