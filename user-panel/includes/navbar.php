@@ -68,8 +68,7 @@ if (isset($_POST["go"])) {
 // for the logout 
 if (isset($_POST['logout'])) {
   session_destroy();
-  header("Location: " . $_SERVER['REQUEST_URI']);
-  exit();
+  echo "<script>window.location.href=window.location.href</script>";
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -71,8 +71,21 @@ function fetchData($conn, $tableName, $columns = '*', $where = '', $values = [])
 
     // Bind parameters if there are any
     if (!empty($values)) {
-        // Create an array of types for the bind_param function
-        $types = str_repeat('s', count($values)); // Assuming all values are strings
+        // Determine types for each value
+        $types = '';
+        foreach ($values as $value) {
+            if (is_int($value)) {
+                $types .= 'i'; // integer
+            } elseif (is_float($value)) {
+                $types .= 'd'; // double
+            } elseif (is_string($value)) {
+                $types .= 's'; // string
+            } else {
+                $types .= 'b'; // blob or unknown
+            }
+        }
+
+        // Bind the parameters to the statement
         $stmt->bind_param($types, ...$values);
     }
 
@@ -100,19 +113,22 @@ function fetchData($conn, $tableName, $columns = '*', $where = '', $values = [])
 }
 
 
+
 // usage of the function 
 
-// $tableName = 'your_table';
-// $columns = '*'; // You can specify columns like 'column1, column2'
-// $where = 'column1 = "value1"'; // Optional WHERE clause
+// $tableName = 'alogin';
+// $columns = '*';
+// $where = 'a_id = ? AND email = ?'; // Use placeholders for parameters
+// $values = [3, 'example@gmail.com']; // Corresponding values
 
-// $data = fetchData($conn, $tableName, $columns, $where);
+// $data = fetchData($conn, $tableName, $columns, $where, $values);
 
 // foreach ($data as $row) {
 //     // Process each row
 //     echo "Column1: " . $row['column1'] . "<br>";
 //     echo "Column2: " . $row['column2'] . "<br>";
 // }
+
 ?>
 
 
