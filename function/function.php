@@ -195,7 +195,8 @@ function checkIfDataExists($conn, $tableName, $conditions)
 <?php
 
 
-function isLoggedIn() {
+function isLoggedIn()
+{
     // Check if the 'aemail' session variable is set and not empty
     if (isset($_SESSION['aemail']) && !empty($_SESSION['aemail'])) {
         return true; // User is logged in
@@ -209,4 +210,74 @@ function isLoggedIn() {
 }
 
 
+?>
+
+
+
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+
+
+<?php
+function deleteData($conn, $table, $conditions) {
+    // Start building the SQL DELETE statement
+    $sql = "DELETE FROM $table WHERE ";
+
+    // Prepare the conditions for the WHERE clause
+    $clauses = [];
+    $values = [];
+    foreach ($conditions as $column => $value) {
+        $clauses[] = "$column = ?";
+        $values[] = $value;
+    }
+    $sql .= implode(' AND ', $clauses);
+
+    // Prepare the statement
+    if ($stmt = $conn->prepare($sql)) {
+        // Dynamically bind the parameters
+        $types = str_repeat('s', count($values)); // Assuming all values are strings
+        $stmt->bind_param($types, ...$values);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            // Check if any rows were affected
+            if ($stmt->affected_rows > 0) {
+                // Record deleted successfully
+                $stmt->close();
+                return true;
+            } else {
+                // No record found to delete
+                $stmt->close();
+                return false;
+            }
+        } else {
+            // Error executing query
+            $stmt->close();
+            return false;
+        }
+    } else {
+        // Error preparing statement
+        return false;
+    }
+}
+
+// Usage example
+
+// $conditions = [
+//     'id' => 123,
+//     'status' => 'inactive'
+// ];
+
+// // Call the function with the connection and conditions
+// if (deleteData($conn, 'users', $conditions)) {
+//     echo "Record deleted successfully.";
+// } else {
+//     echo "Failed to delete record.";
+// }
+
+// // Close the database connection
+// $conn->close();
 ?>

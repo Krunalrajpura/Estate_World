@@ -47,7 +47,8 @@ $email = $_GET['email'];
                                         <div class="form-group row align-items-center">
                                             <label for="email" class="col-sm-2 col-form-label">Email Address:</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required />
+                                                <input type="email" title="Cant Change the Email !!!" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required disabled/>
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required hidden/>
                                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else, and make sure that the email should be unique. **</small>
                                             </div>
                                         </div>
@@ -62,7 +63,7 @@ $email = $_GET['email'];
                                         <div class="form-group row align-items-center">
                                             <label for="changePassword" class="col-sm-2 col-form-label">Change Password:</label>
                                             <div class="col-sm-10">
-                                                <input type="checkbox" id="changePassword" name="changePassword" onclick="togglePasswordFields()">
+                                                <input type="checkbox" id="changePassword" name="changePassword" title="Check for the Chnaging the Password." onclick="togglePasswordFields()">
                                             </div>
                                         </div>
 

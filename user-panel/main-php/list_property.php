@@ -388,16 +388,12 @@
                     </div>
 
                     <!-- Photos and Videos -->
-                    <h5 class="mb-3">Photos and Videos</h5>
+                    <h5 class="mb-3">Photos</h5>
                     <div class="form-group mb-3">
                         <label for="propertyImages">Upload Images</label>
                         <input type="file" class="form-control-file" id="propertyImages" multiple>
                     </div>
-                    <div class="form-group mb-4">
-                        <label for="propertyVideo">Upload Video (Optional)</label>
-                        <input type="file" class="form-control-file" id="propertyVideo">
-                    </div>
-
+                   
                     <!-- Contact Information -->
                     <h5 class="mb-3">Contact Information</h5>
                     <div class="form-row row mb-3">

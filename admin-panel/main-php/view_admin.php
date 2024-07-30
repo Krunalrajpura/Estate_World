@@ -79,7 +79,11 @@
                                                         <h5>Name is <?php echo $row['a_name']; ?> and Email is <?php echo $row['a_email']; ?></h5>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger">Delete</button>
+                                                        <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                            <input type="text" name="id" value="<?php echo $row['a_id']; ?>" hidden>
+                                                            <input type="text" name="email" value="<?php echo $row['a_email']; ?>" hidden>
+                                                            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                                                        </form>
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
@@ -96,6 +100,32 @@
         </div>
     </div>
 </div>
+
+<?php
+
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+    $email = $_POST['email'];
+
+    $conditions = [
+        'a_id' => $id,
+        'a_email' => $email
+    ];
+
+    // Call the function with the connection and conditions
+    if (deleteData($conn, 'alogin', $conditions)) {
+        $successMessage = "Admin Deleted Successfully !!!";
+        echo "<script>showSuccessAlert('$successMessage');</script>";
+    } else {
+        $errorMessage = "Failed To Delete Admin !!!";
+        echo "<script>showErrorAlert('$errorMessage');</script>";
+    }
+
+    // Close the database connection
+    $conn->close();
+}
+
+?>
 
 
 
