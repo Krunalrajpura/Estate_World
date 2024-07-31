@@ -60,7 +60,7 @@
                                             <td><?php echo $row['a_number']; ?></td>
                                             <td><?php echo $row['created_at']; ?></td>
                                             <td><?php echo $row['updated_at']; ?></td>
-                                            <td><a href="admin_details.php?id=<?php echo $row['a_id']; ?>&email=<?php echo $row['a_email']; ?>" class="btn btn-sm btn-outline-info"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                            <td><a href="admin_edit.php?id=<?php echo $row['a_id']; ?>&email=<?php echo $row['a_email']; ?>" class="btn btn-sm btn-outline-info"><i class="fa-regular fa-pen-to-square"></i></a></td>
                                             <td><button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteAdmin<?php echo $row['a_id']; ?>"><i class="fa-solid fa-trash"></i></button></td>
                                         </tr>
 

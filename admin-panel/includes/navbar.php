@@ -252,7 +252,17 @@ isLoggedIn();
               </div>
               <span class="profile-username">
                 <span class="op-7">Hi,</span>
-                <span class="fw-bold">Hizrian</span>
+                <?php
+                $where = 'a_email = ?'; // Use placeholders for parameters
+                $values = [$_SESSION['aemail']]; // Corresponding values
+
+                $data = fetchData($conn, 'alogin', '*', $where, $values);
+
+                foreach ($data as $row) {
+                  $aName = $row['a_name'];
+                ?>
+                  <span class="fw-bold"><?php echo $row['a_name']; ?></span>
+                <?php } ?>
               </span>
             </a>
             <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -263,8 +273,8 @@ isLoggedIn();
                       <img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
                     </div>
                     <div class="u-text">
-                      <h4>Hizrian</h4>
-                      <p class="text-muted">hello@example.com</p>
+                      <h4><?= $aName; ?></h4>
+                      <p class="text-muted"><?php echo $_SESSION['aemail']; ?></p>
                       <a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                     </div>
                   </div>

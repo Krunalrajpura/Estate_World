@@ -37,6 +37,8 @@ $email = $_GET['email'];
                                     foreach ($data as $row) {
 
                                     ?>
+                                        <input type="text" name="id" value="<?php echo $row['a_id']; ?>" hidden>
+
                                         <div class="form-group row align-items-center">
                                             <label for="name" class="col-sm-2 col-form-label">Name:</label>
                                             <div class="col-sm-10">
@@ -47,8 +49,8 @@ $email = $_GET['email'];
                                         <div class="form-group row align-items-center">
                                             <label for="email" class="col-sm-2 col-form-label">Email Address:</label>
                                             <div class="col-sm-10">
-                                                <input type="email" title="Cant Change the Email !!!" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required disabled/>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required hidden/>
+                                                <input type="email" title="Cant Change the Email !!!" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required disabled />
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required hidden />
                                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else, and make sure that the email should be unique. **</small>
                                             </div>
                                         </div>
@@ -105,26 +107,96 @@ $email = $_GET['email'];
     </div>
 </div>
 
-<script>
-function togglePasswordFields() {
-    var checkBox = document.getElementById("changePassword");
-    var passwordFields = document.getElementById("passwordFields");
-    var oldPassword = document.getElementById("oldPassword");
-    var newPassword = document.getElementById("newPassword");
-    var confirmPassword = document.getElementById("confirmPassword");
+<?php
 
-    if (checkBox.checked == true){
-        passwordFields.style.display = "block";
-        oldPassword.required = true;
-        newPassword.required = true;
-        confirmPassword.required = true;
+if (isset($_POST['update'])) {
+    $name = $_POST['name'];
+    $number = $_POST['phone'];
+    $emailU = $_POST['email'];
+    $idU = $_POST['id'];
+
+    $result = false;
+    $flag = false;
+    $changePass = $_POST['changePassword'];
+    if ($changePass) {
+        $oldPass = $_POST['opass'];
+        $newPass = $_POST['pass'];
+        $confPass = $_POST['cpass'];
+    }
+
+    $tableName = "alogin";
+    $where = [
+        'a_id' => $idU,
+        'a_email' => $emailU
+    ];
+
+    if ($changePass) {
+        if ($newPass === $confPass) {
+            $resultCheck = fetchData($conn, 'alogin', '*', 'a_email = ?', [$emailU]);
+            $storedHash = $resultCheck[0]['a_pass'];
+            if (password_verify($oldPass, $storedHash)) {
+                $hashedPass = password_hash($newPass, PASSWORD_DEFAULT);
+                $data = [
+                    'a_name' => $name,
+                    'a_number' => $number,
+                    'a_pass' => $hashedPass
+                ];
+
+                $result = updateRecord($conn, $tableName, $data, $where);
+                if ($result) {
+                    $successMessage = "Details Updated Successfully !!!";
+                    echo "<script>showSuccessAlert('$successMessage');</script>";
+                } else {
+                    $errorMessage =  "Failed to Update Details !!!";
+                    echo "<script>showErrorAlert('$errorMessage');</script>";
+                }
+            } else {
+                $errorMessage = "Old Password is Wrong !!!";
+                echo "<script>showErrorAlert('$errorMessage');</script>";
+            }
+        } else {
+            $warningMessage = "Password Does not Match with the Confirm Password !!!";
+            echo "<script>showWarningAlert('$warningMessage');</script>";
+        }
     } else {
-        passwordFields.style.display = "none";
-        oldPassword.required = false;
-        newPassword.required = false;
-        confirmPassword.required = false;
+        $data = [
+            'a_name' => $name,
+            'a_number' => $number
+        ];
+
+        $result = updateRecord($conn, $tableName, $data, $where);
+        if ($result) {
+            $successMessage = "Details Updated Successfully !!!";
+            echo "<script>showSuccessAlert('$successMessage');</script>";
+        } else {
+            $errorMessage =  "Failed to Update Details !!!";
+            echo "<script>showErrorAlert('$errorMessage');</script>";
+        }
     }
 }
+
+?>
+
+<script>
+    function togglePasswordFields() {
+        var checkBox = document.getElementById("changePassword");
+        var passwordFields = document.getElementById("passwordFields");
+        var oldPassword = document.getElementById("oldPassword");
+        var newPassword = document.getElementById("newPassword");
+        var confirmPassword = document.getElementById("confirmPassword");
+
+        if (checkBox.checked == true) {
+            passwordFields.style.display = "block";
+            oldPassword.required = true;
+            newPassword.required = true;
+            confirmPassword.required = true;
+        } else {
+            passwordFields.style.display = "none";
+            oldPassword.required = false;
+            newPassword.required = false;
+            confirmPassword.required = false;
+        }
+    }
 </script>
 
 

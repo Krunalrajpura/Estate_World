@@ -1,4 +1,5 @@
-<!-- below functon is for the inserting the data  -->
+<!-- function is for the inserting the data  -->
+
 <?php
 function insertData($conn, $tableName, $data, $types, $successMessage, $errorMessage = '')
 {
@@ -51,7 +52,7 @@ function insertData($conn, $tableName, $data, $types, $successMessage, $errorMes
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
 
-<!-- below function is for the fetching the data from the table  -->
+<!-- function us for the fething the data  -->
 
 <?php
 function fetchData($conn, $tableName, $columns = '*', $where = '', $values = [])
@@ -136,10 +137,10 @@ function fetchData($conn, $tableName, $columns = '*', $where = '', $values = [])
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
-<!-- below function is for the checking the similar data from the database  -->
+
+<!-- function for the cheking the data is exist or not  -->
 
 <?php
-
 function checkIfDataExists($conn, $tableName, $conditions)
 {
     // Initialize an array to hold the WHERE clause parts
@@ -191,10 +192,9 @@ function checkIfDataExists($conn, $tableName, $conditions)
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
+<!-- function for the checking admin login  -->
 
 <?php
-
-
 function isLoggedIn()
 {
     // Check if the 'aemail' session variable is set and not empty
@@ -220,6 +220,7 @@ function isLoggedIn()
 <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 
 
+<!-- function for the deleting data  -->
 
 <?php
 function deleteData($conn, $table, $conditions) {
@@ -279,5 +280,83 @@ function deleteData($conn, $table, $conditions) {
 // }
 
 // // Close the database connection
+// $conn->close();
+?>
+
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+
+<!-- function is for the updating the data  -->
+
+<?php
+// Function to update a record in the database with multiple WHERE conditions using MySQLi
+function updateRecord($conn, $table, $data, $where) {
+    // Building the SET part of the SQL statement
+    $setPart = [];
+    $types = ''; // String to hold the types of the bind parameters
+    $values = []; // Array to hold the values for binding
+    foreach ($data as $column => $value) {
+        $setPart[] = "$column = ?";
+        $types .= getBindParamType($value); // Append the type for the bind parameter
+        $values[] = $value; // Add the value for the bind parameter
+    }
+    $setPart = implode(", ", $setPart);
+    
+    // Building the WHERE part of the SQL statement with multiple conditions
+    $wherePart = [];
+    foreach ($where as $column => $value) {
+        $wherePart[] = "$column = ?";
+        $types .= getBindParamType($value); // Append the type for the bind parameter
+        $values[] = $value; // Add the value for the bind parameter
+    }
+    $wherePart = implode(" AND ", $wherePart);
+
+    // Preparing the SQL statement
+    $sql = "UPDATE $table SET $setPart WHERE $wherePart";
+    $stmt = $conn->prepare($sql);
+
+    // Binding the values
+    $stmt->bind_param($types, ...$values);
+
+    // Executing the statement
+    $result = $stmt->execute();
+
+    // Closing the statement
+    $stmt->close();
+
+    return $result;
+}
+
+// Helper function to get the bind parameter type
+function getBindParamType($var) {
+    if (is_int($var)) return 'i';
+    if (is_double($var)) return 'd';
+    if (is_string($var)) return 's';
+    return 'b'; // Blob and other types
+}
+
+// Example usage
+
+// $data = [
+//     'column1' => 'newValue1',
+//     'column2' => 'newValue2'
+// ];
+
+// $where = [
+//     'id' => 1,
+//     'status' => 'active'
+// ];
+
+// $result = updateRecord($conn, 'your_table', $data, $where);
+
+// if ($result) {
+//     echo "Record updated successfully.";
+// } else {
+//     echo "Failed to update the record.";
+// }
+
 // $conn->close();
 ?>
