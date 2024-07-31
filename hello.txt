@@ -102,4 +102,31 @@ Feedback
 
 
 
+Database of the Property Listing :-
+-p_id
+-c_id
+-listing_for
+-p_type
+-p_address
+-size
+-no_of_badroom
+-no_of_bathroom
+-year_build
+-furnishing_status
+-available_from
+-price
+-additional_costs
+-interior_fetures
+-exterior_fetures
+-special_fetures
+-nearby_amenities
+-accessibility
+-description
+-photos
+-contact_name
+-contact_number
+-contact_email
+
+
+
 	

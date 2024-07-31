@@ -8,6 +8,12 @@
 <?php include  $connToPan . 'config.php'; ?>
 <?php include  $mphpToInc . 'header.php'; ?>
 <?php include  $funToPan . 'function.php'; ?>
+<?php
+$showModal = false;
+if (!isset($_SESSION['email'])) {
+    $showModal = true;
+}
+?>
 <?php include  $mphpToInc . 'navbar.php'; ?>
 
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_4.jpg')">
@@ -263,6 +269,18 @@
             </div>
             <div class="modal-body">
                 <form>
+
+                    <!-- Property Listing for  -->
+                    <h5 class="mb-3">Property Listing For</h5>
+                    <div class="form-group mb-4">
+                        <label for="status">Property Listing For</label>
+                        <select class="form-control" id="status" required>
+                            <option value="">Select Reason</option>
+                            <option value="available">Sell</option>
+                            <option value="sold">Rent</option>
+                        </select>
+                    </div>
+
                     <!-- Property Details -->
                     <h5 class="mb-3">Property Details</h5>
                     <div class="form-group mb-3">
@@ -273,6 +291,7 @@
                             <option value="house">House</option>
                             <option value="commercial">Commercial</option>
                             <option value="land">Land</option>
+                            <option value="pg">PG</option>
                         </select>
                     </div>
 
@@ -393,7 +412,7 @@
                         <label for="propertyImages">Upload Images</label>
                         <input type="file" class="form-control-file" id="propertyImages" multiple>
                     </div>
-                   
+
                     <!-- Contact Information -->
                     <h5 class="mb-3">Contact Information</h5>
                     <div class="form-row row mb-3">
@@ -415,19 +434,6 @@
                         <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email address" required>
                     </div>
 
-                    <!-- Property Status -->
-                    <h5 class="mb-3">Property Status</h5>
-                    <div class="form-group mb-4">
-                        <label for="status">Availability Status</label>
-                        <select class="form-control" id="status" required>
-                            <option value="">Select status</option>
-                            <option value="available">Available</option>
-                            <option value="under_offer">Under Offer</option>
-                            <option value="sold">Sold</option>
-                            <option value="rented">Rented</option>
-                        </select>
-                    </div>
-
                     <!-- Terms and Conditions -->
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="terms" required>
@@ -442,7 +448,38 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    // Check if the modal should be shown
+    var showModal = <?php echo json_encode($showModal); ?>;
 
+    $(document).ready(function() {
+        if (showModal) {
+            // Show the login modal
+            $('#login').modal('show');
+        }
+
+        // Event listener for when the login modal is closed
+        $('#login').on('hidden.bs.modal', function() {
+            // Check if the user chose to go back or switch to the registration modal
+            if (!$('#registration').hasClass('show')) {
+                window.history.back(); // Redirect to the previous page
+            }
+        });
+
+        $('#registration').on('hidden.bs.modal', function() {
+            // Check if the user chose to go back or switch to the registration modal
+            if (!$('#login').hasClass('show')) {
+                window.history.back(); // Redirect to the previous page
+            }
+        });
+
+        // Event listener to open the registration modal from the login modal
+        $('#openRegistrationModal').click(function() {
+            $('#login').modal('hide'); // Close the login modal
+            $('#registration').modal('show'); // Show the registration modal
+        });
+    });
+</script>
 
 
 <?php include  $mphpToInc . 'footer.php'; ?>

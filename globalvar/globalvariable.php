@@ -19,4 +19,8 @@ $aLoginToConn = "../connection/";
 
 // path for the user pannel 
 
+// Extra Variables used in the code 
+
+$showModal = ""; // used in the navbar modal !!!
+
 ?>

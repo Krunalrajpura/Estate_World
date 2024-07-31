@@ -176,7 +176,7 @@ if (isset($_POST['login'])) {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login <?php echo $showModal ? "- Firstly login to access the Page." : ""; ?></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -217,7 +217,7 @@ if (isset($_POST['login'])) {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Registration</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registration <?php echo $showModal ? "- Firstly Register to access the Page." : ""; ?></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
