@@ -18,6 +18,8 @@ $aLoginToConn = "../connection/";
 
 
 // path for the user pannel 
+$upanToUploads = "../../uploads/";
+
 
 // Extra Variables used in the code 
 

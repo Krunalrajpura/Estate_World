@@ -63,200 +63,6 @@ if (!isset($_SESSION['email'])) {
 
 <!-- your listed property  -->
 
-<div class="section">
-    <div class="container">
-        <div class="row mb-5 align-items-center">
-            <div class="col-lg-6 text-center mx-auto">
-                <h2 class="font-weight-bold text-primary heading">
-                    Your Listed Property
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="property-slider-wrap">
-                    <div class="property-slider">
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_1.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_2.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_3.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_4.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_5.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                        <div class="property-item">
-                            <a href="property-single.php" class="img">
-                                <img src="../images/img_6.jpg" alt="Image" class="img-fluid" />
-                            </a>
-
-                            <div class="property-content">
-                                <div class="price mb-2"><span>$1,291,000</span></div>
-                                <div>
-                                    <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                    <span class="city d-block mb-3">California, USA</span>
-
-                                    <div class="specs d-flex mb-4">
-                                        <span class="d-block d-flex align-items-center me-3">
-                                            <span class="icon-bed me-2"></span>
-                                            <span class="caption">2 beds</span>
-                                        </span>
-                                        <span class="d-block d-flex align-items-center">
-                                            <span class="icon-bath me-2"></span>
-                                            <span class="caption">2 baths</span>
-                                        </span>
-                                    </div>
-
-                                    <a href="property-single.php" class="btn btn-primary py-2 px-3">See details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- .item -->
-
-                    </div>
-
-                    <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
-                        <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
-                        <span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
 <!-- Modal -->
 <div class="modal fade" id="propertyForm" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -268,13 +74,22 @@ if (!isset($_SESSION['email'])) {
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-
+                <form action="<?php $_PHP_SELF ?>" method="POST" enctype="multipart/form-data">
+                    <?php
+                    $where = 'c_email = ?'; // Use placeholders for parameters
+                    $values = [$_SESSION['email']]; // Corresponding values
+                    $data = fetchData($conn, 'login', '*', $where, $values);
+                    foreach ($data as $row) {
+                        $cid = $row['c_id'];
+                    }
+                    ?>
+                    <!-- hidden input field of the property id  -->
+                    <input type="hidden" name="c_id" value="<?php echo $cid; ?>">
                     <!-- Property Listing for  -->
                     <h5 class="mb-3">Property Listing For</h5>
                     <div class="form-group mb-4">
                         <label for="status">Property Listing For</label>
-                        <select class="form-control" id="status" required>
+                        <select class="form-control" id="status" name="listingFor" required>
                             <option value="">Select Reason</option>
                             <option value="available">Sell</option>
                             <option value="sold">Rent</option>
@@ -285,7 +100,7 @@ if (!isset($_SESSION['email'])) {
                     <h5 class="mb-3">Property Details</h5>
                     <div class="form-group mb-3">
                         <label for="propertyType">Property Type</label>
-                        <select class="form-control" id="propertyType" required>
+                        <select class="form-control" id="propertyType" name="propertyType" required>
                             <option value="">Select type</option>
                             <option value="apartment">Apartment</option>
                             <option value="house">House</option>
@@ -299,13 +114,13 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="Enter address" required>
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="size">Size (sq ft)</label>
-                                <input type="number" class="form-control" id="size" placeholder="Enter size" required>
+                                <input type="number" name="size" class="form-control" id="size" placeholder="Enter size" required>
                             </div>
                         </div>
                     </div>
@@ -314,13 +129,13 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="bedrooms">Number of Bedrooms</label>
-                                <input type="number" class="form-control" id="bedrooms" required>
+                                <input type="number" name="bedrooms" class="form-control" id="bedrooms" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="bathrooms">Number of Bathrooms</label>
-                                <input type="number" class="form-control" id="bathrooms" required>
+                                <input type="number" name="bathrooms" class="form-control" id="bathrooms" required>
                             </div>
                         </div>
                     </div>
@@ -329,13 +144,13 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="yearBuilt">Year Built</label>
-                                <input type="number" class="form-control" id="yearBuilt" placeholder="Enter year" required>
+                                <input type="number" name="yearBuilt" class="form-control" id="yearBuilt" placeholder="Enter year" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="furnishing">Furnishing Status</label>
-                                <select class="form-control" id="furnishing" required>
+                                <select class="form-control" id="furnishing" name="furnishing" required>
                                     <option value="">Select status</option>
                                     <option value="furnished">Furnished</option>
                                     <option value="semi-furnished">Semi-furnished</option>
@@ -347,18 +162,18 @@ if (!isset($_SESSION['email'])) {
 
                     <div class="form-group mb-4">
                         <label for="availableFrom">Available From</label>
-                        <input type="date" class="form-control" id="availableFrom" required>
+                        <input type="date" name="availableFrom" class="form-control" id="availableFrom" required>
                     </div>
 
                     <!-- Pricing Details -->
                     <h5 class="mb-3">Pricing Details</h5>
                     <div class="form-group mb-3">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" id="price" placeholder="Enter price" required>
+                        <input type="number" name="price" class="form-control" id="price" placeholder="Enter price" required>
                     </div>
                     <div class="form-group mb-4">
                         <label for="additionalCosts">Additional Costs</label>
-                        <input type="text" class="form-control" id="additionalCosts" placeholder="Enter additional costs">
+                        <input type="text" name="additionalCosts" class="form-control" id="additionalCosts" placeholder="Enter additional costs">
                     </div>
 
                     <!-- Property Features -->
@@ -367,19 +182,19 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="interiorFeatures">Interior Features</label>
-                                <textarea class="form-control" id="interiorFeatures" rows="3" placeholder="E.g., central air conditioning, heating, appliances"></textarea>
+                                <textarea class="form-control" name="interiorFeatures" id="interiorFeatures" rows="3" placeholder="E.g., central air conditioning, heating, appliances"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exteriorFeatures">Exterior Features</label>
-                                <textarea class="form-control" id="exteriorFeatures" rows="3" placeholder="E.g., garden, balcony, parking"></textarea>
+                                <textarea class="form-control" name="exteriorFeatures" id="exteriorFeatures" rows="3" placeholder="E.g., garden, balcony, parking"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="specialFeatures">Special Features</label>
-                        <textarea class="form-control" id="specialFeatures" rows="3" placeholder="E.g., swimming pool, gym, security systems"></textarea>
+                        <textarea class="form-control" name="specialFeatures" id="specialFeatures" rows="3" placeholder="E.g., swimming pool, gym, security systems"></textarea>
                     </div>
 
                     <!-- Location Details -->
@@ -388,13 +203,13 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nearbyAmenities">Nearby Amenities</label>
-                                <textarea class="form-control" id="nearbyAmenities" rows="3" placeholder="E.g., schools, hospitals, shopping centers"></textarea>
+                                <textarea class="form-control" name="nearbyAmenities" id="nearbyAmenities" rows="3" placeholder="E.g., schools, hospitals, shopping centers"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="accessibility">Accessibility</label>
-                                <textarea class="form-control" id="accessibility" rows="3" placeholder="E.g., public transport, major roads"></textarea>
+                                <textarea class="form-control" name="accessibility" id="accessibility" rows="3" placeholder="E.g., public transport, major roads"></textarea>
                             </div>
                         </div>
                     </div>
@@ -403,14 +218,15 @@ if (!isset($_SESSION['email'])) {
                     <h5 class="mb-3">Property Description</h5>
                     <div class="form-group mb-3">
                         <label for="description">Description</label>
-                        <textarea class="form-control" id="description" rows="4" placeholder="Provide a detailed description of the property" required></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="4" placeholder="Provide a detailed description of the property" required></textarea>
                     </div>
 
-                    <!-- Photos and Videos -->
+                    <!-- Photos -->
                     <h5 class="mb-3">Photos</h5>
                     <div class="form-group mb-3">
                         <label for="propertyImages">Upload Images</label>
-                        <input type="file" class="form-control-file" id="propertyImages" multiple>
+                        <input type="file" name="propertyImages[]" id="propertyImages" multiple>
+                        <div id="imageError" style="color: red; display: none;">You can upload a maximum of 4 images.</div>
                     </div>
 
                     <!-- Contact Information -->
@@ -419,19 +235,19 @@ if (!isset($_SESSION['email'])) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="contactName">Contact Name</label>
-                                <input type="text" class="form-control" id="contactName" placeholder="Enter your name" required>
+                                <input type="text" name="contactName" class="form-control" id="contactName" placeholder="Enter your name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="contactNumber">Contact Number</label>
-                                <input type="tel" class="form-control" id="contactNumber" placeholder="Enter your contact number" required>
+                                <input type="tel" name="contactNumber" class="form-control" id="contactNumber" placeholder="Enter your contact number" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="contactEmail">Email Address</label>
-                        <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email address" required>
+                        <input type="email" name="contactEmail" class="form-control" id="contactEmail" placeholder="Enter your email address" required>
                     </div>
 
                     <!-- Terms and Conditions -->
@@ -441,13 +257,169 @@ if (!isset($_SESSION['email'])) {
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="myBtn myBtn-info"><i class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
+                    <button type="submit" name="submit" class="myBtn myBtn-info"><i class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
                     <button type="reset" class="myBtn myBtn-warning"><i class="fa-solid fa-arrow-rotate-right"></i> Reset</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+    // Retrieve form data
+    $c_id = $_POST['c_id'];
+    $listingFor = $_POST['listingFor'];
+    $propertyType = $_POST['propertyType'];
+    $address = $_POST['address'];
+    $size = $_POST['size'];
+    $bedrooms = $_POST['bedrooms'];
+    $bathrooms = $_POST['bathrooms'];
+    $yearBuilt = $_POST['yearBuilt'];
+    $furnishing = $_POST['furnishing'];
+    $availableFrom = $_POST['availableFrom'];
+    $price = $_POST['price'];
+    $additionalCosts = $_POST['additionalCosts'];
+    $interiorFeatures = $_POST['interiorFeatures'];
+    $exteriorFeatures = $_POST['exteriorFeatures'];
+    $specialFeatures = $_POST['specialFeatures'];
+    $nearbyAmenities = $_POST['nearbyAmenities'];
+    $accessibility = $_POST['accessibility'];
+    $description = $_POST['description'];
+    $contactName = $_POST['contactName'];
+    $contactNumber = $_POST['contactNumber'];
+    $contactEmail = $_POST['contactEmail'];
+
+    // File upload handling
+    $targetDir =  $upanToUploads . "property_images/";
+    $uploadOk = 1;
+    $uploadedFiles = [];
+
+    foreach ($_FILES["propertyImages"]["name"] as $key => $name) {
+        $targetFile = $targetDir . basename($name);
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        // Check if image file is a real image
+        $check = getimagesize($_FILES["propertyImages"]["tmp_name"][$key]);
+        if ($check === false) {
+            echo "<script>showErrorAlert('File " . htmlspecialchars($name) . " is not an image.');</script>";
+            $uploadOk = 0;
+            continue;
+        }
+
+        // Check file size (limit to 8MB)
+        if ($_FILES["propertyImages"]["size"][$key] > 8388608) {
+            echo "<script>showErrorAlert('File " . htmlspecialchars($name) . " is too large.');</script>";
+            $uploadOk = 0;
+            continue;
+        }
+
+        // Allow certain file formats
+        $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($imageFileType, $allowedTypes)) {
+            echo "<script>showErrorAlert('Sorry, only JPG, JPEG, PNG, & GIF files are allowed for " . htmlspecialchars($name) . ".');</script>";
+            $uploadOk = 0;
+            continue;
+        }
+
+        // Move uploaded file to target directory
+        if ($uploadOk && move_uploaded_file($_FILES["propertyImages"]["tmp_name"][$key], $targetFile)) {
+            $uploadedFiles[] = $targetFile;
+        } else {
+            echo "<script>showErrorAlert('Sorry, there was an error uploading your file " . htmlspecialchars($name) . ".');</script>";
+        }
+    }
+
+    if ($uploadOk && !empty($uploadedFiles)) {
+        // Prepare SQL statement to insert data
+
+
+        $tableName = 'tbl_property_listing';
+        $data = [
+            'c_id' => $c_id,
+            'listingFor' => $listingFor,
+            'propertyType' => $propertyType,
+            'address' => $address,
+            'size' => $size,
+            'bedrooms' => $bedrooms,
+            'bathrooms' => $bathrooms,
+            'yearBuilt' => $yearBuilt,
+            'furnishing' => $furnishing,
+            'availableFrom' => $availableFrom,
+            'price' => $price,
+            'additionalCosts' => $additionalCosts,
+            'interiorFeatures' => $interiorFeatures,
+            'exteriorFeatures' => $exteriorFeatures,
+            'specialFeatures' => $specialFeatures,
+            'nearbyAmenities' => $nearbyAmenities,
+            'accessibility' => $accessibility,
+            'description' => $description,
+            'contactName' => $contactName,
+            'contactNumber' => $contactNumber,
+            'contactEmail' => $contactEmail,
+        ];
+        $types = 'isssiissssddsssssssss';
+
+        $op1 = insertData($conn, $tableName, $data, $types);
+
+
+        // $stmt = $conn->prepare("INSERT INTO tbl_property_listing (listingFor, propertyType, address, size, bedrooms, bathrooms, yearBuilt, furnishing, availableFrom, price, additionalCosts, interiorFeatures, exteriorFeatures, specialFeatures, nearbyAmenities, accessibility, description, contactName, contactNumber, contactEmail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        // $stmt->bind_param("sssiissssddsssssss", $listingFor, $propertyType, $address, $size, $bedrooms, $bathrooms, $yearBuilt, $furnishing, $availableFrom, $price, $additionalCosts, $interiorFeatures, $exteriorFeatures, $specialFeatures, $nearbyAmenities, $accessibility, $description, $contactName, $contactNumber, $contactEmail);
+        // if ($stmt->execute()) {
+        //     echo "<script>showSuccessAlert('Property has been listed successfully!');</script>";
+        // } else {
+        //     echo "<script>showErrorAlert('Error listing property.');</script>";
+        // }
+        // $stmt->close();
+
+
+
+        // Retrieve the last inserted property_id
+        $property_id = $conn->insert_id;
+        $op2 = "flase";
+
+        // Insert images into tbl_property_images
+        if ($property_id) {
+            $imageTableName = 'tbl_property_images'; // Corrected table name
+            $stmt = $conn->prepare("INSERT INTO $imageTableName (property_id, image_name) VALUES (?, ?)");
+
+            foreach ($uploadedFiles as $filePath) {
+                $fileName = basename($filePath);
+                $stmt->bind_param('is', $property_id, $fileName);
+                if($stmt->execute()){
+                    $op2 = true;
+                }
+            }
+            $stmt->close();
+        }
+
+        if($op1 && $op2){
+            $successMessage = "Your Property Uploaded Successfully !!! <br> Now Wait for the Accepting from the Admin Side.";
+            echo "<script>showSuccessAlert($successMessage);</script>";
+        }
+    }
+}
+?>
+
+
+<!-- for the validation of the 4 images max  -->
+<script>
+    document.getElementById('propertyImages').addEventListener('change', function() {
+        const maxImages = 4;
+        const imageInput = this;
+        const errorDiv = document.getElementById('imageError');
+
+        if (imageInput.files.length > maxImages) {
+            errorDiv.style.display = 'block';
+            imageInput.value = ''; // Clear the input field
+        } else {
+            errorDiv.style.display = 'none';
+        }
+    });
+</script>
+
+
 <script type="text/javascript">
     // Check if the modal should be shown
     var showModal = <?php echo json_encode($showModal); ?>;
