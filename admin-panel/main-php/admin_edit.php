@@ -51,7 +51,7 @@ $email = $_GET['email'];
                                             <div class="col-sm-10">
                                                 <input type="email" title="Cant Change the Email !!!" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required disabled />
                                                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" value="<?php echo $row['a_email']; ?>" required hidden />
-                                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else, and make sure that the email should be unique. **</small>
+                                                <small id="emailHelp" class="form-text text-muted">Can't Change Email Address. **</small>
                                             </div>
                                         </div>
 

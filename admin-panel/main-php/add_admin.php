@@ -31,7 +31,7 @@
                                         <label for="email" class="col-sm-2 col-form-label">Email Address:</label>
                                         <div class="col-sm-10">
                                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required />
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else, and make sure that the email should be unique. **</small>
+                                            <small id="emailHelp" class="form-text text-danger">We'll never share your email with anyone else, and make sure that the email should be unique. **</small>
                                         </div>
                                     </div>
 

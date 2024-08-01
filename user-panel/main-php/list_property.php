@@ -91,8 +91,8 @@ if (!isset($_SESSION['email'])) {
                         <label for="status">Property Listing For</label>
                         <select class="form-control" id="status" name="listingFor" required>
                             <option value="">Select Reason</option>
-                            <option value="available">Sell</option>
-                            <option value="sold">Rent</option>
+                            <option value="Sell">Sell</option>
+                            <option value="Rent">Rent</option>
                         </select>
                     </div>
 

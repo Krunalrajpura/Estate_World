@@ -1,7 +1,7 @@
 <!-- function is for the inserting the data  -->
 
 <?php
-function insertData($conn, $tableName, $data, $types, $successMessage, $errorMessage = '')
+function insertData($conn, $tableName, $data, $types, $successMessage = '', $errorMessage = '')
 {
     // Build the SQL statement
     $columns = implode(", ", array_keys($data));
@@ -20,8 +20,9 @@ function insertData($conn, $tableName, $data, $types, $successMessage, $errorMes
 
     // Execute the statement
     if ($stmt->execute()) {
-        // $successMessage = "Registered Successfully !!!";
-        echo "<script>showSuccessAlert('$successMessage');</script>";
+        if ($successMessage != '') {
+            echo "<script>showSuccessAlert('$successMessage');</script>";
+        }
         return true;
     } else {
         if ($errorMessage = '') {
@@ -223,7 +224,8 @@ function isLoggedIn()
 <!-- function for the deleting data  -->
 
 <?php
-function deleteData($conn, $table, $conditions) {
+function deleteData($conn, $table, $conditions)
+{
     // Start building the SQL DELETE statement
     $sql = "DELETE FROM $table WHERE ";
 
@@ -293,7 +295,8 @@ function deleteData($conn, $table, $conditions) {
 
 <?php
 // Function to update a record in the database with multiple WHERE conditions using MySQLi
-function updateRecord($conn, $table, $data, $where) {
+function updateRecord($conn, $table, $data, $where)
+{
     // Building the SET part of the SQL statement
     $setPart = [];
     $types = ''; // String to hold the types of the bind parameters
@@ -304,7 +307,7 @@ function updateRecord($conn, $table, $data, $where) {
         $values[] = $value; // Add the value for the bind parameter
     }
     $setPart = implode(", ", $setPart);
-    
+
     // Building the WHERE part of the SQL statement with multiple conditions
     $wherePart = [];
     foreach ($where as $column => $value) {
@@ -331,7 +334,8 @@ function updateRecord($conn, $table, $data, $where) {
 }
 
 // Helper function to get the bind parameter type
-function getBindParamType($var) {
+function getBindParamType($var)
+{
     if (is_int($var)) return 'i';
     if (is_double($var)) return 'd';
     if (is_string($var)) return 's';
@@ -358,5 +362,4 @@ function getBindParamType($var) {
 //     echo "Failed to update the record.";
 // }
 
-// $conn->close();
 ?>

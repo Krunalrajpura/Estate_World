@@ -68,6 +68,9 @@
                                     <a href="prop_request.php">
                                         <span class="sub-item">Property Request</span>
                                     </a>
+                                    <a href="prop_all_request.php">
+                                        <span class="sub-item">All Property Request</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
