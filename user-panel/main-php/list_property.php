@@ -12,6 +12,14 @@
 $showModal = false;
 if (!isset($_SESSION['email'])) {
     $showModal = true;
+} else {
+    $email = $_SESSION['email'];
+}
+$table = 'login';
+$where1 = 'c_email = ?';
+$data1 = fetchData($conn, $table, '*', $where1, [$email]);
+foreach ($data1 as $row1) {
+    $c_id = $row1['c_id'];
 }
 ?>
 <?php include  $mphpToInc . 'navbar.php'; ?>
@@ -58,6 +66,91 @@ if (!isset($_SESSION['email'])) {
                 </div>
             </div>
         </div>
+        <?php
+        $where = 'c_id = ?';
+        $values = [$c_id];
+        $data = fetchData($conn, 'tbl_property_listing', '*', $where, $values);
+
+        // Check if there are rows in the data
+        if (count($data) > 0) {
+
+        ?>
+
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-6 text-center mx-auto">
+                    <h2 class="font-weight-bold text-primary heading">
+                        Your Uploaded Property
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="property-slider-wrap">
+                        <div class="property-slider">
+                            <?php
+                            foreach ($data as $row) {
+                                $p_id = $row['p_id'];
+                            ?>
+                                <div class="property-item">
+                                    <a href="property-single.php" class="img">
+                                        <?php
+                                        $where2 = 'property_id = ?';
+                                        $values2 = [$p_id];
+                                        $data2 = fetchData($conn, 'tbl_property_images', '*', $where2, $values2);
+                                        $count = 0;
+                                        foreach ($data2 as $row2) {
+                                            $count++;
+                                            if ($count > 1) {
+                                                break;
+                                            } else {
+                                        ?>
+                                                <img src="<?php echo $propImagesToUpan . $row2['image_name']; ?>" style="min-height: 412px; min-width: 412px;" alt="Image" class="img-fluid" />
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                    </a>
+
+                                    <div class="property-content">
+                                        <div class="price mb-2"><span><i class="fa-solid fa-indian-rupee-sign fa-bounce"></i> <?php echo $row['price']; ?></span></div>
+                                        <div>
+                                            <span class="d-block mb-2 text-black-50"><?php echo $row['address']; ?></span>
+                                            <span class="city d-block mb-3"><?php echo $row['propertyType']; ?></span>
+
+                                            <div class="specs d-flex mb-4">
+                                                <span class="d-block d-flex align-items-center me-3">
+                                                    <span class="icon-bed me-2"></span>
+                                                    <span class="caption"><?php echo $row['bedrooms']; ?></span>
+                                                </span>
+                                                <span class="d-block d-flex align-items-center">
+                                                    <span class="icon-bath me-2"></span>
+                                                    <span class="caption"><?php echo $row['bathrooms']; ?></span>
+                                                </span>
+                                            </div>
+
+                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3">See details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- .item -->
+                            <?php } ?>
+                        </div>
+                        <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
+                            <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
+                            <span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } else { ?>
+            <div class="row my-5 align-items-center">
+                <div class="col-lg-6 text-center mx-auto">
+                    <h2 class="font-weight-bold text-primary heading">
+                        You Didn't Upload any Property.
+                    </h2>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 
@@ -387,14 +480,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
             foreach ($uploadedFiles as $filePath) {
                 $fileName = basename($filePath);
                 $stmt->bind_param('is', $property_id, $fileName);
-                if($stmt->execute()){
+                if ($stmt->execute()) {
                     $op2 = true;
                 }
             }
             $stmt->close();
         }
 
-        if($op1 && $op2){
+        if ($op1 && $op2) {
             $successMessage = "Your Property Uploaded Successfully !!! <br> Now Wait for the Accepting from the Admin Side.";
             echo "<script>showSuccessAlert($successMessage);</script>";
         }

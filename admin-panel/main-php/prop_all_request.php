@@ -22,6 +22,7 @@
                                         <option value="all">All</option>
                                         <option value="accepted">Accepted</option>
                                         <option value="rejected">Rejected</option>
+                                        <option value="pending">Pending</option>
                                     </select>
                                     <button type="submit" name="submit" class="btn btn-primary mx-3">Search</button>
                                 </div>
@@ -78,7 +79,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex justify-content-center">
-                                <p class="card-title">Testing Phase</p>
+                                <p class="card-title">Status</p>
                             </div>
                         </div>
                     </div>
@@ -96,26 +97,26 @@
             $fetchData;
 
             if ($request == "all") {
-                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id
+                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id, tbl_property_listing.req_status
                 FROM tbl_property_listing 
                 JOIN login ON tbl_property_listing.c_id = login.c_id");
             } elseif ($request == "accepted") {
-                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id
+                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id, tbl_property_listing.req_status
                 FROM tbl_property_listing 
                 JOIN login ON tbl_property_listing.c_id = login.c_id WHERE tbl_property_listing.req_status = 'accepted' ");
             } elseif ($request == "rejected") {
-                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id
+                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id, tbl_property_listing.req_status
                 FROM tbl_property_listing 
                 JOIN login ON tbl_property_listing.c_id = login.c_id WHERE tbl_property_listing.req_status = 'rejected' ");
+            } elseif ($request == "pending") {
+                $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id, tbl_property_listing.req_status
+                FROM tbl_property_listing 
+                JOIN login ON tbl_property_listing.c_id = login.c_id WHERE tbl_property_listing.req_status = 'pending' ");
             }
 
 
-            // Prepare the SQL statement
-            // $fetchData = $conn->prepare("SELECT tbl_property_listing.createdAt, login.c_name, tbl_property_listing.p_id, login.c_id
-            //                             FROM tbl_property_listing 
-            //                             JOIN login ON tbl_property_listing.c_id = login.c_id WHERE tbl_property_listing.req_status = 'pending' ");
             $fetchData->execute();
-            $fetchData->bind_result($createdAt, $c_name, $p_id, $c_id);
+            $fetchData->bind_result($createdAt, $c_name, $p_id, $c_id, $status);
             $date = new DateTime($createdAt);
             $count = 1;
             while ($fetchData->fetch()) {
@@ -167,7 +168,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="d-flex justify-content-center">
-                                        <p class="card-title">Testing Phase</p>
+                                        <?php if ($status == "pending") { ?>
+                                            <a href="prop_request.php" class="card-title"><?php echo $status; ?></a>
+                                        <?php } else { ?>
+                                            <p class="card-title"><?php echo $status; ?></p>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -183,7 +188,13 @@
     </div>
 </div>
 
-
+<script>
+    // Check if the page is loaded due to a back navigation
+    if (window.performance && window.performance.navigation.type === 1) {
+        // Trigger form resubmission
+        document.getElementById('myForm').submit();
+    }
+</script>
 
 <?php include  $mphpToInc . 'footer.php'; ?>
 <?php include  $mphpToInc . 'endlinks.php'; ?>
