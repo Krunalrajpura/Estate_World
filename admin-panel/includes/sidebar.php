@@ -7,7 +7,7 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
                 <a href="index.php" class="logo">
-                    <img src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20" />
+                    <img src="../assets/img/estate_world.png" alt="navbar brand" class="navbar-brand" height="20" />
                 </a>
                 <div class="nav-toggle">
                     <button class="btn btn-toggle toggle-sidebar">
@@ -58,8 +58,8 @@
                     <li class="nav-item">
                         <a data-bs-toggle="collapse" href="#request">
                             <!-- <i class="fas fa-layer-group"></i> -->
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <p>Request</p>
+                            <i class="fa-solid fa-landmark"></i>
+                            <p>Property</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse" id="request">
@@ -69,7 +69,7 @@
                                         <span class="sub-item">Property Request</span>
                                     </a>
                                     <a href="prop_all_request.php">
-                                        <span class="sub-item">All Property Request</span>
+                                        <span class="sub-item">All Properties</span>
                                     </a>
                                 </li>
                             </ul>

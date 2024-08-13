@@ -281,8 +281,6 @@ function deleteData($conn, $table, $conditions)
 //     echo "Failed to delete record.";
 // }
 
-// // Close the database connection
-// $conn->close();
 ?>
 
 
@@ -362,4 +360,27 @@ function getBindParamType($var)
 //     echo "Failed to update the record.";
 // }
 
+?>
+
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+
+<!-- function for the suppressing the error  -->
+ 
+<?php
+// Temporarily suppress errors for a specific block
+function suppress_errors(callable $func) {
+    $prevErrorReporting = error_reporting(0);
+    $result = $func();
+    error_reporting($prevErrorReporting);
+    return $result;
+}
+
+// Usage
+// suppress_errors(function() {
+//     // Code that may cause errors
+// });
 ?>

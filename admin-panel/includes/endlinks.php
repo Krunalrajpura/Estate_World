@@ -1,5 +1,8 @@
    <!--include at last  -->
 
+   <!-- global js file  -->
+   <script src="<?php echo $commonToPan; ?>script.js"></script>
+
    <!--   Core JS Files   -->
    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
    <script src="../assets/js/core/popper.min.js"></script>
@@ -35,7 +38,7 @@
 
    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
    <script src="../assets/js/setting-demo.js"></script>
-   <script src="../assets/js/demo.js"></script>
+   <!-- <script src="../assets/js/demo.js"></script> -->
    <script>
      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
        type: "line",

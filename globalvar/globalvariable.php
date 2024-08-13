@@ -6,6 +6,7 @@ $connToPan = "../../connection/";
 $panToUploads = "../../uploads/";
 $funToPan = "../../function/";
 $mphpToInc = "../includes/";
+$commonToPan = "../../common/";
 
 
 // paths for the admin pannel 
@@ -28,3 +29,7 @@ $propImagesToUpan = $upanToUploads . "property_images/";
 
 $showModal = ""; // used in the navbar modal !!!
 $email = ""; //used in the list_property.php and may be at many more places.
+
+$flag = ""; // flag use for the checking in the code 
+$flag2 = ""; // flag use for the checking in the code 
+$flag3 = ""; // flag use for the checking in the code 

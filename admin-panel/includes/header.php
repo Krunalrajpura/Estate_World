@@ -5,9 +5,12 @@
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+  <title>Estate World - Admin Panel</title>
   <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-  <link rel="icon" href="../assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../assets/img/E2.png" type="image/x-icon" />
+
+  <!-- global CSS file  -->
+  <link rel="stylesheet" href="<?php echo $commonToPan; ?>style.css">
 
   <!-- my font awesome kit link  -->
   <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script>

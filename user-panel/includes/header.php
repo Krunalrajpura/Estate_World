@@ -14,7 +14,7 @@ ini_set('display_startup_errors', 1); // Display errors that occur during PHP's 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Untree.co" />
-  <link rel="shortcut icon" href="../images/favicon.png" />
+  <link rel="shortcut icon" href="../images/E2.png" />
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap5" />
@@ -29,6 +29,9 @@ ini_set('display_startup_errors', 1); // Display errors that occur during PHP's 
   <link rel="stylesheet" href="../css/tiny-slider.css" />
   <link rel="stylesheet" href="../css/aos.css" />
   <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- global CSS file  -->
+  <link rel="stylesheet" href="<?php echo $commonToPan; ?>style.css">
 
   <!-- my font awesome kit link  -->
   <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script>
@@ -62,7 +65,7 @@ ini_set('display_startup_errors', 1); // Display errors that occur during PHP's 
   </style>
 
   <title>
-    Property &mdash; Free Bootstrap 5 Website Template by Untree.co
+    Estate World | Property Masters
   </title>
 </head>
 

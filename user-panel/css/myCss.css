@@ -80,6 +80,17 @@
   color: #005555;
 }
 
+.myBtn-outline-primary-org{
+  border: 2px solid #005555;
+  background-color: transparent;
+  color: #005555; 
+}
+
+.myBtn-outline-primary-org:hover{
+  background-color: #005555;
+  color: #fff; 
+}
+
 .myBtn-secondary {
   color: #fff;
   background-color: #6c757d;

@@ -1,13 +1,3 @@
-<!-- /*
-* Template Name: Property
-hello there
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
-
-<!-- https://demo.bootstrapdash.com/ui-components/pricing/pricing-1/ -->
-
 <?php include '../../globalvar/globalvariable.php'; ?>
 <?php include  $connToPan . 'config.php'; ?>
 <?php include  $mphpToInc . 'header.php'; ?>

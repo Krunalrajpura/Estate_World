@@ -1,9 +1,3 @@
-<!-- /*
-* Template Name: Property
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <?php include '../../globalvar/globalvariable.php'; ?>
 <?php include  $connToPan . 'config.php'; ?>
 <?php include  $mphpToInc . 'header.php'; ?>
@@ -32,7 +26,7 @@ foreach ($data1 as $row1) {
                 <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
                     <ol class="breadcrumb text-center justify-content-center">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">
+                        <li class="breadcrumb-item active text-white text-decoration-underline" aria-current="page">
                             List Properties
                         </li>
                     </ol>
@@ -83,6 +77,11 @@ foreach ($data1 as $row1) {
                     </h2>
                 </div>
             </div>
+            <div class="row my-5">
+                <div class="col-12 text-center">
+                    <h4 class="card-title">Watch your Propoerty in the <a href="property_list_tbl.php?c_id=<?php echo $c_id; ?>" class="myBtn myBtn-outline-primary-org">Tabular Form</a>.</h4>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="property-slider-wrap">
@@ -104,7 +103,7 @@ foreach ($data1 as $row1) {
                                                 break;
                                             } else {
                                         ?>
-                                                <img src="<?php echo $propImagesToUpan . $row2['image_name']; ?>" style="min-height: 412px; min-width: 412px;" alt="Image" class="img-fluid" />
+                                                <img src="<?php echo $propImagesToUpan . $row2['image_name']; ?>" alt="Image" class="img-fluid" />
                                         <?php
                                             }
                                         }
@@ -115,7 +114,8 @@ foreach ($data1 as $row1) {
                                         <div class="price mb-2"><span><i class="fa-solid fa-indian-rupee-sign fa-bounce"></i> <?php echo $row['price']; ?></span></div>
                                         <div>
                                             <span class="d-block mb-2 text-black-50"><?php echo $row['address']; ?></span>
-                                            <span class="city d-block mb-3"><?php echo $row['propertyType']; ?></span>
+                                            <span class="city d-block"><?php echo $row['propertyType']; ?></span>
+                                            <span class="d-block mb-3"> Status : <?php echo $row['req_status']; ?></span>
 
                                             <div class="specs d-flex mb-4">
                                                 <span class="d-block d-flex align-items-center me-3">
@@ -128,7 +128,8 @@ foreach ($data1 as $row1) {
                                                 </span>
                                             </div>
 
-                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3">See details</a>
+                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3" title="See the Details of the Property">See details</a>
+                                            <a href="property-single-update.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3" title="Update the Details of the Property">Update details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -322,6 +323,12 @@ foreach ($data1 as $row1) {
                         <div id="imageError" style="color: red; display: none;">You can upload a maximum of 4 images.</div>
                     </div>
 
+                    <!-- Show new Imges   -->
+                    <h6 class="d-none mt-4" id="newImage">New Images</h6>
+                    <div class="row" id="imagePreviewContainer">
+                        <!-- Selected images will be displayed here -->
+                    </div>
+
                     <!-- Contact Information -->
                     <h5 class="mb-3">Contact Information</h5>
                     <div class="form-row row mb-3">
@@ -385,27 +392,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $contactEmail = $_POST['contactEmail'];
 
     // File upload handling
-    $targetDir =  $upanToUploads . "property_images/";
-    $uploadOk = 1;
-    $uploadedFiles = [];
+    $targetDir = $upanToUploads . "property_images/";
+    $allUploadsSuccessful = true;
+    $uploadedFiles = []; // Initialize the array to store uploaded file names
+    $op1 = false;
+    $flag2 = false;
+
+    // Ensure the target directory exists
+    if (!is_dir($targetDir)) {
+        echo "<script>showErrorAlert('Target directory does not exist.');</script>";
+    }
 
     foreach ($_FILES["propertyImages"]["name"] as $key => $name) {
-        $targetFile = $targetDir . basename($name);
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $uploadOk = 1; // Reset $uploadOk for each file
+        $imageFileType = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+
+        // Generate a unique name for the file
+        $uniqueName = uniqid() . '_' . time() . '.' . $imageFileType;
+        $targetFile = $targetDir . $uniqueName;
 
         // Check if image file is a real image
         $check = getimagesize($_FILES["propertyImages"]["tmp_name"][$key]);
         if ($check === false) {
             echo "<script>showErrorAlert('File " . htmlspecialchars($name) . " is not an image.');</script>";
             $uploadOk = 0;
-            continue;
         }
 
         // Check file size (limit to 8MB)
         if ($_FILES["propertyImages"]["size"][$key] > 8388608) {
             echo "<script>showErrorAlert('File " . htmlspecialchars($name) . " is too large.');</script>";
             $uploadOk = 0;
-            continue;
         }
 
         // Allow certain file formats
@@ -413,21 +429,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         if (!in_array($imageFileType, $allowedTypes)) {
             echo "<script>showErrorAlert('Sorry, only JPG, JPEG, PNG, & GIF files are allowed for " . htmlspecialchars($name) . ".');</script>";
             $uploadOk = 0;
-            continue;
         }
 
         // Move uploaded file to target directory
         if ($uploadOk && move_uploaded_file($_FILES["propertyImages"]["tmp_name"][$key], $targetFile)) {
-            $uploadedFiles[] = $targetFile;
+            $uploadedFiles[] = $uniqueName; // Store only the unique file name
         } else {
-            echo "<script>showErrorAlert('Sorry, there was an error uploading your file " . htmlspecialchars($name) . ".');</script>";
+            $allUploadsSuccessful = false; // Mark as unsuccessful if any file fails
         }
     }
 
-    if ($uploadOk && !empty($uploadedFiles)) {
+    // Proceed if all uploads were successful and files were uploaded
+    if ($allUploadsSuccessful && !empty($uploadedFiles)) {
         // Prepare SQL statement to insert data
-
-
         $tableName = 'tbl_property_listing';
         $data = [
             'c_id' => $c_id,
@@ -450,49 +464,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
             'description' => $description,
             'contactName' => $contactName,
             'contactNumber' => $contactNumber,
-            'contactEmail' => $contactEmail,
+            'contactEmail' => $contactEmail
         ];
         $types = 'isssiissssddsssssssss';
 
-        $op1 = insertData($conn, $tableName, $data, $types);
-
-
-        // $stmt = $conn->prepare("INSERT INTO tbl_property_listing (listingFor, propertyType, address, size, bedrooms, bathrooms, yearBuilt, furnishing, availableFrom, price, additionalCosts, interiorFeatures, exteriorFeatures, specialFeatures, nearbyAmenities, accessibility, description, contactName, contactNumber, contactEmail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        // $stmt->bind_param("sssiissssddsssssss", $listingFor, $propertyType, $address, $size, $bedrooms, $bathrooms, $yearBuilt, $furnishing, $availableFrom, $price, $additionalCosts, $interiorFeatures, $exteriorFeatures, $specialFeatures, $nearbyAmenities, $accessibility, $description, $contactName, $contactNumber, $contactEmail);
-        // if ($stmt->execute()) {
-        //     echo "<script>showSuccessAlert('Property has been listed successfully!');</script>";
-        // } else {
-        //     echo "<script>showErrorAlert('Error listing property.');</script>";
-        // }
-        // $stmt->close();
-
-
+        if (insertData($conn, $tableName, $data, $types)) {
+            $op1 = true;
+        }
 
         // Retrieve the last inserted property_id
         $property_id = $conn->insert_id;
-        $op2 = "flase";
 
         // Insert images into tbl_property_images
-        if ($property_id) {
-            $imageTableName = 'tbl_property_images'; // Corrected table name
-            $stmt = $conn->prepare("INSERT INTO $imageTableName (property_id, image_name) VALUES (?, ?)");
+        if (!empty($uploadedFiles)) {
+            if ($property_id) {
+                $imageTableName = 'tbl_property_images';
+                $stmt = $conn->prepare("INSERT INTO $imageTableName (property_id, image_name) VALUES (?, ?)");
 
-            foreach ($uploadedFiles as $filePath) {
-                $fileName = basename($filePath);
-                $stmt->bind_param('is', $property_id, $fileName);
-                if ($stmt->execute()) {
-                    $op2 = true;
+                foreach ($uploadedFiles as $fileName) {
+                    $stmt->bind_param('is', $property_id, $fileName);
+                    if ($stmt->execute()) {
+                        $flag2 = true;
+                    }
                 }
+                $stmt->close();
             }
-            $stmt->close();
         }
 
-        if ($op1 && $op2) {
-            $successMessage = "Your Property Uploaded Successfully !!! <br> Now Wait for the Accepting from the Admin Side.";
-            echo "<script>showSuccessAlert($successMessage);</script>";
+        // Display success or error message
+        if ($op1 && $flag2) {
+            $successMessage = "Your Property Uploaded Successfully !!! Now Wait for the Accepting from the Admin Side.";
+            echo "<script>showSuccessAlert('" . $successMessage . "');</script>";
+        } else {
+            $errorMessage = "Something went wrong !!!";
+            echo "<script>showSuccessAlert('" . $errorMessage . "');</script>";
         }
     }
 }
+
 ?>
 
 
@@ -512,6 +521,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     });
 </script>
 
+
+<!-- below code is for the showing modal to the not login page  -->
 
 <script type="text/javascript">
     // Check if the modal should be shown

@@ -1,0 +1,2 @@
+[13-Aug-2024 10:46:10 Europe/Berlin] PHP Warning:  Undefined array key "c_id" in C:\xampp\htdocs\Estate_World\user-panel\main-php\property_list_tbl.php on line 22
+[13-Aug-2024 10:50:39 Europe/Berlin] PHP Warning:  Undefined variable $c_id in C:\xampp\htdocs\Estate_World\user-panel\main-php\property_list_tbl.php on line 52

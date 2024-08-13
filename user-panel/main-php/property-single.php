@@ -1,9 +1,3 @@
-<!-- /*
-* Template Name: Property
-* Template Author: Untree.co
-* Template URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <?php include '../../globalvar/globalvariable.php'; ?>
 <?php include  $connToPan . 'config.php'; ?>
 <?php include  $mphpToInc . 'header.php'; ?>
@@ -53,9 +47,12 @@ if (count($data) > 0) {
               <ol class="breadcrumb text-center justify-content-center">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item">
-                  <a href="properties.php">Properties</a>
+                  <a href="list_property.php">List Property</a>
                 </li>
-                <li class="breadcrumb-item active text-white-50" aria-current="page">
+                <li class="breadcrumb-item">
+                  <a href="properties.php" class="text-decoration-underline">Properties</a>
+                </li>
+                <li class="breadcrumb-item active text-white-50 text-decoration-underline" aria-current="page">
                   <?php echo $row['address']; ?>
                 </li>
               </ol>

@@ -7,6 +7,10 @@
 <script src="../js/counter.js"></script>
 <script src="../js/custom.js"></script>
 
+<!-- global js file  -->
+<script src="<?php echo $commonToPan; ?>script.js"></script>
+
+
 </body>
 
 </html>
