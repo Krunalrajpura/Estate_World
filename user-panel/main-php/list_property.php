@@ -36,7 +36,7 @@ foreach ($data1 as $row1) {
     </div>
 </div>
 
-<div class="section">
+<div class="section" id="list">
     <div class="container">
         <div class="row mb-5 align-items-center">
             <div class="col-lg-6 text-center mx-auto">

@@ -4,40 +4,40 @@
    <script src="<?php echo $commonToPan; ?>script.js"></script>
 
    <!--   Core JS Files   -->
-   <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
-   <script src="../assets/js/core/popper.min.js"></script>
-   <script src="../assets/js/core/bootstrap.min.js"></script>
+   <script src="<?php echo $aAssetsJsCore; ?>jquery-3.7.1.min.js"></script>
+   <script src="<?php echo $aAssetsJsCore; ?>popper.min.js"></script>
+   <script src="<?php echo $aAssetsJsCore; ?>bootstrap.min.js"></script>
 
    <!-- jQuery Scrollbar -->
-   <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsJqsb; ?>jquery.scrollbar.min.js"></script>
 
    <!-- Chart JS -->
-   <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+   <script src="<?php echo $aAssetsJsPlugins; ?>chart.js/chart.min.js"></script>
 
    <!-- jQuery Sparkline -->
-   <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+   <script src="<?php echo $aAssetsJsPlugins; ?>jquery.sparkline/jquery.sparkline.min.js"></script>
 
    <!-- Chart Circle -->
-   <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsCC; ?>circles.min.js"></script>
 
    <!-- Datatables -->
-   <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsDataTbl; ?>datatables.min.js"></script>
 
    <!-- Bootstrap Notify -->
-   <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsBootNoti; ?>bootstrap-notify.min.js"></script>
 
    <!-- jQuery Vector Maps -->
-   <script src="../assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-   <script src="../assets/js/plugin/jsvectormap/world.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsJsvectormap; ?>jsvectormap.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsJsvectormap; ?>world.js"></script>
 
    <!-- Sweet Alert -->
-   <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+   <script src="<?php echo $aAssetsJsPluginsSweetAlt; ?>sweetalert.min.js"></script>
 
    <!-- Kaiadmin JS -->
-   <script src="../assets/js/kaiadmin.min.js"></script>
+   <script src="<?php echo $aAssetsJs; ?>kaiadmin.min.js"></script>
 
    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-   <script src="../assets/js/setting-demo.js"></script>
+   <script src="<?php echo $aAssetsJs; ?>setting-demo.js"></script>
    <!-- <script src="../assets/js/demo.js"></script> -->
    <script>
      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {

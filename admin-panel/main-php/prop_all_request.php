@@ -155,7 +155,7 @@
                                 <div class="row">
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
-                                            <h4 class="card-title"><?php echo $date->format('Y-m-d'); ?></h4>
+                                            <h5 class=""><?php echo $date->format('Y-m-d'); ?></h5>
                                         </div>
                                     </div>
                                 </div>

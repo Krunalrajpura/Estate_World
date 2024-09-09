@@ -19,7 +19,7 @@ ini_set('display_startup_errors', 1);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" href="assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="assets/img/E2.png" type="image/x-icon" />
 
     <!-- my font awesome kit link  -->
     <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script>

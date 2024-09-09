@@ -7,6 +7,7 @@ $panToUploads = "../../uploads/";
 $funToPan = "../../function/";
 $mphpToInc = "../includes/";
 $commonToPan = "../../common/";
+$sweetAlerts = "../../sweet_alert/";
 
 
 // paths for the admin pannel 
@@ -18,9 +19,23 @@ $saToLogin = "../sweet_alert/";
 $aLoginToConn = "../connection/";
 $apanToUploads = "../../uploads/";
 $propImages = $apanToUploads . "property_images/";
-
+//----- below variable are for the assets of the admin panel -----//
+$aAssets = "../assets/";
+$aAssetsJs = $aAssets . "js/";
+$aAssetsCss = $aAssets . "css/";
+$aAssetsImg = $aAssets . "img/";
+$aAssetsJsCore = $aAssetsJs . "core/";
+$aAssetsJsPlugins = $aAssetsJs . "plugin/";
+$aAssetsJsPluginsJqsb = $aAssetsJsPlugins . "jquery-scrollbar/";
+$aAssetsJsPluginsCC = $aAssetsJsPlugins . "chart-circle/";
+$aAssetsJsPluginsDataTbl = $aAssetsJsPlugins . "datatables/";
+$aAssetsJsPluginsBootNoti = $aAssetsJsPlugins . "bootstrap-notify/";
+$aAssetsJsPluginsJsvectormap = $aAssetsJsPlugins . "jsvectormap/";
+$aAssetsJsPluginsSweetAlt = $aAssetsJsPlugins . "sweetalert/";
+$aAssetsJsPluginsWebfont = $aAssetsJsPlugins . "webfont/";
 
 // path for the user pannel 
+
 $upanToUploads = "../../uploads/";
 $propImagesToUpan = $upanToUploads . "property_images/";
 

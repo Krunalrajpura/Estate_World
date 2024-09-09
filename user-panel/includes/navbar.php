@@ -125,16 +125,21 @@ if (isset($_POST['login'])) {
         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
           <li class="<?php echo ($current_file == 'index.php') ? 'active' : ''; ?>"><a href="index.php">Home</a></li>
           <li class="has-children <?php echo ($current_file == 'properties.php') ? 'active' : ''; ?>">
+          <li class="has-children <?php if ($current_file == 'properties.php') { echo "active"; }
+                                        elseif ($current_file == 'list_property.php') { echo "active"; } 
+                                        elseif ($current_file == 'search_property.php') { echo "active"; } 
+                                        ?>">
             <a href="properties.php">Properties</a>
             <ul class="dropdown">
               <li><a href="properties.php">All Property</a></li>
-              <li><a href="list_property.php">List Property</a></li>
+              <li><a href="list_property.php#list">List Property</a></li>
               <li class="has-children">
                 <a href="#">See Property</a>
                 <ul class="dropdown">
                   <li><a href="#">Residential Property</a></li>
                   <li><a href="#">Comertial Property</a></li>
                   <li><a href="#">PG / Co-Leaving</a></li>
+                  <li><a href="search_property.php">Search Property</a></li>
                 </ul>
               </li>
             </ul>

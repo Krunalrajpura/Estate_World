@@ -1,5 +1,7 @@
 // below code is for the showing the selected image preivew 
 
+//          below code is the required html code 
+
 //          <!-- Show new Imges   -->
 //          <h6 class="d-none mt-4" id="newImage">New Images</h6>
 //          <div class="row" id="imagePreviewContainer">

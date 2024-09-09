@@ -384,3 +384,56 @@ function suppress_errors(callable $func) {
 //     // Code that may cause errors
 // });
 ?>
+
+
+
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+
+<!-- function for the count the rows of the database table  -->
+
+<?php
+function countRows($conn, $table_name)
+{
+    $query = "SELECT COUNT(*) as total_rows FROM $table_name";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        $data = mysqli_fetch_assoc($result);
+        return $data['total_rows'];
+    } else {
+        return 0; // Return 0 if the query fails
+    }
+}
+
+
+// usage 
+// Call the function and pass the table name
+// $table_name = 'tbl_warranty_data';
+// $row_count = countRows($conn, $table_name);
+?>
+
+<?php
+function truncateTable($tableName, $conn)
+{
+    // Prepare the SQL statement
+    $sql = "TRUNCATE TABLE `$tableName`";
+
+    // Execute the query
+    if (mysqli_query($conn, $sql)) {
+        return true;  // Return true if truncation is successful
+    } else {
+        return false; // Return false if truncation fails
+    }
+}
+// usage
+// Example usage
+// if (truncateTable('tbl_invoiceddddddddd', $conn)) {
+//     echo "Table truncated successfully.";
+// } else {
+//     echo "Failed to truncate the table.";
+// }
+?>
+<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
