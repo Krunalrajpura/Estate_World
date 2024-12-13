@@ -71,7 +71,7 @@
         <div class="card mb-4 myShadow myScale border-0 rounded-lg">
           <div class="card-body p-4 text-center">
             <h2 class="font-weight-normal my-4"><i class="fa-solid fa-gift" style="color: #5d78ff;"></i></h2>
-            <h5 class="font-weight-normal my-4">Pro</h5>
+            <h5 class="font-weight-normal my-4">Ultra</h5>
             <h1 class="font-weight-normal my-4" style="font-weight: 700;">$69</h1>
             <p class="mt-3">Unlimited conferences</p>
             <p class="mt-3">100 participants max</p>
