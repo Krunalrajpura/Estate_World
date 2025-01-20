@@ -90,13 +90,13 @@
             <p class="mt-3"><i class="fa-solid fa-check"></i> Get the Extra 10 Points</p>
             <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #5d78ff;">CHOOSE PLAN
             </a>
-            <h1 class="font-weight-normal my-4" style="font-weight: 700;">$69</h1>
+            <!-- <h1 class="font-weight-normal my-4" style="font-weight: 700;">$69</h1>
             <p class="mt-3">Unlimited conferences</p>
             <p class="mt-3">100 participants max</p>
             <p class="mt-3">Custom Hold Music</p>
             <p class="mt-3">10 participants max</p>
             <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #5d78ff;">CHOOSE PLAN
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
