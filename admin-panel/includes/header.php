@@ -31,7 +31,7 @@
         ],
         urls: ["../assets/css/fonts.min.css"],
       },
-      active: function() {
+      active: function () {
         sessionStorage.fonts = true;
       },
     });
