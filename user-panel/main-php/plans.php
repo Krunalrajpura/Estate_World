@@ -1,8 +1,8 @@
 <?php include '../../globalvar/globalvariable.php'; ?>
-<?php include  $connToPan . 'config.php'; ?>
-<?php include  $mphpToInc . 'header.php'; ?>
-<?php include  $funToPan . 'function.php'; ?>
-<?php include  $mphpToInc . 'navbar.php'; ?>
+<?php include $connToPan . 'config.php'; ?>
+<?php include $mphpToInc . 'header.php'; ?>
+<?php include $funToPan . 'function.php'; ?>
+<?php include $mphpToInc . 'navbar.php'; ?>
 
 
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg')">
@@ -41,27 +41,35 @@
             <h2 class="font-weight-normal my-4"><i class="fa-solid fa-cube" style="color: #fe397a;"></i></h2>
             <h5 class="font-weight-normal my-4">Baisc</h5>
             <h1 class="font-weight-normal my-4" style="font-weight: 700;">FREE</h1>
-            <p class="mt-3">Unlimited conferences</p>
-            <p class="mt-3">100 participants max</p>
-            <p class="mt-3">Custom Hold Music</p>
-            <p class="mt-3">10 participants max</p>
-            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #fe397a;">CHOOSE PLAN </a>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> See all the Property</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> See the Owner's Details</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> Get the Points</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> Contact the Owner</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> Get the 10 Points</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> Get the Extra 10 Points</p>
+            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #fe397a;">CHOOSE PLAN
+            </a>
           </div>
         </div>
       </div>
       <!-- column  -->
       <!-- column  -->
       <div class="col-md-4 ml-auto pricing-box align-self-center">
-        <div class="card mb-4 myShadow myScale border-0 rounded-lg" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);">
+        <div class="card mb-4 myShadow myScale border-0 rounded-lg"
+          style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);">
           <div class="card-body p-4 text-center">
             <h2 class="font-weight-normal my-4"><i class="fa-solid fa-trophy" style="color: #10bb87;"></i></h2>
             <h5 class="font-weight-normal my-4">Pro</h5>
-            <h1 class="font-weight-normal my-4" style="font-weight: 700;">$49</h1>
-            <p class="mt-3">Unlimited conferences</p>
-            <p class="mt-3">100 participants max</p>
-            <p class="mt-3">Custom Hold Music</p>
-            <p class="mt-3">10 participants max</p>
-            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #10bb87;">CHOOSE PLAN </a>
+            <h1 class="font-weight-normal my-4" style="font-weight: 700;"><i
+                class="fa-solid fa-indian-rupee-sign fa-xs"></i>&nbsp;499</h1>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> See all the Property</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> See the Owner's Details</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Get the Points</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Contact the Owner</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Get the 10 Points</p>
+            <p class="mt-3"><i class="fa-solid fa-x"></i> Get the Extra 10 Points</p>
+            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #10bb87;">CHOOSE PLAN
+            </a>
           </div>
         </div>
       </div>
@@ -71,13 +79,17 @@
         <div class="card mb-4 myShadow myScale border-0 rounded-lg">
           <div class="card-body p-4 text-center">
             <h2 class="font-weight-normal my-4"><i class="fa-solid fa-gift" style="color: #5d78ff;"></i></h2>
-            <h5 class="font-weight-normal my-4">Pro</h5>
-            <h1 class="font-weight-normal my-4" style="font-weight: 700;">$69</h1>
-            <p class="mt-3">Unlimited conferences</p>
-            <p class="mt-3">100 participants max</p>
-            <p class="mt-3">Custom Hold Music</p>
-            <p class="mt-3">10 participants max</p>
-            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #5d78ff;">CHOOSE PLAN </a>
+            <h5 class="font-weight-normal my-4">Ultra</h5>
+            <h1 class="font-weight-normal my-4" style="font-weight: 700;"><i
+                class="fa-solid fa-indian-rupee-sign fa-xs"></i>&nbsp;699</h1>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> See all the Property</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> See the Owner's Details</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Get the Points</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Contact the Owner</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Get the 10 Points</p>
+            <p class="mt-3"><i class="fa-solid fa-check"></i> Get the Extra 10 Points</p>
+            <a class="btn btn-sm rounded-pill text-white my-4" href="#" style="background-color: #5d78ff;">CHOOSE PLAN
+            </a>
           </div>
         </div>
       </div>
@@ -87,6 +99,6 @@
 </div>
 
 
-<?php include  $mphpToInc . 'footer.php'; ?>
-<?php include  $mphpToInc . 'loader.php'; ?>
-<?php include  $mphpToInc . 'endlinks.php'; ?>
+<?php include $mphpToInc . 'footer.php'; ?>
+<?php include $mphpToInc . 'loader.php'; ?>
+<?php include $mphpToInc . 'endlinks.php'; ?>

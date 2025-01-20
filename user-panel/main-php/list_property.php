@@ -1,7 +1,7 @@
 <?php include '../../globalvar/globalvariable.php'; ?>
-<?php include  $connToPan . 'config.php'; ?>
-<?php include  $mphpToInc . 'header.php'; ?>
-<?php include  $funToPan . 'function.php'; ?>
+<?php include $connToPan . 'config.php'; ?>
+<?php include $mphpToInc . 'header.php'; ?>
+<?php include $funToPan . 'function.php'; ?>
 <?php
 $showModal = false;
 if (!isset($_SESSION['email'])) {
@@ -16,7 +16,7 @@ foreach ($data1 as $row1) {
     $c_id = $row1['c_id'];
 }
 ?>
-<?php include  $mphpToInc . 'navbar.php'; ?>
+<?php include $mphpToInc . 'navbar.php'; ?>
 
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_4.jpg')">
     <div class="container">
@@ -51,8 +51,10 @@ foreach ($data1 as $row1) {
                 <div class="card border-0" style="width: 20rem; padding-right: 0px;">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
                         <h5 class="card-title">Upload Your Property</h5>
-                        <div style="height: 250px; width: 250px; border-radius: 1rem; border: 3px dashed;" class="border-primary d-flex justify-content-center align-items-center mb-4">
-                            <button type="button" class="myBtn-lg myBtn myBtn-sp rounded-circle" data-toggle="modal" data-target="#propertyForm">
+                        <div style="height: 250px; width: 250px; border-radius: 1rem; border: 3px dashed;"
+                            class="border-primary d-flex justify-content-center align-items-center mb-4">
+                            <button type="button" class="myBtn-lg myBtn myBtn-sp rounded-circle" data-toggle="modal"
+                                data-target="#propertyForm">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
@@ -68,7 +70,7 @@ foreach ($data1 as $row1) {
         // Check if there are rows in the data
         if (count($data) > 0) {
 
-        ?>
+            ?>
 
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-6 text-center mx-auto">
@@ -79,7 +81,9 @@ foreach ($data1 as $row1) {
             </div>
             <div class="row my-5">
                 <div class="col-12 text-center">
-                    <h4 class="card-title">Watch your Propoerty in the <a href="property_list_tbl.php?c_id=<?php echo $c_id; ?>" class="myBtn myBtn-outline-primary-org">Tabular Form</a>.</h4>
+                    <h4 class="card-title">Watch your Propoerty in the <a
+                            href="property_list_tbl.php?c_id=<?php echo $c_id; ?>"
+                            class="myBtn myBtn-outline-primary-org">Tabular Form</a>.</h4>
                 </div>
             </div>
             <div class="row">
@@ -89,7 +93,7 @@ foreach ($data1 as $row1) {
                             <?php
                             foreach ($data as $row) {
                                 $p_id = $row['p_id'];
-                            ?>
+                                ?>
                                 <div class="property-item">
                                     <a href="property-single.php" class="img">
                                         <?php
@@ -102,16 +106,18 @@ foreach ($data1 as $row1) {
                                             if ($count > 1) {
                                                 break;
                                             } else {
-                                        ?>
-                                                <img src="<?php echo $propImagesToUpan . $row2['image_name']; ?>" alt="Image" class="img-fluid" />
-                                        <?php
+                                                ?>
+                                                <img src="<?php echo $propImagesToUpan . $row2['image_name']; ?>" alt="Image"
+                                                    class="img-fluid" />
+                                                <?php
                                             }
                                         }
                                         ?>
                                     </a>
 
                                     <div class="property-content">
-                                        <div class="price mb-2"><span><i class="fa-solid fa-indian-rupee-sign fa-bounce"></i> <?php echo $row['price']; ?></span></div>
+                                        <div class="price mb-2"><span><i class="fa-solid fa-indian-rupee-sign fa-bounce"></i>
+                                                <?php echo $row['price']; ?></span></div>
                                         <div>
                                             <span class="d-block mb-2 text-black-50"><?php echo $row['address']; ?></span>
                                             <span class="city d-block"><?php echo $row['propertyType']; ?></span>
@@ -128,8 +134,12 @@ foreach ($data1 as $row1) {
                                                 </span>
                                             </div>
 
-                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3" title="See the Details of the Property">See details</a>
-                                            <a href="property-single-update.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>" class="btn btn-primary py-2 px-3" title="Update the Details of the Property">Update details</a>
+                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>"
+                                                class="btn btn-primary py-2 px-3" title="See the Details of the Property">See
+                                                details</a>
+                                            <a href="property-single-update.php?p_id=<?php echo $p_id; ?>&c_id=<?php echo $c_id; ?>"
+                                                class="btn btn-primary py-2 px-3"
+                                                title="Update the Details of the Property">Update details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -208,13 +218,15 @@ foreach ($data1 as $row1) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter address" required>
+                                <input type="text" name="address" class="form-control" id="address"
+                                    placeholder="Enter address" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="size">Size (sq ft)</label>
-                                <input type="number" name="size" class="form-control" id="size" placeholder="Enter size" required>
+                                <input type="number" name="size" class="form-control" id="size" placeholder="Enter size"
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -238,7 +250,8 @@ foreach ($data1 as $row1) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="yearBuilt">Year Built</label>
-                                <input type="number" name="yearBuilt" class="form-control" id="yearBuilt" placeholder="Enter year" required>
+                                <input type="number" name="yearBuilt" class="form-control" id="yearBuilt"
+                                    placeholder="Enter year" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -263,11 +276,13 @@ foreach ($data1 as $row1) {
                     <h5 class="mb-3">Pricing Details</h5>
                     <div class="form-group mb-3">
                         <label for="price">Price</label>
-                        <input type="number" name="price" class="form-control" id="price" placeholder="Enter price" required>
+                        <input type="number" name="price" class="form-control" id="price" placeholder="Enter price"
+                            required>
                     </div>
                     <div class="form-group mb-4">
                         <label for="additionalCosts">Additional Costs</label>
-                        <input type="text" name="additionalCosts" class="form-control" id="additionalCosts" placeholder="Enter additional costs">
+                        <input type="text" name="additionalCosts" class="form-control" id="additionalCosts"
+                            placeholder="Enter additional costs">
                     </div>
 
                     <!-- Property Features -->
@@ -276,19 +291,22 @@ foreach ($data1 as $row1) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="interiorFeatures">Interior Features</label>
-                                <textarea class="form-control" name="interiorFeatures" id="interiorFeatures" rows="3" placeholder="E.g., central air conditioning, heating, appliances"></textarea>
+                                <textarea class="form-control" name="interiorFeatures" id="interiorFeatures" rows="3"
+                                    placeholder="E.g., central air conditioning, heating, appliances"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exteriorFeatures">Exterior Features</label>
-                                <textarea class="form-control" name="exteriorFeatures" id="exteriorFeatures" rows="3" placeholder="E.g., garden, balcony, parking"></textarea>
+                                <textarea class="form-control" name="exteriorFeatures" id="exteriorFeatures" rows="3"
+                                    placeholder="E.g., garden, balcony, parking"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="specialFeatures">Special Features</label>
-                        <textarea class="form-control" name="specialFeatures" id="specialFeatures" rows="3" placeholder="E.g., swimming pool, gym, security systems"></textarea>
+                        <textarea class="form-control" name="specialFeatures" id="specialFeatures" rows="3"
+                            placeholder="E.g., swimming pool, gym, security systems"></textarea>
                     </div>
 
                     <!-- Location Details -->
@@ -297,13 +315,15 @@ foreach ($data1 as $row1) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nearbyAmenities">Nearby Amenities</label>
-                                <textarea class="form-control" name="nearbyAmenities" id="nearbyAmenities" rows="3" placeholder="E.g., schools, hospitals, shopping centers"></textarea>
+                                <textarea class="form-control" name="nearbyAmenities" id="nearbyAmenities" rows="3"
+                                    placeholder="E.g., schools, hospitals, shopping centers"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="accessibility">Accessibility</label>
-                                <textarea class="form-control" name="accessibility" id="accessibility" rows="3" placeholder="E.g., public transport, major roads"></textarea>
+                                <textarea class="form-control" name="accessibility" id="accessibility" rows="3"
+                                    placeholder="E.g., public transport, major roads"></textarea>
                             </div>
                         </div>
                     </div>
@@ -312,7 +332,8 @@ foreach ($data1 as $row1) {
                     <h5 class="mb-3">Property Description</h5>
                     <div class="form-group mb-3">
                         <label for="description">Description</label>
-                        <textarea class="form-control" name="description" id="description" rows="4" placeholder="Provide a detailed description of the property" required></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="4"
+                            placeholder="Provide a detailed description of the property" required></textarea>
                     </div>
 
                     <!-- Photos -->
@@ -320,7 +341,8 @@ foreach ($data1 as $row1) {
                     <div class="form-group mb-3">
                         <label for="propertyImages">Upload Images</label>
                         <input type="file" name="propertyImages[]" id="propertyImages" multiple>
-                        <div id="imageError" style="color: red; display: none;">You can upload a maximum of 4 images.</div>
+                        <div id="imageError" style="color: red; display: none;">You can upload a maximum of 4 images.
+                        </div>
                     </div>
 
                     <!-- Show new Imges   -->
@@ -335,19 +357,22 @@ foreach ($data1 as $row1) {
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="contactName">Contact Name</label>
-                                <input type="text" name="contactName" class="form-control" id="contactName" placeholder="Enter your name" required>
+                                <input type="text" name="contactName" class="form-control" id="contactName"
+                                    placeholder="Enter your name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="contactNumber">Contact Number</label>
-                                <input type="tel" name="contactNumber" class="form-control" id="contactNumber" placeholder="Enter your contact number" required>
+                                <input type="tel" name="contactNumber" class="form-control" id="contactNumber"
+                                    placeholder="Enter your contact number" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="contactEmail">Email Address</label>
-                        <input type="email" name="contactEmail" class="form-control" id="contactEmail" placeholder="Enter your email address" required>
+                        <input type="email" name="contactEmail" class="form-control" id="contactEmail"
+                            placeholder="Enter your email address" required>
                     </div>
 
                     <!-- Terms and Conditions -->
@@ -357,8 +382,10 @@ foreach ($data1 as $row1) {
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" name="submit" class="myBtn myBtn-info"><i class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
-                    <button type="reset" class="myBtn myBtn-warning"><i class="fa-solid fa-arrow-rotate-right"></i> Reset</button>
+                    <button type="submit" name="submit" class="myBtn myBtn-info"><i
+                            class="fa-solid fa-arrow-up-from-bracket"></i> Submit</button>
+                    <button type="reset" class="myBtn myBtn-warning"><i class="fa-solid fa-arrow-rotate-right"></i>
+                        Reset</button>
                 </form>
             </div>
         </div>
@@ -495,6 +522,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         if ($op1 && $flag2) {
             $successMessage = "Your Property Uploaded Successfully !!! Now Wait for the Accepting from the Admin Side.";
             echo "<script>showSuccessAlert('" . $successMessage . "');</script>";
+            echo "<script>window.location.href=window.location.href;</script>";
         } else {
             $errorMessage = "Something went wrong !!!";
             echo "<script>showSuccessAlert('" . $errorMessage . "');</script>";
@@ -507,7 +535,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
 <!-- for the validation of the 4 images max  -->
 <script>
-    document.getElementById('propertyImages').addEventListener('change', function() {
+    document.getElementById('propertyImages').addEventListener('change', function () {
         const maxImages = 4;
         const imageInput = this;
         const errorDiv = document.getElementById('imageError');
@@ -528,21 +556,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     // Check if the modal should be shown
     var showModal = <?php echo json_encode($showModal); ?>;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         if (showModal) {
             // Show the login modal
             $('#login').modal('show');
         }
 
         // Event listener for when the login modal is closed
-        $('#login').on('hidden.bs.modal', function() {
+        $('#login').on('hidden.bs.modal', function () {
             // Check if the user chose to go back or switch to the registration modal
             if (!$('#registration').hasClass('show')) {
                 window.history.back(); // Redirect to the previous page
             }
         });
 
-        $('#registration').on('hidden.bs.modal', function() {
+        $('#registration').on('hidden.bs.modal', function () {
             // Check if the user chose to go back or switch to the registration modal
             if (!$('#login').hasClass('show')) {
                 window.history.back(); // Redirect to the previous page
@@ -550,7 +578,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         });
 
         // Event listener to open the registration modal from the login modal
-        $('#openRegistrationModal').click(function() {
+        $('#openRegistrationModal').click(function () {
             $('#login').modal('hide'); // Close the login modal
             $('#registration').modal('show'); // Show the registration modal
         });
@@ -558,6 +586,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 </script>
 
 
-<?php include  $mphpToInc . 'footer.php'; ?>
-<?php include  $mphpToInc . 'loader.php'; ?>
-<?php include  $mphpToInc . 'endlinks.php'; ?>
+<?php include $mphpToInc . 'footer.php'; ?>
+<?php include $mphpToInc . 'loader.php'; ?>
+<?php include $mphpToInc . 'endlinks.php'; ?>

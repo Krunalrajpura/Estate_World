@@ -1,12 +1,31 @@
 <?php include '../../globalvar/globalvariable.php'; ?>
-<?php include  $connToPan . 'config.php'; ?>
-<?php include  $mphpToInc . 'header.php'; ?>
-<?php include  $funToPan . 'function.php'; ?>
-<?php include  $mphpToInc . 'navbar.php'; ?>
+<?php include $connToPan . 'config.php'; ?>
+<?php include $mphpToInc . 'header.php'; ?>
+<?php include $funToPan . 'function.php'; ?>
+<?php include $mphpToInc . 'navbar.php'; ?>
+<style>
+  .blur {
+    filter: blur(8px);
+    /* Adjust the blur intensity as needed */
+    pointer-events: none;
+    /* Prevent interaction with blurred content */
+    user-select: none;
+    /* Prevent text selection */
+  }
 
+  .unblur {
+    filter: none;
+    pointer-events: auto;
+    user-select: auto;
+  }
+</style>
 <?php
 $p_id = $_GET['p_id'];
-$c_id = $_GET['c_id'];
+if (isset($_GET['c_id'])) {
+  $c_id = $_GET['c_id'];
+} else {
+  $c_id = false;
+}
 ?>
 
 <!-- code for the hero bg  -->
@@ -26,15 +45,20 @@ foreach ($data2 as $row2) {
 ?>
 
 <?php
-$where = 'c_id = ? AND p_id = ?';
-$values = [$c_id, $p_id];
+if ($c_id) {
+  $where = 'c_id = ? AND p_id = ?';
+  $values = [$c_id, $p_id];
+} else {
+  $where = 'p_id = ?';
+  $values = [$p_id];
+}
 $data = fetchData($conn, 'tbl_property_listing', '*', $where, $values);
 
 // Check if there are rows in the data
 if (count($data) > 0) {
   foreach ($data as $row) {
 
-?>
+    ?>
     <div class="hero page-inner overlay" style="background-image: url('<?php echo $hero_bg; ?>')">
       <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -73,7 +97,7 @@ if (count($data) > 0) {
                 $values1 = [$p_id];
                 $data1 = fetchData($conn, 'tbl_property_images', '*', $where1, $values1);
                 foreach ($data1 as $row1) {
-                ?>
+                  ?>
                   <img src="<?php echo $propImagesToUpan . $row1['image_name']; ?>" alt="Image" class="img-fluid" />
                 <?php } ?>
               </div>
@@ -92,7 +116,7 @@ if (count($data) > 0) {
               <?php echo $row['specialFeatures']; ?>
             </p>
 
-            <div class="d-block agent-box p-5">
+            <div class="d-block agent-box p-5 blur" id="agent-details">
               <div class="img mb-4">
                 <img src="../images/person_2-min.jpg" alt="Image" class="img-fluid" />
               </div>
@@ -120,14 +144,26 @@ if (count($data) > 0) {
                 </ul>
               </div>
             </div>
+
+            <button class="btn btn-primary mt-3 py-2 px-3" onclick="toggleBlur()">Reveal Details</button>
+
           </div>
         </div>
       </div>
     </div>
 
-<?php }
+  <?php }
 } ?>
 
-<?php include  $mphpToInc . 'footer.php'; ?>
-<?php include  $mphpToInc . 'loader.php'; ?>
-<?php include  $mphpToInc . 'endlinks.php'; ?>
+<script>
+  function toggleBlur() {
+    const detailsDiv = document.getElementById('agent-details');
+    detailsDiv.classList.toggle('blur');
+    detailsDiv.classList.toggle('unblur');
+  }
+
+</script>
+
+<?php include $mphpToInc . 'footer.php'; ?>
+<?php include $mphpToInc . 'loader.php'; ?>
+<?php include $mphpToInc . 'endlinks.php'; ?>

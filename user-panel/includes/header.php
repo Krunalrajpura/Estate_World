@@ -34,7 +34,8 @@ ini_set('display_startup_errors', 1); // Display errors that occur during PHP's 
   <link rel="stylesheet" href="<?php echo $commonToPan; ?>style.css">
 
   <!-- my font awesome kit link  -->
-  <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://kit.fontawesome.com/ed83cd24d3.js" crossorigin="anonymous"></script> -->
+  <script src="../js/fontawesome.js"></script>
 
   <!-- my local css file  -->
   <link rel="stylesheet" href="../css/myCss.css">
