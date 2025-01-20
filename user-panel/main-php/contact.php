@@ -44,7 +44,7 @@
             <h4 class="mb-2">Open Hours:</h4>
             <p>
               Sunday-Friday:<br />
-              11:00 AM - 05:00
+              11:00 AM - 05:00 PM
             </p>
           </div>
 
