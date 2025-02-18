@@ -145,7 +145,8 @@ if (count($data) > 0) {
               </div>
             </div>
 
-            <button class="btn btn-primary mt-3 py-2 px-3" onclick="toggleBlur()">Reveal Details</button>
+            <button class="btn btn-primary mt-3 py-2 px-3 reveal-btn" data-cid="cid" onclick="toggleBlur()">Reveal
+              Details</button>
 
           </div>
         </div>
@@ -156,11 +157,42 @@ if (count($data) > 0) {
 } ?>
 
 <script>
-  function toggleBlur() {
-    const detailsDiv = document.getElementById('agent-details');
-    detailsDiv.classList.toggle('blur');
-    detailsDiv.classList.toggle('unblur');
-  }
+  // function toggleBlur() {
+  //   const detailsDiv = document.getElementById('agent-details');
+  //   detailsDiv.classList.toggle('blur');
+  //   detailsDiv.classList.toggle('unblur');
+  // }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".reveal-btn").forEach(button => {
+      button.addEventListener("click", function () {
+        let cid = this.getAttribute("data-cid");
+
+        fetch("../../api/reveal_property.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ cid: cid })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log("Status Code:", data.status_code);
+            if (data.status_code == 442) {
+              alert("Something went Wrong");
+            }
+            // alert(data.message);
+            const detailsDiv = document.getElementById('agent-details');
+            detailsDiv.classList.toggle('blur');
+          })
+          .catch(error => {
+            console.error("Error:", error)
+            alert("Something went Wrong");
+          });
+      });
+    });
+  });
+
 
 </script>
 
