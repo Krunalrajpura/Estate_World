@@ -2,6 +2,7 @@
 <?php include $connToPan . 'config.php'; ?>
 <?php include $mphpToInc . 'header.php'; ?>
 <?php include $funToPan . 'function.php'; ?>
+
 <?php
 $showModal = false;
 if (!isset($_SESSION['email'])) {

@@ -144,10 +144,12 @@ if (isset($_POST['login'])) {
               </li>
             </ul>
           </li>
+          <li class="<?php echo ($current_file == 'compare.php') ? 'active' : ''; ?>"><a href="compare.php">Compare</a></li>
           <li class="<?php echo ($current_file == 'plans.php') ? 'active' : ''; ?>"><a href="plans.php#plans">Plans</a></li>
           <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a href="services.php">Services</a></li>
           <li class="<?php echo ($current_file == 'about.php') ? 'active' : ''; ?>"><a href="about.php">About</a></li>
           <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact Us</a></li>
+        
           <li>
             <?php
             if (isset($_SESSION['email'])) {
