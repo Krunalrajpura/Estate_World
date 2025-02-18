@@ -335,7 +335,7 @@ if (isset($_POST['pay'])) {
       'amount' => $amount,
       'points' => $point,
     ];
-    $types = 'issssiis';
+    $types = 'issssii';
 
     $checkInsert = insertData($conn, 'tbl_plans_details', $dataInsert, $types);
     if ($checkInsert) {
@@ -346,5 +346,5 @@ if (isset($_POST['pay'])) {
       echo "<script>showErrorAlert('$errorMessage');</script>";
     }
   }
-  }
+}
 ?>

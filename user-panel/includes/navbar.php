@@ -91,6 +91,7 @@ if (isset($_POST['login'])) {
 
     if (password_verify($pass, $storedHash)) {
       $_SESSION['email'] = $email;
+      $_SESSION['c_id'] = $user[0]['c_id'];
 
       $successMessage = "Login Successful! Welcome back!";
       echo "<script>showSuccessAlert('$successMessage');</script>";
@@ -103,7 +104,6 @@ if (isset($_POST['login'])) {
     echo "<script>showErrorAlert('$errorMessage');</script>";
   }
 }
-
 
 ?>
 
@@ -120,15 +120,20 @@ if (isset($_POST['login'])) {
   <div class="container">
     <div class="menu-bg-wrap">
       <div class="site-navigation">
-        <a href="index.php" class="logo m-0 float-start"><img src="../images/E2.png" alt="" height="35" width="35"> Estate World</a>
+        <a href="index.php" class="logo m-0 float-start"><img src="../images/E2.png" alt="" height="35" width="35">
+          Estate World</a>
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
           <li class="<?php echo ($current_file == 'index.php') ? 'active' : ''; ?>"><a href="index.php">Home</a></li>
           <li class="has-children <?php echo ($current_file == 'properties.php') ? 'active' : ''; ?>">
-          <li class="has-children <?php if ($current_file == 'properties.php') { echo "active"; }
-                                        elseif ($current_file == 'list_property.php') { echo "active"; } 
-                                        elseif ($current_file == 'search_property.php') { echo "active"; } 
-                                        ?>">
+          <li class="has-children <?php if ($current_file == 'properties.php') {
+            echo "active";
+          } elseif ($current_file == 'list_property.php') {
+            echo "active";
+          } elseif ($current_file == 'search_property.php') {
+            echo "active";
+          }
+          ?>">
             <a href="properties.php">Properties</a>
             <ul class="dropdown">
               <li><a href="properties.php">All Property</a></li>
@@ -144,30 +149,37 @@ if (isset($_POST['login'])) {
               </li>
             </ul>
           </li>
-          <li class="<?php echo ($current_file == 'compare.php') ? 'active' : ''; ?>"><a href="compare.php">Compare</a></li>
-          <li class="<?php echo ($current_file == 'plans.php') ? 'active' : ''; ?>"><a href="plans.php#plans">Plans</a></li>
-          <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a href="services.php">Services</a></li>
+          <li class="<?php echo ($current_file == 'compare.php') ? 'active' : ''; ?>"><a href="compare.php">Compare</a>
+          </li>
+          <li class="<?php echo ($current_file == 'plans.php') ? 'active' : ''; ?>"><a href="plans.php#plans">Plans</a>
+          </li>
+          <li class="<?php echo ($current_file == 'services.php') ? 'active' : ''; ?>"><a
+              href="services.php">Services</a></li>
           <li class="<?php echo ($current_file == 'about.php') ? 'active' : ''; ?>"><a href="about.php">About</a></li>
-          <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact Us</a></li>
-        
+          <li class="<?php echo ($current_file == 'contact.php') ? 'active' : ''; ?>"><a href="contact.php">Contact
+              Us</a></li>
+
           <li>
             <?php
             if (isset($_SESSION['email'])) {
-            ?>
-              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#logout">
+              ?>
+              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal"
+                data-bs-target="#logout">
                 logout <i class="fa-solid fa-right-from-bracket text-white bg-outline-white ml-3"></i>
               </button>
-            <?php
+              <?php
             } else {
-            ?>
-              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal" data-bs-target="#login">
+              ?>
+              <button type="button" class="myBtn myBtn-primary myBtn-spehov" data-bs-toggle="modal"
+                data-bs-target="#login">
                 login <i class="fa-solid fa-right-to-bracket text-white bg-outline-white ml-2"></i>
               </button>
             <?php } ?>
           </li>
         </ul>
 
-        <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+        <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+          data-toggle="collapse" data-target="#main-navbar">
           <span></span>
         </a>
       </div>
@@ -183,7 +195,9 @@ if (isset($_POST['login'])) {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Login <?php echo $showModal ? "- Firstly login to access the Page." : ""; ?></h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login
+          <?php echo $showModal ? "- Firstly login to access the Page." : ""; ?>
+        </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -193,13 +207,16 @@ if (isset($_POST['login'])) {
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form3Example3">Email address</label>
-              <input type="email" name="email" id="form3Example3" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" autocomplete="email" required />
+              <input type="email" name="email" id="form3Example3"
+                class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address"
+                autocomplete="email" required />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form6Example6">Password</label>
-              <input type="password" name="password" id="form6Example6" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" required />
+              <input type="password" name="password" id="form6Example6"
+                class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" required />
             </div>
 
             <button type="submit" name="login" class="myBtn myBtn-primary">Login</button>
@@ -224,7 +241,9 @@ if (isset($_POST['login'])) {
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Registration <?php echo $showModal ? "- Firstly Register to access the Page." : ""; ?></h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registration
+          <?php echo $showModal ? "- Firstly Register to access the Page." : ""; ?>
+        </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -234,31 +253,37 @@ if (isset($_POST['login'])) {
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="form3Example1">Your Name</label>
-              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter your name" name="name" autocomplete="name" required />
+              <input type="text" id="form3Example1" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter your name" name="name" autocomplete="name" required />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4 ">
               <label class="form-label text-dark" for="form7Example7">Email address</label>
-              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid email address" name="email" autocomplete="email" required />
+              <input type="email" id="form7Example7" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter a valid email address" name="email" autocomplete="email" required />
             </div>
 
             <!-- phone number -->
             <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label text-dark" for="formPhoneNumber">Phone number</label>
-              <input type="tel" id="formPhoneNumber" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter a valid phone number" name="number" required />
+              <input type="tel" id="formPhoneNumber" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter a valid phone number" name="number" required />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="form8Example8">Password</label>
-              <input type="password" id="form8Example8" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Enter password" name="password" required />
+              <input type="password" id="form8Example8" class="form-control form-control-lg border-2 myBorder-primary"
+                placeholder="Enter password" name="password" required />
             </div>
 
             <!-- confirm-password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <label class="form-label text-dark" for="formConfirmPassword">Confirm Password</label>
-              <input type="password" id="formConfirmPassword" class="form-control form-control-lg border-2 myBorder-primary" placeholder="Confirm password" name="cpassword" required />
+              <input type="password" id="formConfirmPassword"
+                class="form-control form-control-lg border-2 myBorder-primary" placeholder="Confirm password"
+                name="cpassword" required />
             </div>
 
             <button type="submit" name="go" class="myBtn myBtn-primary">Register</button>
@@ -280,7 +305,8 @@ if (isset($_POST['login'])) {
 
 <!-- below modal is for the logout  -->
 
-<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">

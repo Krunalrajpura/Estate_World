@@ -145,7 +145,8 @@ if (count($data) > 0) {
               </div>
             </div>
 
-            <button class="btn btn-primary mt-3 py-2 px-3 reveal-btn" data-cid="cid" onclick="toggleBlur()">Reveal
+            <button class="btn btn-primary mt-3 py-2 px-3 reveal-btn" data-cid="<?php echo $_SESSION['c_id'] ?>"
+              onclick="toggleBlur()">Reveal
               Details</button>
 
           </div>
@@ -167,6 +168,7 @@ if (count($data) > 0) {
     document.querySelectorAll(".reveal-btn").forEach(button => {
       button.addEventListener("click", function () {
         let cid = this.getAttribute("data-cid");
+        // console.log(cid);
 
         fetch("../../api/reveal_property.php", {
           method: "POST",
@@ -175,25 +177,32 @@ if (count($data) > 0) {
           },
           body: JSON.stringify({ cid: cid })
         })
-          .then(response => response.json())
+          .then(response => response.text()) // Get response as text first
+          .then(text => {
+            // console.log("Raw Response:", text); // Log the raw response
+            return JSON.parse(text); // Try parsing JSON
+          })
           .then(data => {
-            console.log("Status Code:", data.status_code);
-            if (data.status_code == 442) {
+            // console.log("Status Code:", data.status_code);
+            if (data.status_code == 422) {
               alert("Something went Wrong");
             }
-            // alert(data.message);
-            const detailsDiv = document.getElementById('agent-details');
-            detailsDiv.classList.toggle('blur');
+            if (data.status_code == 200) {
+              const detailsDiv = document.getElementById('agent-details');
+              detailsDiv.classList.toggle('blur');
+              document.querySelectorAll(".reveal-btn").forEach(button => {
+                button.classList.add("d-none");
+              });
+            }
           })
           .catch(error => {
-            console.error("Error:", error)
+            console.error("Parsing Error:", error);
             alert("Something went Wrong");
           });
+
       });
     });
   });
-
-
 </script>
 
 <?php include $mphpToInc . 'footer.php'; ?>

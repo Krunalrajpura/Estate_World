@@ -1,24 +1,29 @@
 <?php
 header("Content-Type: application/json");
-include '../connection/config.php'; // Your database connection file
+include '../connection/config.php'; // Ensure this file does not output errors
 
 $data = json_decode(file_get_contents("php://input"), true);
-$cid = isset($data['cid']) ? intval($data['cid']) : 0;
+$cid = isset($data['cid']) ? intval($data['cid']) : null;
 
-if ($cid > 0) {
-    // Check if c_id exists in the database
-    $query = "SELECT points FROM tbl_points_details WHERE c_id = ?";
+if (!$cid) {
+    echo json_encode(["success" => false, "status_code" => 422, "message" => "Invalid data"]);
+    exit;
+}
+
+// Suppress warnings that might break JSON response
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+try {
+    $query = "SELECT points FROM tbl_plans_details WHERE c_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $cid);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        // Check if points are greater than 0
         if ($row['points'] > 0) {
-            // Reduce points by 1
             $newPoints = $row['points'] - 1;
-            $updateQuery = "UPDATE tbl_points_details SET points = ? WHERE c_id = ?";
+            $updateQuery = "UPDATE tbl_plans_details SET points = ? WHERE c_id = ?";
             $updateStmt = $conn->prepare($updateQuery);
             $updateStmt->bind_param("ii", $newPoints, $cid);
 
@@ -31,9 +36,9 @@ if ($cid > 0) {
             echo json_encode(["success" => false, "status_code" => 400, "message" => "Insufficient points"]);
         }
     } else {
-        echo json_encode(["success" => false, "status_code" => 404, "message" => "No record found for given c_id"]);
+        echo json_encode(["success" => false, "status_code" => 404, "message" => "No record found"]);
     }
-} else {
-    echo json_encode(["success" => false, "status_code" => 422, "message" => "Invalid data"]);
+} catch (Exception $e) {
+    echo json_encode(["success" => false, "status_code" => 500, "message" => $e->getMessage()]);
 }
 ?>
