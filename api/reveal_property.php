@@ -29,7 +29,10 @@ try {
             $updateStmt = $conn->prepare($updateQuery);
             $updateStmt->bind_param("ii", $newPoints, $cid);
 
-            if ($updateStmt->execute()) {
+            $prep_stmt = $conn->prepare("INSERT INTO tbl_revealed_details (c_id, property_id) VALUES (?, ?)");
+            $prep_stmt->bind_param("ii", $cid, $pid);
+
+            if ($updateStmt->execute() && $prep_stmt->execute()) {
                 echo json_encode(["success" => true, "status_code" => 200, "message" => "Points deducted successfully"]);
             } else {
                 echo json_encode(["success" => false, "status_code" => 500, "message" => "Failed to update points"]);
