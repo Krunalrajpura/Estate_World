@@ -265,86 +265,161 @@
 <?php include $mphpToInc . 'footer.php'; ?>
 <?php include $mphpToInc . 'loader.php'; ?>
 <?php include $mphpToInc . 'endlinks.php'; ?>
-
-<?php
+ <!-- #region -->
+<<?php
+/* ----------------------- Payment Section ----------------------- */
 if (isset($_POST['pay'])) {
-  // echo "<pre>";
-  // print_r($_POST);
-  // echo "</pre>";
-  // die();
+    $cardNumber     = $_POST['cardNumber'];
+    $expiryDate     = $_POST['expiryDate'];
+    $cvv            = $_POST['cvv'];
+    $cardHolderName = $_POST['cardHolderName'];
+    $amount         = $_POST['amount'];
+    $emailInSession = $_POST['email'];
+    $point          = $_POST['points']; // Credit points purchased
 
-  $cardNumber = $_POST['cardNumber'];
-  $expiryDate = $_POST['expiryDate'];
-  $cvv = $_POST['cvv'];
-  $cardHolderName = $_POST['cardHolderName'];
-  $amount = $_POST['amount'];
-  $emailInSession = $_POST['email'];
-  $point = $_POST['points'];
-  $amount = $_POST['amount'];
+    // Fetch the c_id from the login table
+    $data = fetchData($conn, 'login', '*', 'c_email = ?', [$emailInSession]);
+    if (!$data) {
+        die("Error: No data found for email: " . $emailInSession);
+    }
+    $c_id = $data[0]['c_id'];
 
-  // fetch the c_id from the db 
+    // Check if a record exists in tbl_plans_details
+    $conditions = ['c_id' => $c_id];
+    $result = checkIfDataExists($conn, 'tbl_plans_details', $conditions);
 
-  $data = fetchData($conn, 'login', '*', 'c_email = ?', [$emailInSession]);
-  if (!$data) {
-    die("Error: No data found for email: " . $emailInSession);
-  }
-  foreach ($data as $row) {
-    // echo '<script>alert("Hello")</script>';
+    if ($result) {
+        // Update plan: add new points to existing points.
+        $existingData = fetchData($conn, 'tbl_plans_details', 'points', 'c_id = ?', [$c_id]);
+        $existingPoints = $existingData[0]['points'];
+        $newPoints = $existingPoints + $point;
+
+        $updateData = [
+            'o_name'   => $cardHolderName,
+            'card_num' => $cardNumber,
+            'exp_date' => $expiryDate,
+            'cvv'      => $cvv,
+            'amount'   => $amount,
+            'points'   => $newPoints,
+        ];
+        $checkUpdateRecord = updateRecord($conn, 'tbl_plans_details', $updateData, ['c_id' => $c_id]);
+        if ($checkUpdateRecord) {
+            $successMessage = "Payment successful !!!";
+            echo "<script>showSuccessAlert('$successMessage');</script>";
+        } else {
+            $errorMessage = "Data not updated !!!";
+            echo "<script>showErrorAlert('$errorMessage');</script>";
+        }
+    } else {
+        // Insert new record into tbl_plans_details
+        $dataInsert = [
+            'c_id'     => $c_id,
+            'o_name'   => $cardHolderName,
+            'card_num' => $cardNumber,
+            'exp_date' => date('Y-m-d', strtotime($expiryDate)),
+            'cvv'      => $cvv,
+            'amount'   => $amount,
+            'points'   => $point,
+        ];
+        $types = 'issssii';
+        $checkInsert = insertData($conn, 'tbl_plans_details', $dataInsert, $types);
+        if ($checkInsert) {
+            $successMessage = "Payment successful !!!";
+            echo "<script>showSuccessAlert('$successMessage');</script>";
+        } else {
+            $errorMessage = "Data not inserted !!!";
+            echo "<script>showErrorAlert('$errorMessage');</script>";
+        }
+    }
+}
+
+/* ----------------------- Reveal Owner Details Section ----------------------- */
+if (isset($_POST['reveal'])) {
+    // Retrieve inputs from POST
+    $emailInSession = $_POST['email'];
+    $property_id    = $_POST['property_id']; // Must be passed via a hidden field
+
+    // 1. Get customer id from the login table
+    $stmt = $conn->prepare("SELECT c_id FROM login WHERE c_email = ?");
+    $stmt->bind_param("s", $emailInSession);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows == 0) {
+        die("Error: No data found for email: " . $emailInSession);
+    }
+    $row = $result->fetch_assoc();
     $c_id = $row['c_id'];
-  }
+    $stmt->close();
 
-  // check if the data is already present in the db 
-  $conditions = [
-    'c_id' => $c_id
-  ];
-  $result = checkIfDataExists($conn, 'tbl_plans_details', $conditions);
-
-  if ($result) {
-    // echo 'Data exists';
-    // Fetch existing points
-    $existingData = fetchData($conn, 'tbl_plans_details', 'points', 'c_id = ?', [$c_id]);
-    $existingPoints = $existingData[0]['points'];
-
-    // Update points with the existing points
-    $newPoints = $existingPoints + $point;
-
-    $updateData = [
-      'o_name' => $cardHolderName,
-      'card_num' => $cardNumber,
-      'exp_date' => $expiryDate,
-      'cvv' => $cvv,
-      'amount' => $amount,
-      'points' => $newPoints,
-    ];
-    $checkupdaterecord = updateRecord($conn, 'tbl_plans_details', $updateData, ['c_id' => $c_id]);
-    if ($checkupdaterecord) {
-      $successMessage = "Payment successful !!!";
-      echo "<script>showSuccessAlert('$successMessage');</script>";
-    } else {
-      $errorMessage = "Data not updated !!!";
-      echo "<script>showErrorAlert('$errorMessage');</script>";
+    // 2. Pre-populate tbl_revealed_details: insert a row with revealed_at = NULL if it doesn't exist.
+    $stmt = $conn->prepare("INSERT INTO tbl_revealed_details (c_id, property_id, revealed_at) VALUES (?, ?, NULL)
+                            ON DUPLICATE KEY UPDATE revealed_at = revealed_at");
+    $stmt->bind_param("ii", $c_id, $property_id);
+    if (!$stmt->execute()) {
+        echo "Error inserting/pre-populating reveal record: " . $stmt->error;
+        exit;
     }
-  } else {
-    // insert the data to the table 
-    $dataInsert = [
-      'c_id' => $c_id,
-      'o_name' => $cardHolderName,
-      'card_num' => $cardNumber,
-      'exp_date' => date('Y-m-d', strtotime($expiryDate)), // Convert to date format
-      'cvv' => $cvv,
-      'amount' => $amount,
-      'points' => $point,
-    ];
-    $types = 'issssii';
+    $stmt->close();
 
-    $checkInsert = insertData($conn, 'tbl_plans_details', $dataInsert, $types);
-    if ($checkInsert) {
-      $successMessage = "Payment successful !!!";
-      echo "<script>showSuccessAlert('$successMessage');</script>";
-    } else {
-      $errorMessage = "Data not inserted !!!";
-      echo "<script>showErrorAlert('$errorMessage');</script>";
+    // 3. Retrieve the current reveal status.
+    $stmt = $conn->prepare("SELECT revealed_at FROM tbl_revealed_details WHERE c_id = ? AND property_id = ?");
+    $stmt->bind_param("ii", $c_id, $property_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows == 0) {
+        echo "Error: Record not found";
+        exit;
     }
-  }
+    $row = $result->fetch_assoc();
+    $revealed_at = $row['revealed_at'];
+    $stmt->close();
+
+    // 4. If revealed_at is NULL, then the property hasn't been revealed yet.
+    if (is_null($revealed_at)) {
+        // 4a. Fetch customer's current plan points from tbl_plans_details
+        $stmt = $conn->prepare("SELECT points FROM tbl_plans_details WHERE c_id = ?");
+        $stmt->bind_param("i", $c_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            echo "Plan details not found";
+            exit;
+        }
+        $row = $result->fetch_assoc();
+        $currentPoints = (int)$row['points'];
+        $stmt->close();
+
+        if ($currentPoints < 1) {
+            echo "<script>showErrorAlert('Insufficient points to reveal details');</script>";
+            exit;
+        }
+
+        // 4b. Deduct one point from tbl_plans_details
+        $newPoints = $currentPoints - 1;
+        $stmt = $conn->prepare("UPDATE tbl_plans_details SET points = ? WHERE c_id = ?");
+        $stmt->bind_param("ii", $newPoints, $c_id);
+        if (!$stmt->execute()) {
+            echo "Error updating points: " . $stmt->error;
+            exit;
+        }
+        $stmt->close();
+
+        // 4c. Update tbl_revealed_details: set revealed_at to current timestamp
+        $revealed_at = date('Y-m-d H:i:s');
+        $stmt = $conn->prepare("UPDATE tbl_revealed_details SET revealed_at = ? WHERE c_id = ? AND property_id = ?");
+        $stmt->bind_param("sii", $revealed_at, $c_id, $property_id);
+        if (!$stmt->execute()) {
+            echo "Error updating reveal record: " . $stmt->error;
+            exit;
+        }
+        $stmt->close();
+
+        echo "Reveal action recorded. Points deducted.";
+    } else {
+        echo "Property already revealed. No point deduction.";
+    }
+
+    // 5. Proceed to show owner details (replace with your actual logic)
+    echo "<script>showOwnerDetails('$property_id');</script>";
 }
 ?>
