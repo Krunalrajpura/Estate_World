@@ -4,6 +4,8 @@ include '../connection/config.php'; // Ensure this file does not output errors
 
 $data = json_decode(file_get_contents("php://input"), true);
 $cid = isset($data['cid']) ? intval($data['cid']) : null;
+$pid = isset($data['pid']) ? intval($data['pid']) : null;
+$email = isset($data['email']) ? intval($data['email']) : null;
 
 if (!$cid) {
     echo json_encode(["success" => false, "status_code" => 422, "message" => "Invalid data"]);
