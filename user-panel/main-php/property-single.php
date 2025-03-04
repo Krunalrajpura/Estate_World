@@ -57,19 +57,18 @@ foreach ($data2 as $row2) {
 ?>
 
 <?php
-if ($c_id) {
-  $where = 'c_id = ? AND p_id = ?';
-  $values = [$c_id, $p_id];
-} else {
-  $where = 'p_id = ?';
-  $values = [$p_id];
-}
+// if ($c_id) {
+//   $where = 'c_id = ? AND p_id = ?';
+//   $values = [$c_id, $p_id];
+// } else {
+$where = 'p_id = ?';
+$values = [$p_id];
+// }
 $data = fetchData($conn, 'tbl_property_listing', '*', $where, $values);
 
 // Check if there are rows in the data
 if (count($data) > 0) {
   foreach ($data as $row) {
-
     ?>
     <div class="hero page-inner overlay" style="background-image: url('<?php echo $hero_bg; ?>')">
       <div class="container">
@@ -243,10 +242,6 @@ if (isset($_POST['reveal'])) {
     $row = $result->fetch_assoc();
     $c_id = $row['c_id'];
     $stmt->close();
-
-    // 3. Retrieve the current reveal status.
-
-
 
   }
 }
