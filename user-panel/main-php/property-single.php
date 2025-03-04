@@ -174,7 +174,6 @@ if (count($data) > 0) {
 } ?>
 
 <script>
-
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".reveal-btn").forEach(button => {
       button.addEventListener("click", function () {
@@ -188,7 +187,11 @@ if (count($data) > 0) {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ cid: cid, pid: pid, email: email })
+          body: JSON.stringify({
+            cid: cid,
+            pid: pid,
+            email: email
+          })
         })
           .then(response => response.text()) // Get response as text first
           .then(text => {
@@ -242,7 +245,6 @@ if (isset($_POST['reveal'])) {
     $row = $result->fetch_assoc();
     $c_id = $row['c_id'];
     $stmt->close();
-
   }
 }
 ?>
