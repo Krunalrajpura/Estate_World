@@ -22,8 +22,12 @@
                 <div class="widget">
                     <h3>Sources</h3>
                     <ul class="list-unstyled float-start links">
-                        <li><a href="about.php">About us</a></li>
-                        <li><a href="services.php">Services</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="compare.php">compare</a></li>
+                        <li><a href="search_property.php">search</a></li>
+                        <li><a href="list_property.php">List-property</a></li>
+                        <li><a href="plans.php">plans</a></li>
+                        <li><a href="services.php">services</a></li>
                         <!-- <li><a href="#">Vision</a></li>
                         <li><a href="#">Mission</a></li>
                         <li><a href="#">Terms</a></li>
@@ -45,7 +49,7 @@
                 <div class="widget">
                     <h3>Links</h3>
                     <ul class="list-unstyled links">
-                        <li><a href="#">Our Vision</a></li>
+                        <!-- <li><a href="#">Our Vision</a></li> -->
                         <li><a href="about.php">About us</a></li>
                         <li><a href="contact.php">Contact us</a></li>
                     </ul>
