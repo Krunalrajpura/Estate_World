@@ -39,23 +39,27 @@ $imagePath2 = $propImagesToUpan . $image2;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compare Properties</title>
     <style>
-    .property-card {
-        border: 2px solid #ddd;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-    }
+        .property-card {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
 
-    .property-card:hover {
-        transform: scale(1.05);
-    }
+        .property-card:hover {
+            transform: scale(1.05);
+        }
 
-    .property-image {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
+        .property-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        ul li {
+            list-style: none;
+        }
     </style>
 </head>
 
@@ -126,39 +130,39 @@ $imagePath2 = $propImagesToUpan . $image2;
                             <td>
                                 <ul class="text-start">
                                     <?php
-                                $features1 = [];
-                                if (!empty($property1['interiorFeatures']))
-                                    $features1[] = $property1['interiorFeatures'];
-                                if (!empty($property1['exteriorFeatures']))
-                                    $features1[] = $property1['exteriorFeatures'];
-                                if (!empty($property1['specialFeatures']))
-                                    $features1[] = $property1['specialFeatures'];
-                                if (!empty($property1['nearbyAmenities']))
-                                    $features1[] = $property1['nearbyAmenities'];
-                                if (!empty($property1['accessibility']))
-                                    $features1[] = $property1['accessibility'];
+                                    $features1 = [];
+                                    if (!empty($property1['interiorFeatures']))
+                                        $features1[] = $property1['interiorFeatures'];
+                                    if (!empty($property1['exteriorFeatures']))
+                                        $features1[] = $property1['exteriorFeatures'];
+                                    if (!empty($property1['specialFeatures']))
+                                        $features1[] = $property1['specialFeatures'];
+                                    if (!empty($property1['nearbyAmenities']))
+                                        $features1[] = $property1['nearbyAmenities'];
+                                    if (!empty($property1['accessibility']))
+                                        $features1[] = $property1['accessibility'];
 
-                                echo !empty($features1) ? '<li>' . implode('</li><li>', $features1) . '</li>' : 'N/A';
-                                ?>
+                                    echo !empty($features1) ? '<li>' . implode('</li><li>', $features1) . '</li>' : 'N/A';
+                                    ?>
                                 </ul>
                             </td>
                             <td>
                                 <ul class="text-start">
                                     <?php
-                                $features2 = [];
-                                if (!empty($property2['interiorFeatures']))
-                                    $features2[] = $property2['interiorFeatures'];
-                                if (!empty($property2['exteriorFeatures']))
-                                    $features2[] = $property2['exteriorFeatures'];
-                                if (!empty($property2['specialFeatures']))
-                                    $features2[] = $property2['specialFeatures'];
-                                if (!empty($property2['nearbyAmenities']))
-                                    $features2[] = $property2['nearbyAmenities'];
-                                if (!empty($property2['accessibility']))
-                                    $features2[] = $property2['accessibility'];
+                                    $features2 = [];
+                                    if (!empty($property2['interiorFeatures']))
+                                        $features2[] = $property2['interiorFeatures'];
+                                    if (!empty($property2['exteriorFeatures']))
+                                        $features2[] = $property2['exteriorFeatures'];
+                                    if (!empty($property2['specialFeatures']))
+                                        $features2[] = $property2['specialFeatures'];
+                                    if (!empty($property2['nearbyAmenities']))
+                                        $features2[] = $property2['nearbyAmenities'];
+                                    if (!empty($property2['accessibility']))
+                                        $features2[] = $property2['accessibility'];
 
-                                echo !empty($features2) ? '<li>' . implode('</li><li>', $features2) . '</li>' : 'N/A';
-                                ?>
+                                    echo !empty($features2) ? '<li>' . implode('</li><li>', $features2) . '</li>' : 'N/A';
+                                    ?>
                                 </ul>
                             </td>
                         </tr>

@@ -1,8 +1,8 @@
 <?php include '../../globalvar/globalvariable.php'; ?>
-<?php include  $connToPan . 'config.php'; ?>
-<?php include  $mphpToInc . 'header.php'; ?>
-<?php include  $funToPan . 'function.php'; ?>
-<?php include  $mphpToInc . 'navbar.php'; ?>
+<?php include $connToPan . 'config.php'; ?>
+<?php include $mphpToInc . 'header.php'; ?>
+<?php include $funToPan . 'function.php'; ?>
+<?php include $mphpToInc . 'navbar.php'; ?>
 
 
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_3.jpg')">
@@ -39,7 +39,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="mb-4 text-center">Select Options</h3>
-                    <form action="search_property.php" method="POST">
+                    <!-- <form action="search_property.php" method="POST">
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label for="select1" class="form-label fw-bold">Search By</label>
@@ -64,6 +64,27 @@
                                     <option value="" selected>Select an option</option>
                                 </select>
                             </div>
+                        </div> -->
+                    <!-- </form> -->
+
+                    <form method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="select1" class="form-label fw-bold">City</label>
+                                <select class="form-select" id="select1" name="city" required>
+                                    <option value="" selected>Select a City</option>
+                                    <?php
+                                    include 'db_connection.php'; // Ensure database connection
+                                    $query = "SELECT DISTINCT address FROM tbl_property_listing ORDER BY address ASC";
+                                    $result = mysqli_query($conn, $query);
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo '<option value="' . htmlspecialchars($row['address']) . '">' . htmlspecialchars($row['address']) . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="d-flex justify-content-center mt-4">
@@ -72,191 +93,269 @@
                     </form>
                 </div>
             </div>
+
+
+            <?php
+            if (isset($_POST['city']) && !empty($_POST['city'])) {
+                $selectedCity = $_POST['city'];
+
+                // Fetch properties related to selected city
+                $query = "SELECT * FROM tbl_property_listing WHERE address = ?";
+                $stmt = mysqli_prepare($conn, $query);
+                mysqli_stmt_bind_param($stmt, "s", $selectedCity);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $properties = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            } else {
+                $properties = [];
+            }
+            ?>
+            <div class="col-12">
+                <div class="property-slider-wrap">
+                    <div class="property-slider">
+                        <?php
+                        if (!empty($properties)) {
+                            foreach ($properties as $row) {
+                                $p_id = $row['p_id'];
+                                ?>
+                                <div class="property-item">
+                                    <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="img">
+                                        <?php
+                                        $where2 = 'property_id = ?';
+                                        $values2 = [$p_id];
+                                        $data2 = fetchData($conn, 'tbl_property_images', '*', 'property_id = ?', [$p_id]);
+                                        if (!empty($data2)) {
+                                            echo '<img src="' . $propImagesToUpan . $data2[0]['image_name'] . '" alt="Image" class="img-fluid" />';
+                                        }
+                                        ?>
+                                    </a>
+
+                                    <div class="property-content">
+                                        <div class="price mb-2">
+                                            <span><i class="fa-solid fa-indian-rupee-sign fa-bounce"></i>
+                                                <?php echo $row['price']; ?></span>
+                                        </div>
+                                        <div>
+                                            <span class="d-block mb-2 text-black-50"><?php echo $row['address']; ?></span>
+                                            <span class="city d-block"><?php echo $row['propertyType']; ?></span>
+                                            <span class="d-block mb-3"> Status : <?php echo $row['req_status']; ?></span>
+
+                                            <div class="specs d-flex mb-4">
+                                                <span class="d-block d-flex align-items-center me-3">
+                                                    <span class="icon-bed me-2"></span>
+                                                    <span class="caption"><?php echo $row['bedrooms']; ?></span>
+                                                </span>
+                                                <span class="d-block d-flex align-items-center">
+                                                    <span class="icon-bath me-2"></span>
+                                                    <span class="caption"><?php echo $row['bathrooms']; ?></span>
+                                                </span>
+                                            </div>
+
+                                            <a href="property-single.php?p_id=<?php echo $p_id; ?>"
+                                                class="btn btn-primary py-2 px-3" title="See the Details of the Property">See
+                                                details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "<p class='text-center text-muted'>No properties found for the selected city.</p>";
+                        }
+                        ?>
+                    </div>
+
+                    <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
+                        <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
+                        <span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('select1').addEventListener('change', function() {
-        const select1Value = this.value;
-        const select2 = document.getElementById('select2');
-        const select3 = document.getElementById('select3');
-        const s2 = document.getElementById("s2");
-        const s3 = document.getElementById("s3");
-        const s2l = document.getElementById("s2l");
-        const s3l = document.getElementById("s3l");
+    // document.getElementById('select1').addEventListener('change', function () {
+    //     const select1Value = this.value;
+    //     const select2 = document.getElementById('select2');
+    //     const select3 = document.getElementById('select3');
+    //     const s2 = document.getElementById("s2");
+    //     const s3 = document.getElementById("s3");
+    //     const s2l = document.getElementById("s2l");
+    //     const s3l = document.getElementById("s3l");
 
-        // Hiding the select tags initially
-        s2.classList.add("d-none");
-        s3.classList.add("d-none");
+    //     // Hiding the select tags initially
+    //     s2.classList.add("d-none");
+    //     s3.classList.add("d-none");
 
-        // Clear previous selections
-        select2.innerHTML = '<option value="" selected>Select an option</option>';
-        select3.innerHTML = '<option value="" selected>Select an option</option>';
+    //     // Clear previous selections
+    //     select2.innerHTML = '<option value="" selected>Select an option</option>';
+    //     select3.innerHTML = '<option value="" selected>Select an option</option>';
 
-        // Remove the required attribute from select2 and select3 initially
-        select2.removeAttribute("required");
-        select3.removeAttribute("required");
+    //     // Remove the required attribute from select2 and select3 initially
+    //     select2.removeAttribute("required");
+    //     select3.removeAttribute("required");
 
-        if (select1Value === 'price_range') {
-            s2.classList.remove("d-none");
-            s2l.innerText = "Select Price Range";
+    //     if (select1Value === 'price_range') {
+    //         s2.classList.remove("d-none");
+    //         s2l.innerText = "Select Price Range";
 
-            const priceRange = [{
-                    pname: "10lacs",
-                    pvalue: "100000"
-                },
-                {
-                    pname: "20lacs",
-                    pvalue: "200000"
-                },
-                {
-                    pname: "30lacs",
-                    pvalue: "300000"
-                },
-                {
-                    pname: "40lacs",
-                    pvalue: "400000"
-                },
-                {
-                    pname: "50lacs",
-                    pvalue: "500000"
-                },
-                {
-                    pname: "60lacs",
-                    pvalue: "600000"
-                },
-                {
-                    pname: "70lacs",
-                    pvalue: "700000"
-                },
-                {
-                    pname: "80lacs",
-                    pvalue: "800000"
-                },
-                {
-                    pname: "90lacs",
-                    pvalue: "900000"
-                },
-                {
-                    pname: "1cr",
-                    pvalue: "10000000"
-                },
-                {
-                    pname: "2cr",
-                    pvalue: "20000000"
-                }
-            ];
+    //         const priceRange = [{
+    //             pname: "10lacs",
+    //             pvalue: "100000"
+    //         },
+    //         {
+    //             pname: "20lacs",
+    //             pvalue: "200000"
+    //         },
+    //         {
+    //             pname: "30lacs",
+    //             pvalue: "300000"
+    //         },
+    //         {
+    //             pname: "40lacs",
+    //             pvalue: "400000"
+    //         },
+    //         {
+    //             pname: "50lacs",
+    //             pvalue: "500000"
+    //         },
+    //         {
+    //             pname: "60lacs",
+    //             pvalue: "600000"
+    //         },
+    //         {
+    //             pname: "70lacs",
+    //             pvalue: "700000"
+    //         },
+    //         {
+    //             pname: "80lacs",
+    //             pvalue: "800000"
+    //         },
+    //         {
+    //             pname: "90lacs",
+    //             pvalue: "900000"
+    //         },
+    //         {
+    //             pname: "1cr",
+    //             pvalue: "10000000"
+    //         },
+    //         {
+    //             pname: "2cr",
+    //             pvalue: "20000000"
+    //         }
+    //         ];
 
-            priceRange.forEach(function(item) {
-                const option = document.createElement('option');
-                option.value = item.pvalue;
-                option.textContent = item.pname;
-                select2.appendChild(option);
-            });
+    //         priceRange.forEach(function (item) {
+    //             const option = document.createElement('option');
+    //             option.value = item.pvalue;
+    //             option.textContent = item.pname;
+    //             select2.appendChild(option);
+    //         });
 
-            // Make select2 required when price_range is selected
-            select2.setAttribute("required", "required");
+    //         // Make select2 required when price_range is selected
+    //         select2.setAttribute("required", "required");
 
-        } else if (select1Value === 'location') {
-            s2.classList.remove("d-none");
-            s2l.innerText = "Select State";
+    //     } else if (select1Value === 'location') {
+    //         s2.classList.remove("d-none");
+    //         s2l.innerText = "Select State";
 
-            fetch('../../api/get_states.php')
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(state => {
-                        const option = document.createElement('option');
-                        option.value = state.state_id;
-                        option.textContent = state.state_name;
-                        select2.appendChild(option);
-                    });
-                });
+    //         fetch('../../api/get_states.php')
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 data.forEach(state => {
+    //                     const option = document.createElement('option');
+    //                     option.value = state.state_id;
+    //                     option.textContent = state.state_name;
+    //                     select2.appendChild(option);
+    //                 });
+    //             });
 
-            // Make select2 required when location is selected
-            select2.setAttribute("required", "required");
+    //         // Make select2 required when location is selected
+    //         select2.setAttribute("required", "required");
 
-        } else if (select1Value === 'property_type') {
-            s2.classList.remove("d-none");
-            s2l.innerText = "Select Property Type";
+    //     } else if (select1Value === 'property_type') {
+    //         s2.classList.remove("d-none");
+    //         s2l.innerText = "Select Property Type";
 
-            const propertyType = ['apartment', 'house', 'commercial', 'land', 'pg'];
-            propertyType.forEach(function(type) {
-                const option = document.createElement('option');
-                option.value = type;
-                option.textContent = type;
-                select2.appendChild(option);
-            });
+    //         const propertyType = ['apartment', 'house', 'commercial', 'land', 'pg'];
+    //         propertyType.forEach(function (type) {
+    //             const option = document.createElement('option');
+    //             option.value = type;
+    //             option.textContent = type;
+    //             select2.appendChild(option);
+    //         });
 
-            // Make select2 required when property_type is selected
-            select2.setAttribute("required", "required");
+    //         // Make select2 required when property_type is selected
+    //         select2.setAttribute("required", "required");
 
-        } else if (select1Value === 'listing_type') {
-            s2.classList.remove("d-none");
-            s2l.innerText = "Select Listing Type";
+    //     } else if (select1Value === 'listing_type') {
+    //         s2.classList.remove("d-none");
+    //         s2l.innerText = "Select Listing Type";
 
-            const listingType = ['sell', 'rent'];
-            listingType.forEach(function(type) {
-                const option = document.createElement('option');
-                option.value = type;
-                option.textContent = type;
-                select2.appendChild(option);
-            });
+    //         const listingType = ['sell', 'rent'];
+    //         listingType.forEach(function (type) {
+    //             const option = document.createElement('option');
+    //             option.value = type;
+    //             option.textContent = type;
+    //             select2.appendChild(option);
+    //         });
 
-            // Make select2 required when listing_type is selected
-            select2.setAttribute("required", "required");
-        }
-    });
+    //         // Make select2 required when listing_type is selected
+    //         select2.setAttribute("required", "required");
+    //     }
+    // });
 
-    document.getElementById('select2').addEventListener('change', function() {
-        const select1Value = document.getElementById('select1').value;
-        const select2Value = this.value;
-        const select3 = document.getElementById('select3');
-        const s3 = document.getElementById("s3");
-        const s3l = document.getElementById("s3l");
+    // document.getElementById('select2').addEventListener('change', function () {
+    //     const select1Value = document.getElementById('select1').value;
+    //     const select2Value = this.value;
+    //     const select3 = document.getElementById('select3');
+    //     const s3 = document.getElementById("s3");
+    //     const s3l = document.getElementById("s3l");
 
-        // Clear previous selections
-        select3.innerHTML = '<option value="" selected>Select an option</option>';
+    //     // Clear previous selections
+    //     select3.innerHTML = '<option value="" selected>Select an option</option>';
 
-        // Remove the required attribute from select3 initially
-        select3.removeAttribute("required");
+    //     // Remove the required attribute from select3 initially
+    //     select3.removeAttribute("required");
 
-        if (select1Value === 'location') {
-            s3.classList.remove("d-none");
-            s3l.innerText = "Select District";
+    //     if (select1Value === 'location') {
+    //         s3.classList.remove("d-none");
+    //         s3l.innerText = "Select District";
 
-            // Fetch districts based on state
-            fetch(`../../api/get_districts.php?state_id=${select2Value}`)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(district => {
-                        const option = document.createElement('option');
-                        option.value = district.district_id;
-                        option.textContent = district.district_name;
-                        select3.appendChild(option);
-                    });
-                });
+    //         // Fetch districts based on state
+    //         fetch(`../../api/get_districts.php?state_id=${select2Value}`)
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 data.forEach(district => {
+    //                     const option = document.createElement('option');
+    //                     option.value = district.district_id;
+    //                     option.textContent = district.district_name;
+    //                     select3.appendChild(option);
+    //                 });
+    //             });
 
-            // Make select3 required when district is selected
-            select3.setAttribute("required", "required");
-        }
-    });
+    //         // Make select3 required when district is selected
+    //         select3.setAttribute("required", "required");
+    //     }
+    // });
 
     // Validation on form submission to ensure select2 and select3 have a value if required
-    document.querySelector('form').addEventListener('submit', function(event) {
-        const select2 = document.getElementById('select2');
-        const select3 = document.getElementById('select3');
+    // document.querySelector('form').addEventListener('submit', function (event) {
+    //     const select2 = document.getElementById('select2');
+    //     const select3 = document.getElementById('select3');
 
-        if (!select2.classList.contains('d-none') && select2.hasAttribute('required') && select2.value === '') {
-            alert('Please fill out the required fields.');
-            event.preventDefault(); // Prevent form submission
-        }
+    //     if (!select2.classList.contains('d-none') && select2.hasAttribute('required') && select2.value === '') {
+    //         alert('Please fill out the required fields.');
+    //         event.preventDefault(); // Prevent form submission
+    //     }
 
-        if (!select3.classList.contains('d-none') && select3.hasAttribute('required') && select3.value === '') {
-            alert('Please fill out the required fields.');
-            event.preventDefault(); // Prevent form submission
-        }
-    });
+    //     if (!select3.classList.contains('d-none') && select3.hasAttribute('required') && select3.value === '') {
+    //         alert('Please fill out the required fields.');
+    //         event.preventDefault(); // Prevent form submission
+    //     }
+    // });
 
     // document.getElementById('select3').addEventListener('change', function() {
     //     const districtId = this.value;
@@ -271,6 +370,6 @@
 
 
 
-<?php include  $mphpToInc . 'footer.php'; ?>
-<?php include  $mphpToInc . 'loader.php'; ?>
-<?php include  $mphpToInc . 'endlinks.php'; ?>
+<?php include $mphpToInc . 'footer.php'; ?>
+<?php include $mphpToInc . 'loader.php'; ?>
+<?php include $mphpToInc . 'endlinks.php'; ?>
