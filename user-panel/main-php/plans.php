@@ -277,6 +277,10 @@
 
 <?php
 if (isset($_POST['pay'])) {
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
+    // die();
 
     $cardNumber = $_POST['cardNumber'];
     $expiryDate = $_POST['expiryDate'];

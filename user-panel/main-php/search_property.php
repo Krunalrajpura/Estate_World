@@ -6,24 +6,24 @@
 <?php $city = isset($_GET['city']) ? $_GET['city'] : ''; ?>
 
 <style>
-    .property-card {
-        border-radius: 10px;
-        overflow: hidden;
-        transition: transform 0.3s ease-in-out;
-    }
+.property-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
 
-    .property-card:hover {
-        transform: translateY(-5px);
-    }
+.property-card:hover {
+    transform: translateY(-5px);
+}
 
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-    }
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
 
-    .price {
-        font-size: 1.2rem;
-    }
+.price {
+    font-size: 1.2rem;
+}
 </style>
 
 <!-- <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_3.jpg')">
@@ -109,41 +109,40 @@
                 foreach ($properties as $row) {
                     $p_id = $row['p_id'];
                     ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="card property-card shadow">
-                            <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="img">
-                                <?php
+            <div class="col-md-4 mb-4">
+                <div class="card property-card shadow">
+                    <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="img">
+                        <?php
                                 $data2 = fetchData($conn, 'tbl_property_images', '*', 'property_id = ?', [$p_id]);
                                 if (!empty($data2)) {
                                     echo '<img src="' . $propImagesToUpan . $data2[0]['image_name'] . '" alt="Property Image" class="card-img-top img-fluid">';
                                 }
                                 ?>
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><?php echo $row['propertyType']; ?></h5>
+                        <p class="card-text text-muted">
+                            <i class="fa-solid fa-location-dot"></i> <?php echo $row['address']; ?>
+                        </p>
+                        <p class="price text-success fw-bold">
+                            <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo number_format($row['price']); ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between text-secondary">
+                            <span><i class="fa-solid fa-bed"></i> <?php echo $row['bedrooms']; ?> Beds</span>
+                            <span><i class="fa-solid fa-bath"></i> <?php echo $row['bathrooms']; ?> Baths</span>
+                        </div>
+
+                        <div class="mt-3 text-center">
+                            <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="btn btn-primary w-100">
+                                See Details
                             </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title text-primary"><?php echo $row['propertyType']; ?></h5>
-                                <p class="card-text text-muted">
-                                    <i class="fa-solid fa-location-dot"></i> <?php echo $row['address']; ?>
-                                </p>
-                                <p class="price text-success fw-bold">
-                                    <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo number_format($row['price']); ?>
-                                </p>
-
-                                <div class="d-flex justify-content-between text-secondary">
-                                    <span><i class="fa-solid fa-bed"></i> <?php echo $row['bedrooms']; ?> Beds</span>
-                                    <span><i class="fa-solid fa-bath"></i> <?php echo $row['bathrooms']; ?> Baths</span>
-                                </div>
-
-                                <div class="mt-3 text-center">
-                                    <a href="property-single.php?p_id=<?php echo $p_id; ?>"
-                                        class="btn btn-outline-primary w-100">
-                                        See Details
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <?php
+                </div>
+            </div>
+            <?php
                 }
             } else if (empty($properties) && isset($_POST['city'])) {
                 echo "<div class='col-12 text-center text-muted'>No properties found for the selected city.</div>";
@@ -160,54 +159,54 @@
             $result = mysqli_stmt_get_result($stmt);
             $properties = mysqli_fetch_all($result, MYSQLI_ASSOC);
             ?>
-            <div class="row mt-5">
-                <?php
+        <div class="row mt-5">
+            <?php
                 if (!empty($properties)) {
                     foreach ($properties as $row) {
                         $p_id = $row['p_id'];
                         ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card property-card shadow">
-                                <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="img">
-                                    <?php
+            <div class="col-md-4 mb-4">
+                <div class="card property-card shadow">
+                    <a href="property-single.php?p_id=<?php echo $p_id; ?>" class="img">
+                        <?php
                                     $data2 = fetchData($conn, 'tbl_property_images', '*', 'property_id = ?', [$p_id]);
                                     if (!empty($data2)) {
                                         echo '<img src="' . $propImagesToUpan . $data2[0]['image_name'] . '" alt="Property Image" class="card-img-top img-fluid">';
                                     }
                                     ?>
-                                </a>
+                    </a>
 
-                                <div class="card-body">
-                                    <h5 class="card-title text-primary"><?php echo $row['propertyType']; ?></h5>
-                                    <p class="card-text text-muted">
-                                        <i class="fa-solid fa-location-dot"></i> <?php echo $row['address']; ?>
-                                    </p>
-                                    <p class="price text-success fw-bold">
-                                        <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo number_format($row['price']); ?>
-                                    </p>
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><?php echo $row['propertyType']; ?></h5>
+                        <p class="card-text text-muted">
+                            <i class="fa-solid fa-location-dot"></i> <?php echo $row['address']; ?>
+                        </p>
+                        <p class="price text-success fw-bold">
+                            <i class="fa-solid fa-indian-rupee-sign"></i> <?php echo number_format($row['price']); ?>
+                        </p>
 
-                                    <div class="d-flex justify-content-between text-secondary">
-                                        <span><i class="fa-solid fa-bed"></i> <?php echo $row['bedrooms']; ?> Beds</span>
-                                        <span><i class="fa-solid fa-bath"></i> <?php echo $row['bathrooms']; ?> Baths</span>
-                                    </div>
-
-                                    <div class="mt-3 text-center">
-                                        <a href="property-single.php?p_id=<?php echo $p_id; ?>"
-                                            class="btn btn-outline-primary w-100">
-                                            See Details
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-between text-secondary">
+                            <span><i class="fa-solid fa-bed"></i> <?php echo $row['bedrooms']; ?> Beds</span>
+                            <span><i class="fa-solid fa-bath"></i> <?php echo $row['bathrooms']; ?> Baths</span>
                         </div>
-                        <?php
+
+                        <div class="mt-3 text-center">
+                            <a href="property-single.php?p_id=<?php echo $p_id; ?>"
+                                class="btn btn-outline-primary w-100">
+                                See Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
                     }
                 } else if (isset($_GET['city'])) {
                     echo "<div class='col-12 text-center text-muted'>No properties found for the selected city.</div>";
                 }
                 ?>
-            </div>
-            <?php
+        </div>
+        <?php
         }
         ?>
     </div>
@@ -242,196 +241,196 @@
 <!-- </form> -->
 
 <script>
-    // document.getElementById('select1').addEventListener('change', function () {
-    //     const select1Value = this.value;
-    //     const select2 = document.getElementById('select2');
-    //     const select3 = document.getElementById('select3');
-    //     const s2 = document.getElementById("s2");
-    //     const s3 = document.getElementById("s3");
-    //     const s2l = document.getElementById("s2l");
-    //     const s3l = document.getElementById("s3l");
+// document.getElementById('select1').addEventListener('change', function () {
+//     const select1Value = this.value;
+//     const select2 = document.getElementById('select2');
+//     const select3 = document.getElementById('select3');
+//     const s2 = document.getElementById("s2");
+//     const s3 = document.getElementById("s3");
+//     const s2l = document.getElementById("s2l");
+//     const s3l = document.getElementById("s3l");
 
-    //     // Hiding the select tags initially
-    //     s2.classList.add("d-none");
-    //     s3.classList.add("d-none");
+//     // Hiding the select tags initially
+//     s2.classList.add("d-none");
+//     s3.classList.add("d-none");
 
-    //     // Clear previous selections
-    //     select2.innerHTML = '<option value="" selected>Select an option</option>';
-    //     select3.innerHTML = '<option value="" selected>Select an option</option>';
+//     // Clear previous selections
+//     select2.innerHTML = '<option value="" selected>Select an option</option>';
+//     select3.innerHTML = '<option value="" selected>Select an option</option>';
 
-    //     // Remove the required attribute from select2 and select3 initially
-    //     select2.removeAttribute("required");
-    //     select3.removeAttribute("required");
+//     // Remove the required attribute from select2 and select3 initially
+//     select2.removeAttribute("required");
+//     select3.removeAttribute("required");
 
-    //     if (select1Value === 'price_range') {
-    //         s2.classList.remove("d-none");
-    //         s2l.innerText = "Select Price Range";
+//     if (select1Value === 'price_range') {
+//         s2.classList.remove("d-none");
+//         s2l.innerText = "Select Price Range";
 
-    //         const priceRange = [{
-    //             pname: "10lacs",
-    //             pvalue: "100000"
-    //         },
-    //         {
-    //             pname: "20lacs",
-    //             pvalue: "200000"
-    //         },
-    //         {
-    //             pname: "30lacs",
-    //             pvalue: "300000"
-    //         },
-    //         {
-    //             pname: "40lacs",
-    //             pvalue: "400000"
-    //         },
-    //         {
-    //             pname: "50lacs",
-    //             pvalue: "500000"
-    //         },
-    //         {
-    //             pname: "60lacs",
-    //             pvalue: "600000"
-    //         },
-    //         {
-    //             pname: "70lacs",
-    //             pvalue: "700000"
-    //         },
-    //         {
-    //             pname: "80lacs",
-    //             pvalue: "800000"
-    //         },
-    //         {
-    //             pname: "90lacs",
-    //             pvalue: "900000"
-    //         },
-    //         {
-    //             pname: "1cr",
-    //             pvalue: "10000000"
-    //         },
-    //         {
-    //             pname: "2cr",
-    //             pvalue: "20000000"
-    //         }
-    //         ];
+//         const priceRange = [{
+//             pname: "10lacs",
+//             pvalue: "100000"
+//         },
+//         {
+//             pname: "20lacs",
+//             pvalue: "200000"
+//         },
+//         {
+//             pname: "30lacs",
+//             pvalue: "300000"
+//         },
+//         {
+//             pname: "40lacs",
+//             pvalue: "400000"
+//         },
+//         {
+//             pname: "50lacs",
+//             pvalue: "500000"
+//         },
+//         {
+//             pname: "60lacs",
+//             pvalue: "600000"
+//         },
+//         {
+//             pname: "70lacs",
+//             pvalue: "700000"
+//         },
+//         {
+//             pname: "80lacs",
+//             pvalue: "800000"
+//         },
+//         {
+//             pname: "90lacs",
+//             pvalue: "900000"
+//         },
+//         {
+//             pname: "1cr",
+//             pvalue: "10000000"
+//         },
+//         {
+//             pname: "2cr",
+//             pvalue: "20000000"
+//         }
+//         ];
 
-    //         priceRange.forEach(function (item) {
-    //             const option = document.createElement('option');
-    //             option.value = item.pvalue;
-    //             option.textContent = item.pname;
-    //             select2.appendChild(option);
-    //         });
+//         priceRange.forEach(function (item) {
+//             const option = document.createElement('option');
+//             option.value = item.pvalue;
+//             option.textContent = item.pname;
+//             select2.appendChild(option);
+//         });
 
-    //         // Make select2 required when price_range is selected
-    //         select2.setAttribute("required", "required");
+//         // Make select2 required when price_range is selected
+//         select2.setAttribute("required", "required");
 
-    //     } else if (select1Value === 'location') {
-    //         s2.classList.remove("d-none");
-    //         s2l.innerText = "Select State";
+//     } else if (select1Value === 'location') {
+//         s2.classList.remove("d-none");
+//         s2l.innerText = "Select State";
 
-    //         fetch('../../api/get_states.php')
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 data.forEach(state => {
-    //                     const option = document.createElement('option');
-    //                     option.value = state.state_id;
-    //                     option.textContent = state.state_name;
-    //                     select2.appendChild(option);
-    //                 });
-    //             });
+//         fetch('../../api/get_states.php')
+//             .then(response => response.json())
+//             .then(data => {
+//                 data.forEach(state => {
+//                     const option = document.createElement('option');
+//                     option.value = state.state_id;
+//                     option.textContent = state.state_name;
+//                     select2.appendChild(option);
+//                 });
+//             });
 
-    //         // Make select2 required when location is selected
-    //         select2.setAttribute("required", "required");
+//         // Make select2 required when location is selected
+//         select2.setAttribute("required", "required");
 
-    //     } else if (select1Value === 'property_type') {
-    //         s2.classList.remove("d-none");
-    //         s2l.innerText = "Select Property Type";
+//     } else if (select1Value === 'property_type') {
+//         s2.classList.remove("d-none");
+//         s2l.innerText = "Select Property Type";
 
-    //         const propertyType = ['apartment', 'house', 'commercial', 'land', 'pg'];
-    //         propertyType.forEach(function (type) {
-    //             const option = document.createElement('option');
-    //             option.value = type;
-    //             option.textContent = type;
-    //             select2.appendChild(option);
-    //         });
+//         const propertyType = ['apartment', 'house', 'commercial', 'land', 'pg'];
+//         propertyType.forEach(function (type) {
+//             const option = document.createElement('option');
+//             option.value = type;
+//             option.textContent = type;
+//             select2.appendChild(option);
+//         });
 
-    //         // Make select2 required when property_type is selected
-    //         select2.setAttribute("required", "required");
+//         // Make select2 required when property_type is selected
+//         select2.setAttribute("required", "required");
 
-    //     } else if (select1Value === 'listing_type') {
-    //         s2.classList.remove("d-none");
-    //         s2l.innerText = "Select Listing Type";
+//     } else if (select1Value === 'listing_type') {
+//         s2.classList.remove("d-none");
+//         s2l.innerText = "Select Listing Type";
 
-    //         const listingType = ['sell', 'rent'];
-    //         listingType.forEach(function (type) {
-    //             const option = document.createElement('option');
-    //             option.value = type;
-    //             option.textContent = type;
-    //             select2.appendChild(option);
-    //         });
+//         const listingType = ['sell', 'rent'];
+//         listingType.forEach(function (type) {
+//             const option = document.createElement('option');
+//             option.value = type;
+//             option.textContent = type;
+//             select2.appendChild(option);
+//         });
 
-    //         // Make select2 required when listing_type is selected
-    //         select2.setAttribute("required", "required");
-    //     }
-    // });
+//         // Make select2 required when listing_type is selected
+//         select2.setAttribute("required", "required");
+//     }
+// });
 
-    // document.getElementById('select2').addEventListener('change', function () {
-    //     const select1Value = document.getElementById('select1').value;
-    //     const select2Value = this.value;
-    //     const select3 = document.getElementById('select3');
-    //     const s3 = document.getElementById("s3");
-    //     const s3l = document.getElementById("s3l");
+// document.getElementById('select2').addEventListener('change', function () {
+//     const select1Value = document.getElementById('select1').value;
+//     const select2Value = this.value;
+//     const select3 = document.getElementById('select3');
+//     const s3 = document.getElementById("s3");
+//     const s3l = document.getElementById("s3l");
 
-    //     // Clear previous selections
-    //     select3.innerHTML = '<option value="" selected>Select an option</option>';
+//     // Clear previous selections
+//     select3.innerHTML = '<option value="" selected>Select an option</option>';
 
-    //     // Remove the required attribute from select3 initially
-    //     select3.removeAttribute("required");
+//     // Remove the required attribute from select3 initially
+//     select3.removeAttribute("required");
 
-    //     if (select1Value === 'location') {
-    //         s3.classList.remove("d-none");
-    //         s3l.innerText = "Select District";
+//     if (select1Value === 'location') {
+//         s3.classList.remove("d-none");
+//         s3l.innerText = "Select District";
 
-    //         // Fetch districts based on state
-    //         fetch(`../../api/get_districts.php?state_id=${select2Value}`)
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 data.forEach(district => {
-    //                     const option = document.createElement('option');
-    //                     option.value = district.district_id;
-    //                     option.textContent = district.district_name;
-    //                     select3.appendChild(option);
-    //                 });
-    //             });
+//         // Fetch districts based on state
+//         fetch(`../../api/get_districts.php?state_id=${select2Value}`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 data.forEach(district => {
+//                     const option = document.createElement('option');
+//                     option.value = district.district_id;
+//                     option.textContent = district.district_name;
+//                     select3.appendChild(option);
+//                 });
+//             });
 
-    //         // Make select3 required when district is selected
-    //         select3.setAttribute("required", "required");
-    //     }
-    // });
+//         // Make select3 required when district is selected
+//         select3.setAttribute("required", "required");
+//     }
+// });
 
-    // Validation on form submission to ensure select2 and select3 have a value if required
-    // document.querySelector('form').addEventListener('submit', function (event) {
-    //     const select2 = document.getElementById('select2');
-    //     const select3 = document.getElementById('select3');
+// Validation on form submission to ensure select2 and select3 have a value if required
+// document.querySelector('form').addEventListener('submit', function (event) {
+//     const select2 = document.getElementById('select2');
+//     const select3 = document.getElementById('select3');
 
-    //     if (!select2.classList.contains('d-none') && select2.hasAttribute('required') && select2.value === '') {
-    //         alert('Please fill out the required fields.');
-    //         event.preventDefault(); // Prevent form submission
-    //     }
+//     if (!select2.classList.contains('d-none') && select2.hasAttribute('required') && select2.value === '') {
+//         alert('Please fill out the required fields.');
+//         event.preventDefault(); // Prevent form submission
+//     }
 
-    //     if (!select3.classList.contains('d-none') && select3.hasAttribute('required') && select3.value === '') {
-    //         alert('Please fill out the required fields.');
-    //         event.preventDefault(); // Prevent form submission
-    //     }
-    // });
+//     if (!select3.classList.contains('d-none') && select3.hasAttribute('required') && select3.value === '') {
+//         alert('Please fill out the required fields.');
+//         event.preventDefault(); // Prevent form submission
+//     }
+// });
 
-    // document.getElementById('select3').addEventListener('change', function() {
-    //     const districtId = this.value;
+// document.getElementById('select3').addEventListener('change', function() {
+//     const districtId = this.value;
 
-    //     fetch(`get_details.php?district_id=${districtId}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             // Process data
-    //         });
-    // });
+//     fetch(`get_details.php?district_id=${districtId}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             // Process data
+//         });
+// });
 </script>
 
 
