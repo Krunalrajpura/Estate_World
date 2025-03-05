@@ -64,8 +64,8 @@
                                         <td><?php echo $row['bedrooms']; ?></td>
                                         <td><?php echo $row['bathrooms']; ?></td>
                                         <td class="text-center">
-                                            <input type="checkbox" class="compare-checkbox"
-                                                value="<?php echo $p_id; ?>" onclick="limitSelection()">
+                                            <input type="checkbox" class="compare-checkbox" value="<?php echo $p_id; ?>"
+                                                onclick="limitSelection()">
                                         </td>
                                     </tr>
                                     <?php
@@ -92,27 +92,27 @@
 
 <!-- JavaScript to limit checkbox selection -->
 <script>
-  function limitSelection() {
-    let checkboxes = document.querySelectorAll('.compare-checkbox:checked');
-    let compareBtn = document.getElementById('compareBtn');
+    function limitSelection() {
+        let checkboxes = document.querySelectorAll('.compare-checkbox:checked');
+        let compareBtn = document.getElementById('compareBtn');
 
-    if (checkboxes.length > 2) {
-        showWarningAlert("You can only compare up to 2 properties.");
-        event.target.checked = false; // Uncheck the last selected checkbox
+        if (checkboxes.length > 2) {
+            showWarningAlert("You can only compare up to 2 properties.");
+            event.target.checked = false; // Uncheck the last selected checkbox
+        }
+
+        compareBtn.disabled = checkboxes.length !== 2; // Enable button only if exactly 2 properties are selected
     }
 
-    compareBtn.disabled = checkboxes.length !== 2; // Enable button only if exactly 2 properties are selected
-}
+    document.getElementById('compareBtn').addEventListener('click', function () {
+        let selectedCheckboxes = document.querySelectorAll('.compare-checkbox:checked');
 
-document.getElementById('compareBtn').addEventListener('click', function () {
-    let selectedCheckboxes = document.querySelectorAll('.compare-checkbox:checked');
-
-    if (selectedCheckboxes.length === 2) {
-        let ids = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-        window.location.href = `compare-property.php?p_id1=${ids[0]}&p_id2=${ids[1]}`; // Redirect to the correct comparison page
-    }
-});
-
+        if (selectedCheckboxes.length === 2) {
+            let ids = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            window.location.href =
+                `compare-property.php?p_id1=${ids[0]}&p_id2=${ids[1]}`; // Redirect to the correct comparison page
+        }
+    });
 </script>
 
 <?php include $mphpToInc . 'footer.php'; ?>

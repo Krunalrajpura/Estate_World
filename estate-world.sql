@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2024 at 07:25 AM
+-- Generation Time: Mar 05, 2025 at 06:49 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +66,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`c_id`, `c_name`, `c_email`, `c_number`, `c_pass`, `created_at`, `updated_at`) VALUES
-(1, 'Krunal Rajpura', 'krunal@gmail.com', '9090909090', '$2y$10$Y7FYNqnd1IVPMLYUhvdYzesfue4kgBomfyfTeFnFPAShf1IkCUq7S', '2024-07-31 15:45:52', '2024-07-31 15:45:52'),
+(1, 'Krunal Rajpura', 'krunal@gmail.com', '9090909090', '$2y$10$6.rjjubvF0mC/PQQIdlvw.rMZXKhAEYn49CGcrve/vxlsOfE9dptK', '2024-07-31 15:45:52', '2025-01-20 07:26:22'),
 (2, 'Salmaan Khan', 'salman@gmail.com', '9090909090', '$2y$10$6.rjjubvF0mC/PQQIdlvw.rMZXKhAEYn49CGcrve/vxlsOfE9dptK', '2024-08-01 15:22:42', '2024-08-01 15:22:42');
 
 -- --------------------------------------------------------
@@ -834,6 +834,32 @@ INSERT INTO `tbl_districts` (`district_id`, `district_name`, `state_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_plans_details`
+--
+
+CREATE TABLE `tbl_plans_details` (
+  `pl_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
+  `o_name` varchar(255) NOT NULL,
+  `card_num` varchar(20) NOT NULL,
+  `exp_date` date NOT NULL,
+  `cvv` varchar(4) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `points` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_plans_details`
+--
+
+INSERT INTO `tbl_plans_details` (`pl_id`, `c_id`, `o_name`, `card_num`, `exp_date`, `cvv`, `amount`, `points`, `created_at`, `updated_at`) VALUES
+(1, 1, '1234', '1234', '2025-03-04', '1234', 499, 18, '2025-03-04 14:03:22', '2025-03-04 14:19:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_property_images`
 --
 
@@ -855,7 +881,19 @@ INSERT INTO `tbl_property_images` (`img_id`, `property_id`, `image_name`) VALUES
 (123, 17, '66bb23f14db28_1723540465.jpg'),
 (124, 17, '66bb23f14e063_1723540465.jpg'),
 (125, 17, '66bb23f14e5b0_1723540465.jpg'),
-(126, 17, '66bb23f14eb00_1723540465.jpg');
+(126, 17, '66bb23f14eb00_1723540465.jpg'),
+(127, 18, '678dfa4fcc36e_1737357903.jpg'),
+(128, 18, '678dfa4fcc6f5_1737357903.jpg'),
+(129, 18, '678dfa4fcc94c_1737357903.jpg'),
+(130, 18, '678dfa4fccaf6_1737357903.jpg'),
+(131, 19, '678dfaf9f3e62_1737358073.jpg'),
+(132, 19, '678dfaf9f418a_1737358073.jpg'),
+(133, 19, '678dfafa00300_1737358074.jpg'),
+(134, 19, '678dfafa00611_1737358074.jpg'),
+(135, 20, '678dfb7aae779_1737358202.jpg'),
+(136, 20, '678dfb7aaea27_1737358202.jpg'),
+(137, 20, '678dfb7aaec7d_1737358202.jpg'),
+(138, 20, '678dfb7aaf1b8_1737358202.jpg');
 
 -- --------------------------------------------------------
 
@@ -897,7 +935,30 @@ CREATE TABLE `tbl_property_listing` (
 
 INSERT INTO `tbl_property_listing` (`p_id`, `c_id`, `listingFor`, `propertyType`, `address`, `size`, `bedrooms`, `bathrooms`, `yearBuilt`, `furnishing`, `availableFrom`, `price`, `additionalCosts`, `interiorFeatures`, `exteriorFeatures`, `specialFeatures`, `nearbyAmenities`, `accessibility`, `description`, `contactName`, `contactNumber`, `contactEmail`, `req_status`, `createdAt`, `updatedAt`) VALUES
 (16, 2, 'Sell', 'apartment', 'Apartment', 1200, 3, 2, 2015, 'furnished', '2024-08-30', 2500000.00, '2000', 'Central Heating, Air Conditioning', 'Balcony, Garage', 'Ocean View', 'Schools, Parks', 'Near Public Transport', 'A beautiful apartment with ocean view.', 'Salmaan Khan', '9090909090', 'salmaan@gmail.com', 'pending', '2024-08-13 09:12:17', '2024-08-13 09:12:17'),
-(17, 2, 'Rent', 'house', '456 Maple Avenue, Springfield', 2500, 5, 4, 2010, 'furnished', '2024-02-12', 2000000.00, '3000', 'Fireplace, Hardwood Floors', 'Garden, Pool', 'Energy Efficient', ' Shopping Malls, Restaurants', ' Easy Access', 'Spacious house with a private garden.', 'Salmaan Khan', '9090909090', 'salmaan@gmail.com', 'pending', '2024-08-13 09:14:25', '2024-08-13 09:14:25');
+(17, 2, 'Rent', 'house', '456 Maple Avenue, Springfield', 2500, 5, 4, 2010, 'furnished', '2024-02-12', 2000000.00, '3000', 'Fireplace, Hardwood Floors', 'Garden, Pool', 'Energy Efficient', ' Shopping Malls, Restaurants', ' Easy Access', 'Spacious house with a private garden.', 'Salmaan Khan', '9090909090', 'salmaan@gmail.com', 'pending', '2024-08-13 09:14:25', '2024-08-13 09:14:25'),
+(18, 2, 'Sell', 'apartment', 'address', 1200, 4, 4, 2025, 'furnished', '1212-12-12', 12000000.00, '2000', 'dd', 'dd', 'dd', 'dd', 'dd', 'dd', 'Salmaan Khan', '9090909090', 'salmaan@gmail.com', 'pending', '2025-01-20 07:25:03', '2025-01-20 07:25:03'),
+(19, 1, 'Sell', 'apartment', 'address', 1200, 4, 4, 2024, 'furnished', '1212-12-12', 1200000.00, '2000', 'ss', 'ss', 'ss', 'ss', 'ss', 'ss', 'Krunal Rajpura', '9090909090', 'krunal@gmail.com', 'pending', '2025-01-20 07:27:54', '2025-01-20 07:27:54'),
+(20, 1, 'Sell', 'apartment', 'address', 1223, 4, 4, 2320, 'semi-furnished', '1212-12-12', 1222222.00, '7000', 'ww', 'ww', 'ww', 'ww', 'ww', 'ww', 'Krunal Rajpura', '9090909090', 'krunal@gmail.com', 'pending', '2025-01-20 07:30:02', '2025-01-20 07:30:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_revealed_details`
+--
+
+CREATE TABLE `tbl_revealed_details` (
+  `c_id` int(11) NOT NULL,
+  `property_id` int(11) NOT NULL,
+  `revealed_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_revealed_details`
+--
+
+INSERT INTO `tbl_revealed_details` (`c_id`, `property_id`, `revealed_at`) VALUES
+(1, 17, '2025-03-04 19:48:25'),
+(1, 18, '2025-03-04 19:49:10');
 
 -- --------------------------------------------------------
 
@@ -978,6 +1039,12 @@ ALTER TABLE `tbl_districts`
   ADD KEY `state_id` (`state_id`);
 
 --
+-- Indexes for table `tbl_plans_details`
+--
+ALTER TABLE `tbl_plans_details`
+  ADD PRIMARY KEY (`pl_id`);
+
+--
 -- Indexes for table `tbl_property_images`
 --
 ALTER TABLE `tbl_property_images`
@@ -989,6 +1056,12 @@ ALTER TABLE `tbl_property_images`
 --
 ALTER TABLE `tbl_property_listing`
   ADD PRIMARY KEY (`p_id`);
+
+--
+-- Indexes for table `tbl_revealed_details`
+--
+ALTER TABLE `tbl_revealed_details`
+  ADD PRIMARY KEY (`c_id`,`property_id`);
 
 --
 -- Indexes for table `tbl_states`
@@ -1019,16 +1092,22 @@ ALTER TABLE `tbl_districts`
   MODIFY `district_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=745;
 
 --
+-- AUTO_INCREMENT for table `tbl_plans_details`
+--
+ALTER TABLE `tbl_plans_details`
+  MODIFY `pl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_property_images`
 --
 ALTER TABLE `tbl_property_images`
-  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `tbl_property_listing`
 --
 ALTER TABLE `tbl_property_listing`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_states`

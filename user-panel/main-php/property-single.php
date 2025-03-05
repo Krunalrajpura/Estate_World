@@ -4,17 +4,17 @@
 <?php include $funToPan . 'function.php'; ?>
 <?php include $mphpToInc . 'navbar.php'; ?>
 <style>
-  .blur {
+.blur {
     filter: blur(8px);
     pointer-events: none;
     user-select: none;
-  }
+}
 
-  .unblur {
+.unblur {
     filter: none;
     pointer-events: auto;
     user-select: auto;
-  }
+}
 </style>
 
 <?php
@@ -70,155 +70,155 @@ $data = fetchData($conn, 'tbl_property_listing', '*', $where, $values);
 if (count($data) > 0) {
   foreach ($data as $row) {
     ?>
-    <div class="hero page-inner overlay" style="background-image: url('<?php echo $hero_bg; ?>')">
-      <div class="container">
+<div class="hero page-inner overlay" style="background-image: url('<?php echo $hero_bg; ?>')">
+    <div class="container">
         <div class="row justify-content-center align-items-center">
-          <div class="col-lg-9 text-center mt-5">
-            <h1 class="heading" data-aos="fade-up">
-              <?php echo $row['address']; ?>
-            </h1>
+            <div class="col-lg-9 text-center mt-5">
+                <h1 class="heading" data-aos="fade-up">
+                    <?php echo $row['address']; ?>
+                </h1>
 
-            <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-              <ol class="breadcrumb text-center justify-content-center">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item">
-                  <a href="list_property.php">List Property</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="properties.php" class="text-decoration-underline">Properties</a>
-                </li>
-                <li class="breadcrumb-item active text-white-50 text-decoration-underline" aria-current="page">
-                  <?php echo $row['address']; ?>
-                </li>
-              </ol>
-            </nav>
-          </div>
+                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+                    <ol class="breadcrumb text-center justify-content-center">
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item">
+                            <a href="list_property.php">List Property</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="properties.php" class="text-decoration-underline">Properties</a>
+                        </li>
+                        <li class="breadcrumb-item active text-white-50 text-decoration-underline" aria-current="page">
+                            <?php echo $row['address']; ?>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <div class="section">
-      <div class="container">
+<div class="section">
+    <div class="container">
         <div class="row justify-content-between">
-          <div class="col-lg-7">
-            <div class="img-property-slide-wrap">
-              <div class="img-property-slide">
-                <?php
+            <div class="col-lg-7">
+                <div class="img-property-slide-wrap">
+                    <div class="img-property-slide">
+                        <?php
                 $where1 = 'property_id = ?';
                 $values1 = [$p_id];
                 $data1 = fetchData($conn, 'tbl_property_images', '*', $where1, $values1);
                 foreach ($data1 as $row1) {
                   ?>
-                  <img src="<?php echo $propImagesToUpan . $row1['image_name']; ?>" alt="Image" class="img-fluid" />
-                <?php } ?>
-              </div>
+                        <img src="<?php echo $propImagesToUpan . $row1['image_name']; ?>" alt="Image"
+                            class="img-fluid" />
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4">
-            <h2 class="heading text-primary"> <?php echo $row['address']; ?></h2>
-            <p class="meta"> <?php echo $row['propertyType']; ?></p>
-            <p class="text-black-50">
-              <?php echo $row['interiorFeatures']; ?>
-            </p>
-            <p class="text-black-50">
-              <?php echo $row['exteriorFeatures']; ?>
-            </p>
-            <p class="text-black-50">
-              <?php echo $row['specialFeatures']; ?>
-            </p>
-
-            <div class="d-block agent-box p-5 <?php echo (!($reveal_time) ? 'blur' : '') ?>" id="agent-details">
-              <div class="img mb-4">
-                <img src="../images/person_2-min.jpg" alt="Image" class="img-fluid" />
-              </div>
-              <div class="text">
-                <h3 class="mb-0"><?php echo $row['contactName']; ?></h3>
-                <div class="meta"><?php echo $row['contactEmail']; ?></div>
-                <div class="meta mb-3"><?php echo $row['contactNumber']; ?></div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ratione laborum quo quos omnis sed magnam id ducimus saepe
+            <div class="col-lg-4">
+                <h2 class="heading text-primary"> <?php echo $row['address']; ?></h2>
+                <p class="meta"> <?php echo $row['propertyType']; ?></p>
+                <p class="text-black-50">
+                    <?php echo $row['interiorFeatures']; ?>
                 </p>
-                <ul class="list-unstyled social dark-hover d-flex">
-                  <li class="me-1">
-                    <a href="#"><span class="icon-instagram"></span></a>
-                  </li>
-                  <li class="me-1">
-                    <a href="#"><span class="icon-twitter"></span></a>
-                  </li>
-                  <li class="me-1">
-                    <a href="#"><span class="icon-facebook"></span></a>
-                  </li>
-                  <li class="me-1">
-                    <a href="#"><span class="icon-linkedin"></span></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                <p class="text-black-50">
+                    <?php echo $row['exteriorFeatures']; ?>
+                </p>
+                <p class="text-black-50">
+                    <?php echo $row['specialFeatures']; ?>
+                </p>
 
-            <?php
+                <div class="d-block agent-box p-5 <?php echo (!($reveal_time) ? 'blur' : '') ?>" id="agent-details">
+                    <div class="img mb-4">
+                        <img src="../images/person_2-min.jpg" alt="Image" class="img-fluid" />
+                    </div>
+                    <div class="text">
+                        <h3 class="mb-0"><?php echo $row['contactName']; ?></h3>
+                        <div class="meta"><?php echo $row['contactEmail']; ?></div>
+                        <div class="meta mb-3"><?php echo $row['contactNumber']; ?></div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Ratione laborum quo quos omnis sed magnam id ducimus saepe
+                        </p>
+                        <ul class="list-unstyled social dark-hover d-flex">
+                            <li class="me-1">
+                                <a href="#"><span class="icon-instagram"></span></a>
+                            </li>
+                            <li class="me-1">
+                                <a href="#"><span class="icon-twitter"></span></a>
+                            </li>
+                            <li class="me-1">
+                                <a href="#"><span class="icon-facebook"></span></a>
+                            </li>
+                            <li class="me-1">
+                                <a href="#"><span class="icon-linkedin"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <?php
             if (!$reveal_time) {
               ?>
-              <button class="btn btn-primary mt-3 py-2 px-3 reveal-btn" data-cid="<?php echo $_SESSION['c_id'] ?>"
-                data-pid="<?php echo $p_id; ?>" data-email="<?php $_SESSION['email'] ?>" onclick="toggleBlur()">Reveal
-                Details</button>
-            <?php } ?>
-
-
-          </div>
+                <button class="btn btn-primary mt-3 py-2 px-3 reveal-btn" data-cid="<?php echo $_SESSION['c_id'] ?>"
+                    data-pid="<?php echo $p_id; ?>" data-email="<?php $_SESSION['email'] ?>"
+                    onclick="toggleBlur()">Reveal
+                    Details</button>
+                <?php } ?>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 
-  <?php }
+<?php }
 } ?>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".reveal-btn").forEach(button => {
-      button.addEventListener("click", function () {
-        let cid = this.getAttribute("data-cid");
-        let pid = this.getAttribute("data-pid");
-        let email = this.getAttribute("data-email");
-        // console.log(cid);
+        button.addEventListener("click", function() {
+            let cid = this.getAttribute("data-cid");
+            let pid = this.getAttribute("data-pid");
+            let email = this.getAttribute("data-email");
+            // console.log(cid);
 
-        fetch("../../api/reveal_property.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            cid: cid,
-            pid: pid,
-            email: email
-          })
-        })
-          .then(response => response.text()) // Get response as text first
-          .then(text => {
-            // console.log("Raw Response:", text); // Log the raw response
-            return JSON.parse(text); // Try parsing JSON
-          })
-          .then(data => {
-            // console.log("Status Code:", data.status_code);
-            if (data.status_code == 422) {
-              alert("Something went Wrong");
-            }
-            if (data.status_code == 200) {
-              const detailsDiv = document.getElementById('agent-details');
-              detailsDiv.classList.toggle('blur');
-              document.querySelectorAll(".reveal-btn").forEach(button => {
-                button.classList.add("d-none");
-              });
-            }
-          })
-          .catch(error => {
-            console.error("Parsing Error:", error);
-            alert("Something went Wrong");
-          });
+            fetch("../../api/reveal_property.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        cid: cid,
+                        pid: pid,
+                        email: email
+                    })
+                })
+                .then(response => response.text()) // Get response as text first
+                .then(text => {
+                    // console.log("Raw Response:", text); // Log the raw response
+                    return JSON.parse(text); // Try parsing JSON
+                })
+                .then(data => {
+                    // console.log("Status Code:", data.status_code);
+                    if (data.status_code == 422) {
+                        alert("Something went Wrong");
+                    }
+                    if (data.status_code == 200) {
+                        const detailsDiv = document.getElementById('agent-details');
+                        detailsDiv.classList.toggle('blur');
+                        document.querySelectorAll(".reveal-btn").forEach(button => {
+                            button.classList.add("d-none");
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Parsing Error:", error);
+                    alert("Something went Wrong");
+                });
 
-      });
+        });
     });
-  });
+});
 </script>
 
 
