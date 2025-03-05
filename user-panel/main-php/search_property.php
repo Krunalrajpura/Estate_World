@@ -60,7 +60,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="mb-4 text-center">Select Options</h3>
-                    <form method="POST">
+                    <form method="POST" action="search_property.php">
                         <div class="row g-3">
                             <div class="col-md-4 mx-auto">
                                 <label for="select1" class="form-label fw-bold">City</label>

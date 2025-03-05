@@ -17,12 +17,17 @@
         <h1 class="heading" data-aos="fade-up">
           Easiest way to find your dream home
         </h1>
+        <!-- Search Form -->
         <form class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200"
           action="search_property.php" method="GET">
-          <input type="text" class="form-control px-4" placeholder="Enter City Name" name="city" required />
+          <input type="text" class="form-control px-4" id="searchBox" placeholder="Enter City Name" name="city" required
+            autocomplete="off" />
           <button type="submit" class="btn btn-primary">Search</button>
         </form>
 
+        <!-- Suggestions Dropdown -->
+        <div id="suggestionBox" class="list-group position-absolute w-25"
+          style="z-index: 1000; left: 400px; Bottom: 150px;"></div>
       </div>
     </div>
   </div>
@@ -491,6 +496,39 @@
     </div>
   </div>
 </div> -->
+
+<script>
+  $(document).ready(function () {
+    $("#searchBox").keyup(function () {
+      let query = $(this).val();
+      if (query.length > 1) {
+        $.ajax({
+          url: "fetch_suggestions.php",  // Backend script to fetch suggestions
+          method: "POST",
+          data: { city: query },
+          success: function (data) {
+            $("#suggestionBox").html(data).show();
+          }
+        });
+      } else {
+        $("#suggestionBox").hide();
+      }
+    });
+
+    // Insert clicked suggestion into input field
+    $(document).on("click", ".suggestion-item", function () {
+      $("#searchBox").val($(this).text());
+      $("#suggestionBox").hide();
+    });
+
+    // Hide suggestions if user clicks outside
+    $(document).click(function (e) {
+      if (!$(e.target).closest("#searchBox, #suggestionBox").length) {
+        $("#suggestionBox").hide();
+      }
+    });
+  });
+</script>
 
 <?php include $mphpToInc . 'footer.php'; ?>
 <?php include $mphpToInc . 'loader.php'; ?>
