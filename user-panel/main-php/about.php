@@ -1,363 +1,267 @@
-<?php include '../../globalvar/globalvariable.php'; ?>
-<?php include $connToPan . 'config.php'; ?>
-<?php include $mphpToInc . 'header.php'; ?>
-<?php include $funToPan . 'function.php'; ?>
-<?php include $mphpToInc . 'navbar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estate World - About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 1376px;
+            
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        .section-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .section-toggle button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .section-toggle button.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .content-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+        .team-member-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 48px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .modal-expertise {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .expertise-tag {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
 
+        img{
+            height: 160px;
+            width: 156px;
+            border-radius: 50%;
+            
+            
 
-
-<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_3.jpg')">
+        }
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-9 text-center mt-5">
-                <h1 class="heading" data-aos="fade-up">About</h1>
-                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-                    <ol class="breadcrumb text-center justify-content-center">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active text-white text-decoration-underline" aria-current="page">
-                            About
-                        </li>
-                    </ol>
-                </nav>
+        <div class="header">
+            <h1>Estate World</h1>
+            <p>Transforming Real Estate, Empowering Dreams</p>
+        </div>
+
+        <div class="section-toggle">
+            <button class="active" data-section="mission">Mission</button>
+            <button data-section="values">Values</button>
+        </div>
+
+        <div id="mission" class="content-section active">
+            <h2>Our Mission</h2>
+            <p>Estate World is committed to revolutionizing real estate experiences by providing innovative, personalized solutions that empower clients to achieve their property goals. We blend cutting-edge technology with deep market expertise to deliver exceptional value.</p>
+        </div>
+
+        <div id="values" class="content-section">
+            <h2>Our Core Values</h2>
+            <ul>
+                <li>Integrity in Every Transaction</li>
+                <li>Client-Centric Approach</li>
+                <li>Continuous Innovation</li>
+                <li>Community Commitment</li>
+            </ul>
+        </div>
+
+        <h2 style="text-align: center; margin: 30px 0;">Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member" data-name="Elena Rodriguez" data-role="Head of Customer Relations" data-bio="Passionate about delivering exceptional customer experiences." data-expertise="Client Communication,Problem Solving,Negotiation">
+                <img src="image/img1.jpg" alt="img1">
+                <h3>Krunal Rajpura</h3>
+                <p>Team Leader</p>
+            </div>
+            <div class="team-member" data-name="David Kim" data-role="Senior Real Estate Advisor" data-bio="Specializes in luxury properties and investment strategies." data-expertise="Luxury Market,Investment Properties,Client Advisory">
+                <img src="image/img2.jpg" alt="img2">
+                <h3>Meet Patel</h3>
+                <p>Team Member</p>
+            </div>
+            <div class="team-member" data-name="Emily Wang" data-role="Marketing Director" data-bio="Creative strategist driving brand growth and customer engagement." data-expertise="Digital Marketing,Brand Strategy,Content Creation">
+                <img src="image/img3.jpg" alt="img3">
+                <h3>Dhruv Prajapati</h3>
+                <p>Team Member</p>
+            </div>
+            <div class="team-member" data-name="Robert Garcia" data-role="Finance Manager" data-bio="Expert in financial planning and real estate investment analysis." data-expertise="Financial Analysis,Investment Strategy,Risk Management">
+                <img src="image/img4.jpg" alt="img4">
+                <h3>Meet Savaliya</h3>
+                <p>Team Member</p>
+            </div>
+        </div>
+
+        <div id="teamModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modalName"></h2>
+                <p id="modalRole"></p>
+                <p id="modalBio"></p>
+                <div id="modalExpertise" class="modal-expertise"></div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="section">
-    <div class="container">
-        <div class="row text-left mb-5">
-            <div class="col-12">
-                <h2 class="font-weight-bold heading text-primary mb-4">About Us</h2>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-black-50">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                    enim pariatur similique debitis vel nisi qui reprehenderit totam?
-                    Quod maiores.
-                </p>
-                <p class="text-black-50">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                    saepe, explicabo nihil. Est, autem error cumque ipsum repellendus
-                    veniam sed blanditiis unde ullam maxime veritatis perferendis
-                    cupiditate, at non esse!
-                </p>
-                <p class="text-black-50">
-                    Enim, nisi labore exercitationem facere cupiditate nobis quod
-                    autem veritatis quis minima expedita. Cumque odio illo iusto
-                    reiciendis, labore impedit omnis, nihil aut atque, facilis
-                    necessitatibus asperiores porro qui nam.
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-black-50">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                    saepe, explicabo nihil. Est, autem error cumque ipsum repellendus
-                    veniam sed blanditiis unde ullam maxime veritatis perferendis
-                    cupiditate, at non esse!
-                </p>
-                <p class="text-black-50">
-                    Enim, nisi labore exercitationem facere cupiditate nobis quod
-                    autem veritatis quis minima expedita. Cumque odio illo iusto
-                    reiciendis, labore impedit omnis, nihil aut atque, facilis
-                    necessitatibus asperiores porro qui nam.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+    <script>
+        // Section Toggle
+        document.querySelectorAll('.section-toggle button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all buttons and sections
+                document.querySelectorAll('.section-toggle button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
 
-<div class="section pt-0">
-    <div class="container">
-        <div class="row justify-content-between mb-5">
-            <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
-                <div class="img-about dots">
-                    <img src="../images/hero_bg_3.jpg" alt="Image" class="img-fluid" />
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-home2"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Quality properties</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
+                // Add active to clicked button and corresponding section
+                button.classList.add('active');
+                document.getElementById(button.dataset.section).classList.add('active');
+            });
+        });
 
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-person"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Top rated agents</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
+        // Team Member Modal
+        const modal = document.getElementById('teamModal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalName = document.getElementById('modalName');
+        const modalRole = document.getElementById('modalRole');
+        const modalBio = document.getElementById('modalBio');
+        const modalExpertise = document.getElementById('modalExpertise');
 
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-security"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Easy and safe</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('click', () => {
+                modalName.textContent = member.dataset.name;
+                modalRole.textContent = member.dataset.role;
+                modalBio.textContent = member.dataset.bio;
 
-<div class="section pt-0">
-    <div class="container">
-        <div class="row justify-content-between mb-5">
-            <div class="col-lg-7 mb-5 mb-lg-0">
-                <div class="img-about dots">
-                    <img src="../images/hero_bg_2.jpg" alt="Image" class="img-fluid" />
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-home2"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Quality properties</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
+                // Clear previous expertise tags
+                modalExpertise.innerHTML = '';
+                // Add expertise tags
+                member.dataset.expertise.split(',').forEach(expertise => {
+                    const tag = document.createElement('span');
+                    tag.classList.add('expertise-tag');
+                    tag.textContent = expertise;
+                    modalExpertise.appendChild(tag);
+                });
 
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-person"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Top rated agents</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
+                modal.style.display = 'block';
+            });
+        });
 
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-security"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">Easy and safe</h3>
-                        <p class="text-black-50">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Nostrum iste.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-                <img src="../images/img_1.jpg" alt="Image" class="img-fluid" />
-            </div>
-            <div class="col-md-4 mt-lg-5" data-aos="fade-up" data-aos-delay="100">
-                <img src="../images/img_3.jpg" alt="Image" class="img-fluid" />
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <img src="../images/img_2.jpg" alt="Image" class="img-fluid" />
-            </div>
-        </div>
-        <div class="row section-counter mt-5">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="counter-wrap mb-5 mb-lg-0">
-                    <span class="number"><span class="countup text-primary">2917</span></span>
-                    <span class="caption text-black-50"># of Buy Properties</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="counter-wrap mb-5 mb-lg-0">
-                    <span class="number"><span class="countup text-primary">3918</span></span>
-                    <span class="caption text-black-50"># of Sell Properties</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
-                <div class="counter-wrap mb-5 mb-lg-0">
-                    <span class="number"><span class="countup text-primary">38928</span></span>
-                    <span class="caption text-black-50"># of All Properties</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
-                <div class="counter-wrap mb-5 mb-lg-0">
-                    <span class="number"><span class="countup text-primary">1291</span></span>
-                    <span class="caption text-black-50"># of Agents</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
 
-<div class="section sec-testimonials bg-light">
-    <div class="container">
-        <div class="row mb-5 align-items-center">
-            <div class="col-md-6">
-                <h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">
-                    The Team
-                </h2>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <div id="testimonial-nav">
-                    <span class="prev" data-controls="prev">Prev</span>
-
-                    <span class="next" data-controls="next">Next</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4"></div>
-        </div>
-        <div class="testimonial-slider-wrap">
-            <div class="testimonial-slider">
-                <div class="item">
-                    <div class="testimonial">
-                        <img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4" />
-                        <h3 class="h5 text-primary">James Smith</h3>
-                        <p class="text-black-50">Designer, Co-founder</p>
-
-                        <p>
-                            Far far away, behind the word mountains, far from the
-                            countries Vokalia and Consonantia, there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.
-                        </p>
-
-                        <ul class="social list-unstyled list-inline dark-hover">
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-twitter"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-facebook"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-linkedin"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-instagram"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="testimonial">
-                        <img src="../images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4" />
-                        <h3 class="h5 text-primary">Carol Houston</h3>
-                        <p class="text-black-50">Designer, Co-founder</p>
-
-                        <p>
-                            Far far away, behind the word mountains, far from the
-                            countries Vokalia and Consonantia, there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.
-                        </p>
-
-                        <ul class="social list-unstyled list-inline dark-hover">
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-twitter"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-facebook"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-linkedin"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-instagram"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="testimonial">
-                        <img src="../images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4" />
-                        <h3 class="h5 text-primary">Synthia Cameron</h3>
-                        <p class="text-black-50">Designer, Co-founder</p>
-
-                        <p>
-                            Far far away, behind the word mountains, far from the
-                            countries Vokalia and Consonantia, there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.
-                        </p>
-
-                        <ul class="social list-unstyled list-inline dark-hover">
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-twitter"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-facebook"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-linkedin"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-instagram"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="testimonial">
-                        <img src="../images/person_4-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4" />
-                        <h3 class="h5 text-primary">Davin Smith</h3>
-                        <p class="text-black-50">Designer, Co-founder</p>
-
-                        <p>
-                            Far far away, behind the word mountains, far from the
-                            countries Vokalia and Consonantia, there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.
-                        </p>
-
-                        <ul class="social list-unstyled list-inline dark-hover">
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-twitter"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-facebook"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-linkedin"></span></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#"><span class="icon-instagram"></span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php include $mphpToInc . 'footer.php'; ?>
-<?php include $mphpToInc . 'loader.php'; ?>
-<?php include $mphpToInc . 'endlinks.php'; ?>
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
