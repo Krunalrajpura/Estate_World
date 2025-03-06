@@ -12,167 +12,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estate World - About Us</title> -->
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f4;
-        line-height: 1.6;
-        color: #333;
-    }
-
-    .container {
-        width: 100%;
-        max-width: 1376px;
-
-        padding: 20px;
-    }
-
-    .header {
-        text-align: center;
-        margin-bottom: 30px;
-        background-color: #2c3e50;
-        color: white;
-        padding: 20px;
-    }
-
-    .section-toggle {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-    }
-
-    .section-toggle button {
-        margin: 0 10px;
-        padding: 10px 20px;
-        background-color: white;
-        border: 2px solid #3498db;
-        color: #3498db;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .section-toggle button.active {
-        background-color: #3498db;
-        color: white;
-    }
-
-    .content-section {
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-    .content-section.active {
-        display: block;
-    }
-
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-
-    .team-member {
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .team-member:hover {
-        transform: scale(1.05);
-    }
-
-    .team-member-avatar {
-        width: 120px;
-        height: 120px;
-        background-color: #3498db;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 15px;
-        font-size: 48px;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    */ .modal-content {
-        background-color: white;
-        margin: 10% auto;
-        padding: 30px;
-        border-radius: 8px;
-        width: 80%;
-        max-width: 500px;
-        text-align: center;
-        position: relative;
-    }
-
-    .close-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .modal-expertise {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
-
-    .expertise-tag {
-        background-color: #3498db;
-        color: white;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
-
-    img {
-        height: 160px;
-        width: 156px;
-        border-radius: 50%;
-
-
-
-    }
-
-    @media (max-width: 768px) {
-        .team-grid {
-            grid-template-columns: repeat(2, 1fr);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
 
-    @media (max-width: 480px) {
-        .team-grid {
-            grid-template-columns: 1fr;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
         }
-    }
+
+        .container {
+            width: 100%;
+            max-width: 1376px;
+
+
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        .section-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .section-toggle button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .section-toggle button.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .content-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member-avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 48px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        */ .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-expertise {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .expertise-tag {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        img {
+            height: 160px;
+            width: 156px;
+            border-radius: 50%;
+
+
+
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -249,58 +249,58 @@
     </div>
 
     <script>
-    // Section Toggle
-    document.querySelectorAll('.section-toggle button').forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active from all buttons and sections
-            document.querySelectorAll('.section-toggle button').forEach(btn => btn.classList.remove(
-                'active'));
-            document.querySelectorAll('.content-section').forEach(section => section.classList.remove(
-                'active'));
+        // Section Toggle
+        document.querySelectorAll('.section-toggle button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active from all buttons and sections
+                document.querySelectorAll('.section-toggle button').forEach(btn => btn.classList.remove(
+                    'active'));
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove(
+                    'active'));
 
-            // Add active to clicked button and corresponding section
-            button.classList.add('active');
-            document.getElementById(button.dataset.section).classList.add('active');
-        });
-    });
-
-    // Team Member Modal
-    const modal = document.getElementById('teamModal');
-    const closeModal = document.querySelector('.close-modal');
-    const modalName = document.getElementById('modalName');
-    const modalRole = document.getElementById('modalRole');
-    const modalBio = document.getElementById('modalBio');
-    const modalExpertise = document.getElementById('modalExpertise');
-
-    document.querySelectorAll('.team-member').forEach(member => {
-        member.addEventListener('click', () => {
-            modalName.textContent = member.dataset.name;
-            modalRole.textContent = member.dataset.role;
-            modalBio.textContent = member.dataset.bio;
-
-            // Clear previous expertise tags
-            modalExpertise.innerHTML = '';
-            // Add expertise tags
-            member.dataset.expertise.split(',').forEach(expertise => {
-                const tag = document.createElement('span');
-                tag.classList.add('expertise-tag');
-                tag.textContent = expertise;
-                modalExpertise.appendChild(tag);
+                // Add active to clicked button and corresponding section
+                button.classList.add('active');
+                document.getElementById(button.dataset.section).classList.add('active');
             });
-
-            modal.style.display = 'block';
         });
-    });
 
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+        // Team Member Modal
+        const modal = document.getElementById('teamModal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalName = document.getElementById('modalName');
+        const modalRole = document.getElementById('modalRole');
+        const modalBio = document.getElementById('modalBio');
+        const modalExpertise = document.getElementById('modalExpertise');
 
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('click', () => {
+                modalName.textContent = member.dataset.name;
+                modalRole.textContent = member.dataset.role;
+                modalBio.textContent = member.dataset.bio;
+
+                // Clear previous expertise tags
+                modalExpertise.innerHTML = '';
+                // Add expertise tags
+                member.dataset.expertise.split(',').forEach(expertise => {
+                    const tag = document.createElement('span');
+                    tag.classList.add('expertise-tag');
+                    tag.textContent = expertise;
+                    modalExpertise.appendChild(tag);
+                });
+
+                modal.style.display = 'block';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
-        }
-    });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 
