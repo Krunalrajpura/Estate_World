@@ -210,28 +210,28 @@
             <div class="team-member" data-name="Elena Rodriguez" data-role="Head of Customer Relations"
                 data-bio="Passionate about delivering exceptional customer experiences."
                 data-expertise="Client Communication,Problem Solving,Negotiation">
-                <img src="../../../image/img1.jpg" alt="img1">
+                <img src="about/img1.jpg" alt="img1">
                 <h3>Krunal Rajpura</h3>
                 <p>Team Leader</p>
             </div>
             <div class="team-member" data-name="David Kim" data-role="Senior Real Estate Advisor"
                 data-bio="Specializes in luxury properties and investment strategies."
                 data-expertise="Luxury Market,Investment Properties,Client Advisory">
-                <img src="image/img2.jpg" alt="img2">
+                <img src="about/img2.jpg" alt="img2">
                 <h3>Meet Patel</h3>
                 <p>Team Member</p>
             </div>
             <div class="team-member" data-name="Emily Wang" data-role="Marketing Director"
                 data-bio="Creative strategist driving brand growth and customer engagement."
                 data-expertise="Digital Marketing,Brand Strategy,Content Creation">
-                <img src="image/img3.jpg" alt="img3">
+                <img src="about/img3.jpg" alt="img3">
                 <h3>Dhruv Prajapati</h3>
                 <p>Team Member</p>
             </div>
             <div class="team-member" data-name="Robert Garcia" data-role="Finance Manager"
                 data-bio="Expert in financial planning and real estate investment analysis."
                 data-expertise="Financial Analysis,Investment Strategy,Risk Management">
-                <img src="image/img4.jpg" alt="img4">
+                <img src="about/img4.jpg" alt="img4">
                 <h3>Meet Savaliya</h3>
                 <p>Team Member</p>
             </div>
