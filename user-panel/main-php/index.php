@@ -41,11 +41,11 @@
                     Popular Properties
                 </h2>
             </div>
-            <div class="col-lg-6 text-lg-end">
+            <!-- <div class="col-lg-6 text-lg-end">
                 <p>
                     <a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">View all properties</a>
                 </p>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-12">
