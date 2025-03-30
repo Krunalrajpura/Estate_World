@@ -4,11 +4,12 @@
 <?php include $funToPan . 'function.php'; ?>
 <?php include $mphpToInc . 'navbar.php'; ?>
 
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <div class="section" id="list">
     <div class="container">
         <?php
-        // Fetch all properties instead of filtering by c_id
         $data = fetchData($conn, 'tbl_property_listing', '*');
 
         if (count($data) > 0) {
@@ -22,7 +23,7 @@
             <div class="row">
                 <div class="col-12">
                     <form id="compareForm">
-                        <table class="table table-bordered table-striped">
+                        <table id="propertyTable" class="table table-bordered table-striped">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Property ID</th>
@@ -41,14 +42,13 @@
                                 foreach ($data as $row) {
                                     $p_id = $row['p_id'];
 
-                                    // Fetch Property Image
                                     $where2 = 'property_id = ?';
                                     $values2 = [$p_id];
                                     $data2 = fetchData($conn, 'tbl_property_images', '*', $where2, $values2);
                                     $propertyImage = "";
                                     foreach ($data2 as $row2) {
                                         $propertyImage = $propImagesToUpan . $row2['image_name'];
-                                        break; // Get only the first image
+                                        break;
                                     }
                                     ?>
                                     <tr>
@@ -90,18 +90,29 @@
     </div>
 </div>
 
-<!-- JavaScript to limit checkbox selection -->
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 <script>
+    $(document).ready(function () {
+        $('#propertyTable').DataTable({
+            "ordering": true,
+            "paging": true,
+            "searching": true
+        });
+    });
+
     function limitSelection() {
         let checkboxes = document.querySelectorAll('.compare-checkbox:checked');
         let compareBtn = document.getElementById('compareBtn');
 
         if (checkboxes.length > 2) {
             showWarningAlert("You can only compare up to 2 properties.");
-            event.target.checked = false; // Uncheck the last selected checkbox
+            event.target.checked = false;
         }
 
-        compareBtn.disabled = checkboxes.length !== 2; // Enable button only if exactly 2 properties are selected
+        compareBtn.disabled = checkboxes.length !== 2;
     }
 
     document.getElementById('compareBtn').addEventListener('click', function () {
@@ -109,8 +120,7 @@
 
         if (selectedCheckboxes.length === 2) {
             let ids = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-            window.location.href =
-                `compare-property.php?p_id1=${ids[0]}&p_id2=${ids[1]}`; // Redirect to the correct comparison page
+            window.location.href = `compare-property.php?p_id1=${ids[0]}&p_id2=${ids[1]}`;
         }
     });
 </script>
